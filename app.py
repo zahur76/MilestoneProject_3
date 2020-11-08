@@ -20,8 +20,8 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def all_items():
-    mongo.db.items.find()
-    return render_template("/items")
+    items = mongo.db.items.find()
+    return render_template("items.html", items=items)
 
 
 if __name__ == "__main__":
