@@ -13,6 +13,15 @@ $(document).ready(function(){
             $(".submit").addClass("modal-close")
         }        
     })
+    
+    /* Code to allow swap over of modals */    
+    $(".login-modal").click(function(){        
+        $(".login-modal").addClass("modal-close");        
+    })
+
+    $(".register-modal").click(function(){        
+        $(".register-modal").addClass("modal-close");       
+    })
 
 })
 
