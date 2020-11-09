@@ -12,3 +12,8 @@ body {
 main {
     flex: 1 0 auto;
 }
+
+.modal {
+    border-radius: 10px;    
+}
+
