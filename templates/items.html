@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artist for life</title>
-</head>
-<body>
-    {% for item in items %}
-        {{ item.item_image }}<br>
-        {{ item.item_name }}<br>
-        {{ item.item_description }}<br>
-        {{ item.item_price}}<br>
-        {{ item.seller_name}}<br>
-        {{ item.contact_number }}<br>
-        {{ item.email }}<br>
-    {% endfor %}
+{% extends 'base.html' %}
+    {% block content %}
+        <h3>All items for sale</h3>
+        {% for item in items %}
+            {{ item.item_image }}<br>
+            {{ item.item_name }}<br>
+            {{ item.item_description }}<br>
+            {{ item.item_price}}<br>
+            {{ item.seller_name}}<br>
+            {{ item.contact_number }}<br>
+            {{ item.email }}<br>
+        {% endfor %}
+    {% endblock %}
     
-</body>
-</html>
