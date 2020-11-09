@@ -1,0 +1,14 @@
+li a {
+    color: rgb(172, 172, 185) !important;
+}
+
+body {
+    background: rgb(190, 155, 155);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
