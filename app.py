@@ -49,6 +49,39 @@ def register():
             return redirect(url_for("all_items"))
 
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # Locate any users with same username in database
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username2").lower()})
+        if existing_user:
+            # check if passwords are identical
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password2")):
+                # If match is obtained, save username to session cookie
+                session["user"] = request.form.get("username2").lower()
+                flash("Welcome, {}".format(request.form.get("username2")))
+                return redirect(url_for("profile", username=session["user"]))
+            # Password do not match
+            else:
+                flash("Incorrect Password/Password")
+                return redirect(url_for("all_items"))
+        else:
+            # No username exists in user database
+            flash("Incorrect Username/Password")
+            return redirect(url_for("all_items"))
+
+
+@app.route("/profile/<username>")
+def profile(username):
+    # Find user and profile database for user
+    user = mongo.db.users.find_one({"username": username})
+    profile = mongo.db.profile.find_one({"username": username})
+
+    return render_template('profile.html', username=user, profile=profile)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
