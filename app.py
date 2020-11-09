@@ -21,6 +21,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def all_items():
+    # Find all items in item database
     items = mongo.db.items.find()
     return render_template("items.html", items=items)
 
@@ -46,7 +47,6 @@ def register():
             session["user"] = request.form.get("username").lower()
             flash("You have been registered!")
             return redirect(url_for("all_items"))
-
 
 
 if __name__ == "__main__":
