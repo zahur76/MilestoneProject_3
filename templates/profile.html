@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+    {% block content %}        
+        <div class="container">            
+            <h3>{{ username.username }}'s Profile Page</h3>
+                {% if profile.full_name %}        
+                    {{ profile.profile_image }}<br>
+                    {{ profile.full_name }}<br>
+                    {{ profile.profile_description }}<br>
+                {% else %} 
+                    <h3>No profile</h3>
+                {% endif %}            
+            
+        </div>
+    {% endblock %}
+    
