@@ -9,35 +9,47 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
 </head>
 <body>
+    <header>
     <!-- navbar -->
-    <nav>
-        <!-- navbar on medium screen size and above -->
-        <div class="nav-wrapper teal">
-            <a href="#" class="brand-logo m2">Artist for life</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Add Item</a></li>
-                <li><a href="#">Manage Categories</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a class="modal-trigger" href="#register">Register</a></li>
-                <li><a href="#">logout</a></li>
-            </ul>
-        </div>
-    </nav>
-    <!-- navbar on mobile devices -->
-    <ul class="sidenav teal" id="mobile-demo">
-        <h4 class="center-align">Artist for life</h4>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Add Item</a></li>
-        <li><a href="#">Manage Categories</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Login</a></li>
-        <li><a class="modal-trigger" href="#register">Register</a></li>
-        <li><a href="#">logout</a></li>
-    </ul>
+        <nav>        
+            <!-- navbar on medium screen size and above -->
+            <div class="nav-wrapper teal">
+                <a href="{{ url_for('all_items') }}" class="brand-logo m2">Artist for life</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('all_items') }}">Home</a></li>
+                    <li><a href="#">Add Item</a></li>
+                    <li><a href="#">Manage Categories</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a class="modal-trigger" href="#register">Register</a></li>
+                    <li><a href="#">logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- navbar on mobile devices -->
+        <ul class="sidenav teal" id="mobile-demo">
+            <h4 class="center-align">Artist for life</h4>
+            <li><a href="{{ url_for('all_items') }}">Home</a></li>
+            <li><a href="#">Add Item</a></li>
+            <li><a href="#">Manage Categories</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a class="modal-trigger" href="#register">Register</a></li>
+            <li><a href="#">logout</a></li>
+        </ul>
+    </header>
     <!-- main section -->
+    <div class="flash teal lighten-5">
+        <!-- Display Flash messages on all pages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <h3 class="center-align blue-text">{{ message }}</h3>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
     <main>
         {% block content %}
         {% endblock %}
