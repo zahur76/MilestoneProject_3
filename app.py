@@ -94,6 +94,11 @@ def profile(username):
     return render_template('profile.html', username=user, profile=profile)
 
 
+@app.route("/add_item", methods=["GET", "POST"])
+def add_item():
+
+    return render_template("add_item.html")
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
