@@ -24,7 +24,13 @@ mongo = PyMongo(app)
 def all_items():
     # Find all items in item database
     items = list(mongo.db.items.find())
-    return render_template("items.html", items=items)
+    profiles = list(mongo.db.profile.find())
+    user_list = []
+    # Create a list of users with profiles for comparison in items page
+    for profile in profiles:
+        user_list.append(profile["username"])
+
+    return render_template("items.html", items=items, users=user_list)
 
 
 # Registration modal
