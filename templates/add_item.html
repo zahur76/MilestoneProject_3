@@ -8,14 +8,14 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-                            <select id="category_name" name="category_name" class="validate" required>
+                            <select id="item_category" name="item_category" class="validate" required>
                             <!-- Will display value in field as choose option but cannot be selected-->
                             <option value="" disabled selected>Choose option</option>
                             {% for category in categories %}
                                 <option value="{{ category.category_name }}">{{ category.category_name }}</option>  
                             {% endfor %}                  
                             </select>
-                            <label for="category_name">Task Category</label>
+                            <label for="item_category">Task Category</label>
                         </div>
                     </div>
                     <!-- Image Upload -->
