@@ -23,7 +23,7 @@ mongo = PyMongo(app)
 @app.route("/")
 def all_items():
     # Find all items in item database
-    items = mongo.db.items.find()
+    items = list(mongo.db.items.find())
     return render_template("items.html", items=items)
 
 
