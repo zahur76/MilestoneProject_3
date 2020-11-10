@@ -16,14 +16,23 @@
             <div class="nav-wrapper teal">
                 <a href="{{ url_for('all_items') }}" class="brand-logo m2">Artist for life</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-                <ul class="right hide-on-med-and-down">
+                <ul class="right hide-on-med-and-down"> 
+                    <!-- Will show for all users -->                   
                     <li><a href="{{ url_for('all_items') }}">Home</a></li>
-                    <li><a href="#">Add Item</a></li>
-                    <li><a href="#">Manage Categories</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a class="modal-trigger" href="#login">Login</a></li>
-                    <li><a class="modal-trigger" href="#register">Register</a></li>
-                    <li><a href="{{ url_for('logout') }}">logout</a></li>
+                    <li><a href="#">About</a></li> 
+                    <!-- Will show for only those logged in -->                      
+                    {% if session.user %}
+                        <li><a href="#">Add Item</a></li>
+                        <!-- Will show only when Admin is logged in -->  
+                        {% if session.user == "admin" %}
+                            <li><a href="#">Manage Categories</a></li>
+                        {% endif %} 
+                        <li><a href="{{ url_for('logout') }}">logout</a></li>
+                    <!-- Will not show when user is logged in -->
+                    {% else %} 
+                        <li><a class="modal-trigger" href="#login">Login</a></li> 
+                        <li><a class="modal-trigger" href="#register">Register</a></li>                        
+                    {% endif %}                     
                 </ul>
             </div>
         </nav>
@@ -31,12 +40,17 @@
         <ul class="sidenav teal" id="mobile-demo">
             <h4 class="center-align">Artist for life</h4>
             <li><a href="{{ url_for('all_items') }}">Home</a></li>
-            <li><a href="#">Add Item</a></li>
-            <li><a href="#">Manage Categories</a></li>
-            <li><a href="#">About</a></li>
-            <li><a class="modal-trigger" href="#login">Login</a></li>
-            <li><a class="modal-trigger" href="#register">Register</a></li>
-            <li><a href="{{ url_for('logout') }}">logout</a></li>
+            <li><a href="#">About</a></li>                    
+            {% if session.user %}
+                <li><a href="#">Add Item</a></li>
+                {% if session.user == "admin" %}
+                    <li><a href="#">Manage Categories</a></li>
+                {% endif %} 
+                <li><a href="{{ url_for('logout') }}">logout</a></li>
+            {% else %} 
+                <li><a class="modal-trigger" href="#login">Login</a></li> 
+                <li><a class="modal-trigger" href="#register">Register</a></li>                        
+            {% endif %}
         </ul>
     </header>
     <!-- main section -->
