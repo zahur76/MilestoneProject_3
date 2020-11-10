@@ -3,7 +3,7 @@
         <div class="container">            
             <h3>Add item</h3>
             <div class="row card-panel grey lighten-5">
-                <form class="col s12" method="POST" action="#">            
+                <form class="col s12" method="POST" action="{{ url_for('add_item') }}" enctype="multipart/form-data">            
                     <!-- Dropdown menu for category -->
                     <div class="row">
                         <div class="input-field col s12">
