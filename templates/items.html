@@ -4,14 +4,16 @@
         <div class="container">            
             <h3>All items for sale</h3>        
             {% for item in items %}
+                {{ item.item_category }}<br>
                 {{ item.item_image }}<br>
+                <img src="{{ url_for('file', filename = item.item_image ) }}"><br>
                 {{ item.item_name }}<br>
                 {{ item.item_description }}<br>
                 {{ item.item_price}}<br>
-                {{ item.seller_name}}<br>
+                {{ item.username}}<br>
                 {{ item.contact_number }}<br>
-                {{ item.email }}<br>
+                {{ item.email }}<br><br>
             {% endfor %}
-            </div>
+        </div>
     {% endblock %}
     
