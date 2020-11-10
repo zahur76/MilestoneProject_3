@@ -5,7 +5,9 @@ $(document).ready(function(){
     $('.modal').modal();
     /* requiured for dropdown menu from materialize */
     $('select').formSelect();
-    $('.tooltipped').tooltip();  
+    $('.tooltipped').tooltip();
+    /* Scrollspy for main item page from materialize */
+    $('.scrollspy').scrollSpy();  
     
     /* Function to ensure modal does not close if fields are invalid */
     $(".submit").click(function(){
