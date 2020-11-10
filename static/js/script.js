@@ -4,17 +4,16 @@ $(document).ready(function(){
     /* Modal activation */
     $('.modal').modal();   
     
-    /* Code to ensure modal does not close if fields are invalid */
+    /* Function to ensure modal does not close if fields are invalid */
     $(".submit").click(function(){
         let username_attr = $("#username").attr("class");
-        let password_attr = $("#username").attr("class");
-        console.log(attribute)
+        let password_attr = $("#username").attr("class");        
         if(username_attr=="validate valid" || password_attr=="validate valid"){
             $(".submit").addClass("modal-close")
         }        
     })
     
-    /* Code to allow swap over of modals */    
+    /* Function to allow modals swap over */    
     $(".login-modal").click(function(){        
         $(".login-modal").addClass("modal-close");        
     })
@@ -23,6 +22,10 @@ $(document).ready(function(){
         $(".register-modal").addClass("modal-close");       
     })
 
+    /* Function to clear flash messages after 5's*/  
+    setTimeout(function(){
+        $(".flash-message").hide("slow");
+    }, 5000 ); // 5 secs    
 })
 
 
