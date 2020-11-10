@@ -27,7 +27,7 @@
                         {% if session.user == "admin" %}
                             <li><a href="#">Manage Categories</a></li>
                         {% endif %} 
-                        <li><a href="{{ url_for('logout') }}">logout</a></li>
+                        <li><a href="{{ url_for('logout') }}">logout</a></li> 
                     <!-- Will not show when user is logged in -->
                     {% else %} 
                         <li><a class="modal-trigger" href="#login">Login</a></li> 
