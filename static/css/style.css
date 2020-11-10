@@ -38,6 +38,10 @@ img {
     object-fit: contain;     
 }
 
+.information {
+    padding-left: 30px !important;
+}
+
 /* Modal section */
 .modal {
     border-radius: 10px;    
