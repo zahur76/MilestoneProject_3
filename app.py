@@ -18,7 +18,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 # creating mongodb using ["MONGO_URI"]
 mongo = PyMongo(app)
 
-
+# Main Page
 @app.route("/")
 def all_items():
     # Find all items in item database
@@ -26,6 +26,7 @@ def all_items():
     return render_template("items.html", items=items)
 
 
+# Registration modal
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -49,6 +50,7 @@ def register():
             return redirect(url_for("all_items"))
 
 
+# Login modal
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -73,6 +75,16 @@ def login():
             return redirect(url_for("all_items"))
 
 
+# Logout function
+@app.route("/logout")
+def logout():
+    # Remove session cookie
+    session.pop("user")
+    flash("You have been logged out")
+    return redirect(url_for("all_items"))
+
+
+# Profile page
 @app.route("/profile/<username>")
 def profile(username):
     # Find user and profile database for user
