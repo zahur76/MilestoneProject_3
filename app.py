@@ -18,6 +18,7 @@ app.secret_key = os.environ.get("SECRET_KEY")
 # creating mongodb using ["MONGO_URI"]
 mongo = PyMongo(app)
 
+
 # Main Page
 @app.route("/")
 def all_items():
@@ -87,7 +88,7 @@ def logout():
 # Profile page
 @app.route("/profile/<username>")
 def profile(username):
-    # Find user and profile database for user
+    # Find user and profile database for username
     user = mongo.db.users.find_one({"username": username})
     profile = mongo.db.profile.find_one({"username": username})
 
@@ -96,8 +97,23 @@ def profile(username):
 
 @app.route("/add_item", methods=["GET", "POST"])
 def add_item():
+    if request.method == "POST":
+        item_image = request.files["item_image"]
+        mongo.save_file(item_image.filename, item_image)
+        new_item = {"item_category": request.form.get("item_category"),
+                    "item_image": item_image.filename,
+                    "item_name": request.form.get("item_name"),
+                    "item_description": request.form.get("item_description"),
+                    "item_price": request.form.get("item_price"),
+                    "username": session["user"],
+                    "contact_number": request.form.get("contact_number"),
+                    "email": request.form.get("email")}
+        mongo.db.items.insert_one(new_item)
+        flash("Item has been inserted")
+        return redirect(url_for("all_items"))
+    categories = list(mongo.db.categories.find())
+    return render_template("add_item.html", categories=categories)
 
-    return render_template("add_item.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
