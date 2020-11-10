@@ -1,19 +1,38 @@
 {% extends 'base.html' %}
     {% block content %}
-        <div class="hero-image"></div>
-        <div class="container">            
-            <h3>All items for sale</h3>        
-            {% for item in items %}
-                {{ item.item_category }}<br>
-                {{ item.item_image }}<br>
-                <img src="{{ url_for('file', filename = item.item_image ) }}"><br>
-                {{ item.item_name }}<br>
-                {{ item.item_description }}<br>
-                {{ item.item_price}}<br>
-                {{ item.username}}<br>
-                {{ item.contact_number }}<br>
-                {{ item.email }}<br><br>
-            {% endfor %}
-        </div>
+        <div class="hero-image"></div>                   
+        <h3 class="center-align">Items for sale</h3>
+        <div class="row">
+            <div class="container">
+                <div class="col s10 offset-s1 l10">
+                    {% for item in items %}
+                        <div class="card-panel">
+                            <div class="row">
+                                <div class="col s12 m6">                                    
+                                    <p id="{{ item.item_name }}" class= "center-align"><strong>{{ item.item_name }}</strong></p> 
+                                    <img src="{{ url_for('file', filename = item.item_image ) }}">
+                                </div>
+                                <div class="col s12 m6"> 
+                                    <br><br>                                  
+                                    <p><strong>Category:</strong> {{ item.item_category }}</p>
+                                    <p><strong>Description:</strong><br>{{ item.item_description }}</p>
+                                    <p><strong>Price Rs:</strong> {{ item.item_price}}</p>
+                                    <p><strong>seller:</strong> {{ item.username}}</p>
+                                    <p><strong>contact number:</strong> {{ item.contact_number }}</p>
+                                    <p><strong>Email:</strong> {{ item.email }}</p> 
+                                </div>                               
+                            </div>
+                        </div>
+                    {% endfor %}                             
+                </div>
+            </div>
+            <div class="col m2 offset-m1 hide-on-med-and-down">
+                {% for item in items %}
+                    <ul>
+                        <li><a href="#{{ item.item_name }}">{{ item.item_name }}</a></li>                   
+                    </ul>
+                {% endfor %}  
+            </div>
+        </div>         
     {% endblock %}
     
