@@ -95,9 +95,13 @@ def profile(username):
     return render_template('profile.html', username=user, profile=profile)
 
 
+# Function to retrieve form data from add_item page
+# Save and retrieve file coding obtained from:
+    #  https://www.youtube.com/watch?v=DsgAuceHha4
 @app.route("/add_item", methods=["GET", "POST"])
 def add_item():
     if request.method == "POST":
+        # Add image file to mongodb
         item_image = request.files["item_image"]
         mongo.save_file(item_image.filename, item_image)
         new_item = {"item_category": request.form.get("item_category"),
@@ -108,11 +112,18 @@ def add_item():
                     "username": session["user"],
                     "contact_number": request.form.get("contact_number"),
                     "email": request.form.get("email")}
+        # Insert data into items database in mongo.db
         mongo.db.items.insert_one(new_item)
         flash("Item has been inserted")
         return redirect(url_for("all_items"))
     categories = list(mongo.db.categories.find())
     return render_template("add_item.html", categories=categories)
+
+
+# Function to retrieve image
+@app.route("/file/<filename>")
+def file(filename):
+    return mongo.send_file(filename)
 
 
 if __name__ == "__main__":
