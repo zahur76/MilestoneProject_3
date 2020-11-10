@@ -2,7 +2,9 @@ $(document).ready(function(){
     /* Nav bar collpase activation */
     $('.sidenav').sidenav();
     /* Modal activation */
-    $('.modal').modal();   
+    $('.modal').modal();
+    /* requiured for dropdown menu from materialize */
+    $('select').formSelect();  
     
     /* Function to ensure modal does not close if fields are invalid */
     $(".submit").click(function(){
