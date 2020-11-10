@@ -1,24 +1,30 @@
-{% extends 'base.html' %}
-    {% block content %}
+{% extends 'base.html' %}    
+    {% block content %}        
+        {{ users }} 
+        {{ session["user"] }}              
         <div class="hero-image"></div>                   
         <h3 class="center-align">Items for sale</h3>
         <div class="row">
-            <div class="col s10 offset-s1 m-8 l6 offset-l2">
+            <div class="col s10 offset-s1 m-8 l6 offset-l2">                
                 {% for item in items %}
                     <div class="card-panel">
-                        <div class="row">
-                            <div class="col 12">
-                                <a href="#" class="waves-effect waves-light btn-small">Edit</a> 
-                                <a href="#" class="waves-effect waves-light btn-small">Delete</a>
-                            </div>                            
-                        </div>
+                        {% if session.user == item.username or session.user=="admin" %}
+                            <div class="row">                            
+                                <div class="col 12">
+                                    <!-- Check to see if creater of item or admin is logged in -->
+                                    <!-- Permits user/admin to modify/delete item-->                                    
+                                    <a href="#" class="waves-effect waves-light btn-small">Edit</a> 
+                                     <a href="#" class="waves-effect waves-light btn-small">Delete</a>                          
+                                </div>                                                    
+                            </div>
+                        {% endif %}  
                         <div class="row">
                             <div class="col 12">
                                 <p id="{{ item.item_name }}"><strong>{{ item.item_name }}</strong></p>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col 12 m6">
+                            <div class="paint_image col 12 m6">
                                 <img src="{{ url_for('file', filename = item.item_image ) }}">
                             </div>
                             <div class="information col 12 m6">
@@ -28,13 +34,19 @@
                                 <p><strong>seller:</strong> {{ item.username}}</p>
                                 <p><strong>contact number:</strong> {{ item.contact_number }}</p>
                                 <p><strong>Email:</strong> {{ item.email }}</p>
-                                <a href="#" class="waves-effect waves-light btn">View Profile</a> 
+                                <!-- Check whether profile exists for that user to expose profile button-->                                     
+                                {% if item.username in users %}
+                                    <a href="#" class="waves-effect waves-light btn">View Profile</a>
+                                <!-- If profile does not exist for signed in user --> 
+                                {% elif item.username not in users and item.username == session.user %}
+                                    <a href="#" class="waves-effect waves-light btn">Create Profile</a>
+                                {% endif %}                                                                                               
                             </div>
                         </div>
                     </div>
-                {% endfor %}
+                {% endfor %}                
             </div>
-            <div class="col m1 offset-m2 hide-on-med-and-down">
+            <div class="item_links col m1 offset-m2 hide-on-med-and-down">
                 {% for item in items %}
                     <ul>
                         <li><a href="#{{ item.item_name }}">{{ item.item_name }}</a></li>                   
