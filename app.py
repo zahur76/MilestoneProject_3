@@ -129,6 +129,24 @@ def add_item():
 # Function to edit items
 @app.route("/edit_item/<item_id>", methods=["GET", "POST"])
 def edit_item(item_id):
+    if request.method == "POST":
+        # Add image file to mongodb
+        item_image = request.files["item_image"]
+        mongo.save_file(item_image.filename, item_image)
+        new_item = {"item_category": request.form.get("item_category"),
+                    "item_image": item_image.filename,
+                    "item_name": request.form.get("item_name"),
+                    "item_description": request.form.get("item_description"),
+                    "item_price": request.form.get("item_price"),
+                    "username": session["user"],
+                    "contact_number": request.form.get("contact_number"),
+                    "email": request.form.get("email")}
+        # Insert data into items database in mongo.db
+        mongo.db.items.update_one(
+            {"_id": ObjectId(item_id)}, {"$set": new_item})
+        flash("Item has been Modified")
+        return redirect(url_for("all_items"))
+
     item = mongo.db.items.find_one({"_id": ObjectId(item_id)})
     categories = mongo.db.categories.find()
 
