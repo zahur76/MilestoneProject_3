@@ -35,11 +35,15 @@ li a {
 img {
     width: 100%;
     max-height: 300px; 
-    object-fit: contain;     
+    object-fit: cover;     
 }
 
 .information {
-    padding-left: 30px !important;
+    padding-left: 25px !important;
+}
+
+.first_item {
+    margin-top: 0;
 }
 
 /* Modal section */
