@@ -141,7 +141,7 @@ def edit_item(item_id):
                     "username": session["user"],
                     "contact_number": request.form.get("contact_number"),
                     "email": request.form.get("email")}
-        # Insert data into items database in mongo.db
+        # Update data in items database in mongo.db
         mongo.db.items.update_one(
             {"_id": ObjectId(item_id)}, {"$set": new_item})
         flash("Item has been Modified")
@@ -151,6 +151,14 @@ def edit_item(item_id):
     categories = mongo.db.categories.find()
 
     return render_template("edit_item.html", item=item, categories=categories)
+
+
+# Function to delete items
+@app.route("/delete_item/<item_id>")
+def delete_item(item_id):
+    mongo.db.items.remove({"_id": ObjectId(item_id)})
+    flash("Item has been removed")
+    return redirect(url_for("all_items"))
 
 
 # Function to retrieve image
