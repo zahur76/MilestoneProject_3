@@ -27,8 +27,8 @@
                             <div class="col s12 m6">
                                 <img src="{{ url_for('file', filename = item.item_image ) }}">
                             </div>
-                            <div class="information col 12 m6">
-                                <p><strong>Category:</strong> {{ item.item_category }}</p>
+                            <div class="information col s12 m6">
+                                <p class="first_item"><strong>Category:</strong> {{ item.item_category }}</p>
                                 <p><strong>Description:</strong><br>{{ item.item_description }}</p>
                                 <p><strong>Price Rs:</strong> {{ item.item_price}}</p>
                                 <p><strong>seller:</strong> {{ item.username}}</p>
@@ -36,7 +36,7 @@
                                 <p><strong>Email:</strong> {{ item.email }}</p>
                                 <!-- Check whether profile exists for that user to expose profile button-->                                     
                                 {% if item.username in users %}
-                                    <a href="#" class="aves-effect waves-light btn">View Profile</a>
+                                    <a href="#" class="waves-effect waves-light btn">View Profile</a>
                                 <!-- If profile does not exist for signed in user --> 
                                 {% elif item.username not in users and item.username == session.user %}
                                     <a href="#" class="waves-effect waves-light btn">Create Profile</a>
