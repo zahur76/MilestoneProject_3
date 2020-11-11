@@ -126,6 +126,15 @@ def add_item():
     return render_template("add_item.html", categories=categories)
 
 
+# Function to edit items
+@app.route("/edit_item/<item_id>", methods=["GET", "POST"])
+def edit_item(item_id):
+    item = mongo.db.items.find_one({"_id": ObjectId(item_id)})
+    categories = mongo.db.categories.find()
+
+    return render_template("edit_item.html", item=item, categories=categories)
+
+
 # Function to retrieve image
 @app.route("/file/<filename>")
 def file(filename):
