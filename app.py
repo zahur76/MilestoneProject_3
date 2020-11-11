@@ -101,14 +101,28 @@ def profile(username):
     return render_template('profile.html', username=user, profile=profile)
 
 
-@app.route("/add_profile", methods=["GET","POST"])
+@app.route("/add_profile", methods=["GET", "POST"])
 def add_profile():
+    if request.method == "POST":
+        # Add image file to mongodb
+        profile_image = request.files["profile_image"]
+        mongo.save_file(profile_image.filename, profile_image)
+        new_item = {"profile_image": profile_image.filename,
+                    "full_name": request.form.get("profile_fullname"),
+                    "profile_description": request.form.get(
+                        "profile_description"),
+                    "username": session["user"]}
+
+        # Insert data into profile database in mongo.db
+        mongo.db.profile.insert_one(new_item)
+        flash("Profile has been created")
+        return redirect(url_for("profile", username=session["user"]))
 
     return render_template("add_profile.html")
 
 
 # Function to retrieve form data from add_item page
-# Save and retrieve file coding obtained from:
+# Save and retrieve file coding tutorial obtained from:
     #  https://www.youtube.com/watch?v=DsgAuceHha4
 @app.route("/add_item", methods=["GET", "POST"])
 def add_item():
