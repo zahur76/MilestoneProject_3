@@ -14,7 +14,7 @@
                                     <!-- Check to see if creater of item or admin is logged in -->
                                     <!-- Permits user/admin to modify/delete item-->                                    
                                     <a href="{{ url_for('edit_item', item_id = item._id) }}" class="waves-effect waves-light btn-small">Edit</a> 
-                                    <a href="#" class="waves-effect waves-light btn-small">Delete</a>                          
+                                    <a href="{{ url_for('delete_item', item_id = item._id) }}" class="waves-effect waves-light btn-small">Delete</a>                          
                                 </div>                                                    
                             </div>
                         {% endif %}  
