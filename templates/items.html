@@ -10,21 +10,21 @@
                     <div class="card-panel">
                         {% if session.user == item.username or session.user=="admin" %}
                             <div class="row">                            
-                                <div class="col 12">
+                                <div class="col s12">
                                     <!-- Check to see if creater of item or admin is logged in -->
                                     <!-- Permits user/admin to modify/delete item-->                                    
                                     <a href="#" class="waves-effect waves-light btn-small">Edit</a> 
-                                     <a href="#" class="waves-effect waves-light btn-small">Delete</a>                          
+                                    <a href="#" class="waves-effect waves-light btn-small">Delete</a>                          
                                 </div>                                                    
                             </div>
                         {% endif %}  
                         <div class="row">
-                            <div class="col 12">
-                                <p id="{{ item.item_name }}"><strong>{{ item.item_name }}</strong></p>
+                            <div class="col s12">
+                                <p class="center-align" id="{{ item.item_name }}"><strong>{{ item.item_name }}</strong></p>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="paint_image col 12 m6">
+                            <div class="col s12 m6">
                                 <img src="{{ url_for('file', filename = item.item_image ) }}">
                             </div>
                             <div class="information col 12 m6">
@@ -36,7 +36,7 @@
                                 <p><strong>Email:</strong> {{ item.email }}</p>
                                 <!-- Check whether profile exists for that user to expose profile button-->                                     
                                 {% if item.username in users %}
-                                    <a href="#" class="waves-effect waves-light btn">View Profile</a>
+                                    <a href="#" class="aves-effect waves-light btn">View Profile</a>
                                 <!-- If profile does not exist for signed in user --> 
                                 {% elif item.username not in users and item.username == session.user %}
                                     <a href="#" class="waves-effect waves-light btn">Create Profile</a>
