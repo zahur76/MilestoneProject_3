@@ -5,13 +5,13 @@
             <div class="row">
                 <div class="col s12 m10 l8 offset-m1 offset-l2">
                     <div class="row card-panel grey lighten-5">
-                        <form class="col s12" method="POST" action="{{ url_for('edit_item') }}" enctype="multipart/form-data">            
+                        <form class="col s12" method="POST" action="#" enctype="multipart/form-data">            
                             <!-- Dropdown menu for category -->
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                                     <select id="item_category" name="item_category" class="validate" required>
-                                    <!-- Will display value in field as choose option but cannot be selected-->
+                                    <!-- Will display value in field as option but cannot be selected-->
                                     <option value="" disabled>Choose option</option>
                                     {% for category in categories %}
                                         <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>  
@@ -25,7 +25,7 @@
                                 <div class="input-field col s12">                                    
                                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                                     <input class="tooltipped validate" data-position="top" data-tooltip="Upload image of Art work" 
-                                        id="item_image" name="item_image" type="file" required>
+                                        value="{{ item.item_image }}" id="item_image" name="item_image" type="file" required>
                                     <label for="item_image"></label>                                   
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                 <div class="input-field col s12">
                                     <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>                    
                                     <textarea id="item_description" name="item_description" class="materialize-textarea validate" minlength="5" 
-                                        value="{{ item.item_description }}" maxlength="200" required></textarea>
+                                        maxlength="200" required>{{- item.item_description -}}</textarea>
                                     <label for="item_description">Item Description</label>
                                 </div>
                             </div>
@@ -79,9 +79,9 @@
                                     <button type="submit" class="btn-large light-blue darken-1 text-shadow">
                                         Confirm<i class="fas fa-edit right"></i>
                                     </button>
-                                    <button href="{{ url_for('all_items') }}" class="btn-large light-blue darken-1 text-shadow">
+                                    <a href="{{ url_for('all_items') }}" class="btn-large light-blue darken-1 text-shadow">
                                         Cancel<i class="fas fa-times-circle right"></i>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </form>
