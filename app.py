@@ -101,6 +101,12 @@ def profile(username):
     return render_template('profile.html', username=user, profile=profile)
 
 
+@app.route("/add_profile", methods=["GET","POST"])
+def add_profile():
+
+    return render_template("add_profile.html")
+
+
 # Function to retrieve form data from add_item page
 # Save and retrieve file coding obtained from:
     #  https://www.youtube.com/watch?v=DsgAuceHha4
