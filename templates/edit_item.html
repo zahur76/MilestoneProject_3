@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
     {% block content %}               
         <div class="container">            
-            <h3 class="center-align">Add item</h3>
+            <h3 class="center-align">Edit item</h3>
             <div class="row">
                 <div class="col s12 m10 l8 offset-m1 offset-l2">
                     <div class="row card-panel grey lighten-5">
-                        <form class="col s12" method="POST" action="#" enctype="multipart/form-data">            
+                        <form class="col s12" method="POST" action="{{ (url_for('edit_item', item_id=item._id))}}" enctype="multipart/form-data">            
                             <!-- Dropdown menu for category -->
                             <div class="row">
                                 <div class="input-field col s12">
