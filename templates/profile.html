@@ -4,10 +4,11 @@
             <h3 class="center-align">{{ username.username }}'s Profile Page</h3>
             <div class="row">                
                 <div class="col s12">
-                    {% if profile %} 
+                    {% if profile.username == session.user or session.user == "admin" %} 
                         <a href="#" class="waves-effect waves-light btn">Edit</a>
                         <a href="#" class="waves-effect waves-light btn">Delete </a>
-                    {% else %}
+                    {% elif session.user|length == 0 %}                        
+                    {% elif session.user and profile.username|length == 0 %}
                         <a href="{{ url_for('add_profile')}}" class="waves-effect waves-light btn">Create profile</a>
                     {% endif %}
                 </div>                
