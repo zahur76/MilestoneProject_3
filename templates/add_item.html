@@ -11,7 +11,7 @@
                                 <div class="input-field col s12">
                                     <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                                     <select id="item_category" name="item_category" class="validate" required>
-                                    <!-- Will display value in field as choose option but cannot be selected-->
+                                    <!-- Will display value in field as option but cannot be selected-->
                                     <option value="" disabled selected>Choose option</option>
                                     {% for category in categories %}
                                         <option value="{{ category.category_name }}">{{ category.category_name }}</option>  
@@ -85,5 +85,6 @@
                     </div> 
                 </div>
             </div>
+        </div>
     {% endblock %}
     
