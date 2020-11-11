@@ -36,10 +36,10 @@
                                 <p><strong>Email:</strong> {{ item.email }}</p>
                                 <!-- Check whether profile exists for that user to expose profile button-->                                     
                                 {% if item.username in users %}
-                                    <a href="#" class="waves-effect waves-light btn">View Profile</a>
-                                <!-- If profile does not exist for signed in user --> 
+                                    <a href="{{ url_for('profile' , username=item.username) }}" class="waves-effect waves-light btn">View Profile</a>
+                                <!-- If profile does not exist for signed in user in database--> 
                                 {% elif item.username not in users and item.username == session.user %}
-                                    <a href="#" class="waves-effect waves-light btn">Create Profile</a>
+                                    <a href="{{ url_for('profile' , username=session['user']) }}" class="waves-effect waves-light btn">Profile</a>
                                 {% endif %}                                                                                               
                             </div>
                         </div>
