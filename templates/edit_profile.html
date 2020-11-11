@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+    {% block content %}               
+        <div class="container">            
+            <h3 class="center-align">Add item</h3>
+            <div class="row">
+                <div class="col s12 m10 l8 offset-m1 offset-l2">
+                    <div class="row card-panel grey lighten-5">
+                        <form class="col s12" method="POST" action="{{ url_for('edit_profile', profile_id=profile._id) }}" enctype="multipart/form-data">            
+                            <!-- Profile Image Upload -->
+                            <div class="row">                                
+                                <div class="input-field col s12">                                    
+                                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                                    <input class="tooltipped validate" data-position="top" data-tooltip="Upload Profile Image!" 
+                                        id="profile_image" name="profile_image" type="file" required>
+                                    <label for="profile_image"></label>                                   
+                                </div>
+                            </div>
+                            <!-- Profile user fullname -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                                    <input id="profile_fullname" name="profile_fullname" minlength="5" maxlength="50" 
+                                        value="{{ profile.full_name }}" type="text" class="validate" required>
+                                    <label for="profile_fullname">Full name</label>
+                                </div>
+                            </div>
+                            <!-- Profile user Description -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>                    
+                                    <textarea id="profile_description" name="profile_description" class="materialize-textarea validate" minlength="5" 
+                                        maxlength="200" required>
+                                            {{- profile.profile_description -}}
+                                        </textarea>
+                                    <label for="profile_description">Personal Description</label>
+                                </div>
+                            </div>               
+                            <!-- Submit button -->
+                            <div class="row">
+                                <div class="col s12 center-align">
+                                    <button type="submit" class="btn-large light-blue darken-1 text-shadow">
+                                        Add Item<i class="fas fa-square right"></i>
+                                    </button>
+                                    <a href="{{ url_for('all_items') }}" class="btn-large light-blue darken-1 text-shadow">
+                                        Cancel<i class="fas fa-times-circle right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    
