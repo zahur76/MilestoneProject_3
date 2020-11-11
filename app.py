@@ -101,25 +101,51 @@ def profile(username):
     return render_template('profile.html', username=user, profile=profile)
 
 
+# Add Profile info to profile page
 @app.route("/add_profile", methods=["GET", "POST"])
 def add_profile():
     if request.method == "POST":
         # Add image file to mongodb
         profile_image = request.files["profile_image"]
         mongo.save_file(profile_image.filename, profile_image)
+        # Retreive all information from form
         new_item = {"profile_image": profile_image.filename,
                     "full_name": request.form.get("profile_fullname"),
                     "profile_description": request.form.get(
                         "profile_description"),
                     "username": session["user"]}
 
-        # Insert data into profile database in mongo.db
+        # Insert new data into profile database in mongo.db
         mongo.db.profile.insert_one(new_item)
         flash("Profile has been created")
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("add_profile.html")
 
+
+# Edit Profile info for specific user
+@app.route("/edit_profile/<profile_id>", methods=["GET", "POST"])
+def edit_profile(profile_id):
+    if request.method == "POST":
+        # Add image file to mongodb
+        profile_image = request.files["profile_image"]
+        mongo.save_file(profile_image.filename, profile_image)
+        # Retreive all information from form
+        new_item = {"profile_image": profile_image.filename,
+                    "full_name": request.form.get("profile_fullname"),
+                    "profile_description": request.form.get(
+                        "profile_description"),
+                    "username": session["user"]}
+
+        # Insert new data into profile database in mongo.db
+        mongo.db.profile.update_one(
+            {"_id": ObjectId(profile_id)}, {"$set": new_item})
+        flash("Profile has been Updated")
+        return redirect(url_for("all_items"))
+
+    profile = mongo.db.profile.find_one({"_id": ObjectId(profile_id)})
+
+    return render_template("edit_profile.html", profile=profile)
 
 # Function to retrieve form data from add_item page
 # Save and retrieve file coding tutorial obtained from:
