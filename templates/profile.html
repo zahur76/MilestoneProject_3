@@ -4,37 +4,37 @@
             <h3 class="center-align">{{ username.username }}'s Profile Page</h3>
             <div class="row">                
                 <div class="col s12">
+                    <!-- Display buttons if logged in user same as profile user or admin -->
+                    <!-- If no profile is present for user then only user will have access to the profile page -->
                     {% if profile.username == session.user or session.user == "admin" %} 
                         <a href="#" class="waves-effect waves-light btn">Edit</a>
                         <a href="#" class="waves-effect waves-light btn">Delete </a>
-                    {% elif session.user|length == 0 %}                        
+                    <!-- Logic to ensure edit/delete button will not display if no session user -->
+                    <!-- session user dictionary will be empty -->
+                    {% elif session.user|length == 0 %}  
+                    <!-- If there is a session user but no profile has been created in profile database-->                      
                     {% elif session.user and profile.username|length == 0 %}
                         <a href="{{ url_for('add_profile')}}" class="waves-effect waves-light btn">Create profile</a>
                     {% endif %}
                 </div>                
             </div>            
-            {% if profile %}
-            <div class="row">
-                <div class="col s12">
-                    <p><strong>Full name: </strong>{{ profile.full_name }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12 m8">
-                    <img src="#">
-                </div>
-            </div>            
-            <div class="row"> 
-                <div class="col s12">
-                    <p><strong>Description</strong></p>
-                </div>               
-                <div class="col s12 m8">
-                    {{ profile.profile_description }}
-                </div>
-            </div>           
-            {% else %} 
-                <h3>No profile to show</h3>
+            {% if profile %} 
+                <div class="row">
+                    <div class="col s12 m6 offset-m3">
+                        <div class="card large">
+                            <div class="card-image">
+                                <img src="{{ url_for('file', filename = profile.profile_image ) }}">                                
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">{{ profile.full_name }}</span>
+                                {{ profile.profile_description }}
+                            </div>                            
+                        </div>
+                    </div>
+                </div>    
+                {% else %} 
+                    <h3>No profile to show</h3>
             {% endif %}          
         </div>
-    {% endblock %}
+    {% endblock %}  
     
