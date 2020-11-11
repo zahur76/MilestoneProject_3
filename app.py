@@ -156,6 +156,11 @@ def edit_item(item_id):
 # Function to delete items
 @app.route("/delete_item/<item_id>")
 def delete_item(item_id):
+    # Obtain file from mongod with same item_id
+    item = mongo.db.items.find_one({"_id": ObjectId(item_id)})
+    # remove fs.files from database using filename as reference
+    mongo.db.fs.files.remove({"filename": item["item_image"]})
+    # remove complete item record of item with item_id
     mongo.db.items.remove({"_id": ObjectId(item_id)})
     flash("Item has been removed")
     return redirect(url_for("all_items"))
