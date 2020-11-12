@@ -249,8 +249,11 @@ def file(filename):
 def control_center():
     profiles = list(mongo.db.profile.find())
     items =  list(mongo.db.items.find())
+    categories =  list(mongo.db.categories.find())
 
-    return render_template("control_center.html", profiles=profiles, items=items)
+    return render_template(
+        "control_center.html", profiles=profiles,
+         items=items, categories=categories)
 
 
 if __name__ == "__main__":
