@@ -243,6 +243,17 @@ def delete_item(item_id):
 def file(filename):
     return mongo.send_file(filename)
 
+# Add category
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST":        
+        # Add category to database
+        mongo.db.categories.insert_one(
+            {"category_name": request.form.get("category_name")})
+        flash("Category has been inserted")
+        return redirect("control_center")
+    return render_template("add_category.html")
+    
 
 # Control center
 @app.route("/control_center")
