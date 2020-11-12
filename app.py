@@ -98,8 +98,8 @@ def profile(username):
     # Find user and profile database for username
     user = mongo.db.users.find_one({"username": username})
     profile = mongo.db.profile.find_one({"username": username})
-
-    return render_template('profile.html', username=user, profile=profile)
+    return render_template(
+        'profile.html', username=user, profile=profile)
 
 
 # Add Profile info to profile page
@@ -242,6 +242,14 @@ def delete_item(item_id):
 @app.route("/file/<filename>")
 def file(filename):
     return mongo.send_file(filename)
+
+
+# Control center
+@app.route("/control_center")
+def control_center():
+    profiles = list(mongo.db.profile.find())
+
+    return render_template("control_center.html", profiles=profiles)
 
 
 if __name__ == "__main__":
