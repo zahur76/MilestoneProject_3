@@ -46,10 +46,10 @@
                     </div>
                 {% endfor %}                
             </div>
-            <div class="item_links col m1 offset-m2 hide-on-med-and-down">
+            <div class="item_links col m2 offset-m2 hide-on-med-and-down">
                 {% for item in items %}
                     <ul>    
-                        <!-- use username for scrollspy reference since remains unchanged after edit -->
+                        <!-- Use username for scrollspy reference since it remains unchanged after edit -->
                         <li><a href="#{{ item.username }}">{{ item.item_name }}</a></li>                   
                     </ul>
                 {% endfor %}
