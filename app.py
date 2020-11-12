@@ -132,6 +132,17 @@ def edit_profile(profile_id):
         # Add image file to mongodb
         profile_image = request.files["profile_image"]
         if profile_image:
+            # Remove fs.files anf fs.chunks first associated with image
+            # Find file from mongodb with same profile_id
+            profile = mongo.db.profile.find_one({"_id": ObjectId(profile_id)})
+            # Find fs.files doc with matching filename
+            fs_files = mongo.db.fs.files.find_one(
+                {"filename": profile["profile_image"]})
+            # Remove data from fs.files database using filename as reference
+            mongo.db.fs.files.remove({"filename": profile["profile_image"]})
+            # Remove data from fs.chunks database using files_id as reference
+            mongo.db.fs.chunks.remove({"files_id": fs_files["_id"]})
+
             mongo.save_file(profile_image.filename, profile_image)
             # Retreive all information from form
             # username not modifed
@@ -143,6 +154,7 @@ def edit_profile(profile_id):
             # Insert new data into profile database in mongo.db
             mongo.db.profile.update_one(
                 {"_id": ObjectId(profile_id)}, {"$set": new_item})
+            
             flash("Profile has been Updated")
             return redirect(url_for("profile", username=session["user"]))
         # If Image field is empty
