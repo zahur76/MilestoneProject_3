@@ -1,6 +1,6 @@
 {% extends 'base.html' %}    
-    {% block content %}        
-        {{ users }} 
+    {% block content %}                
+        {{ profile_list }} 
         {{ session["user"] }}              
         <div class="hero-image"></div>                   
         <h3 class="center-align">Items for sale</h3>
@@ -20,7 +20,7 @@
                         {% endif %}  
                         <div class="row">
                             <div class="col s12">
-                                <p class="center-align" id="{{ item.item_name }}"><strong>{{ item.item_name }}</strong></p>
+                                <p class="center-align" id="{{ item.username }}"><strong>{{ item.item_name }}</strong></p>
                             </div>
                         </div>
                         <div class="row">
@@ -35,10 +35,10 @@
                                 <p><strong>contact number:</strong> {{ item.contact_number }}</p>
                                 <p><strong>Email:</strong> {{ item.email }}</p>
                                 <!-- Check whether profile exists for that user to expose profile button-->                                     
-                                {% if item.username in users %}
+                                {% if item.username in profile_list %}
                                     <a href="{{ url_for('profile' , username=item.username) }}" class="waves-effect waves-light btn">View Profile</a>
                                 <!-- If profile does not exist for signed in user in database--> 
-                                {% elif item.username not in users and item.username == session.user %}
+                                {% elif item.username not in profile_list and item.username == session.user %}
                                     <a href="{{ url_for('profile' , username=session['user']) }}" class="waves-effect waves-light btn">View Profile</a>
                                 {% endif %}                                                                                               
                             </div>
@@ -48,12 +48,12 @@
             </div>
             <div class="item_links col m1 offset-m2 hide-on-med-and-down">
                 {% for item in items %}
-                    <ul>
-                        <li><a href="#{{ item.item_name }}">{{ item.item_name }}</a></li>                   
+                    <ul>    
+                        <!-- use username for scrollspy reference since remains unchanged after edit -->
+                        <li><a href="#{{ item.username }}">{{ item.item_name }}</a></li>                   
                     </ul>
                 {% endfor %}
             </div>
-        </div>
-                 
+        </div>                 
     {% endblock %}   
     
