@@ -252,7 +252,7 @@ def add_category():
         mongo.db.categories.insert_one(
             {"category_name": request.form.get("category_name")})
         flash("Category has been inserted")
-        return redirect("control_center")
+        return redirect(url_for("control_center"))
     return render_template("add_category.html")
 
 
@@ -265,10 +265,19 @@ def edit_category(category_id):
         mongo.db.categories.update_one(
             {"_id": ObjectId(category_id)}, {"$set": updated_category})
         flash("Category updated")
-        return redirect("control_center")
+        return redirect(url_for("control_center"))
     # obtain category with category_id
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
+
+
+# Delete category
+@app.route("/delete_category/<category_id>")
+def delete_category(category_id):
+    # Remove category from database having matching id
+    mongo.db.categories.remove({"_id": ObjectId(category_id)})
+    flash("Category has been removed")
+    return redirect(url_for("control_center"))
 
 
 # Control center
