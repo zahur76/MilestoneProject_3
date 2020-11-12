@@ -1,4 +1,5 @@
 import os
+import random
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -108,9 +109,11 @@ def add_profile():
     if request.method == "POST":
         # Add image file to mongodb
         profile_image = request.files["profile_image"]
-        mongo.save_file(profile_image.filename, profile_image)
+        # Create random file name
+        random_string = str(random.randint(0, 10000000))
+        mongo.save_file(random_string, profile_image)
         # Retreive all information from form
-        new_item = {"profile_image": profile_image.filename,
+        new_item = {"profile_image": random_string,
                     "full_name": request.form.get("profile_fullname"),
                     "profile_description": request.form.get(
                         "profile_description"),
@@ -126,13 +129,13 @@ def add_profile():
 
 # Function to edit Profile in database
 @app.route("/edit_profile/<profile_id>", methods=["GET", "POST"])
-def edit_profile(profile_id):
-    # If image field has been changed
+def edit_profile(profile_id):    
     if request.method == "POST":
         # Add image file to mongodb
         profile_image = request.files["profile_image"]
+        # If image field has been changed
         if profile_image:
-            # Remove fs.files anf fs.chunks first associated with image
+            # Remove fs.files and fs.chunks first associated with image
             # Find file from mongodb with same profile_id
             profile = mongo.db.profile.find_one({"_id": ObjectId(profile_id)})
             # Find fs.files doc with matching filename
@@ -142,19 +145,21 @@ def edit_profile(profile_id):
             mongo.db.fs.files.remove({"filename": profile["profile_image"]})
             # Remove data from fs.chunks database using files_id as reference
             mongo.db.fs.chunks.remove({"files_id": fs_files["_id"]})
-
-            mongo.save_file(profile_image.filename, profile_image)
-            # Retreive all information from form
+            
+            # Create a random filename
+            random_string = str(random.randint(0, 10000000))
+            mongo.save_file(random_string, profile_image)
+            # Retrieve all information from form
             # username not modifed
-            new_item = {"profile_image": profile_image.filename,
+            new_item = {"profile_image": random_string,
                         "full_name": request.form.get("profile_fullname"),
                         "profile_description": request.form.get(
                             "profile_description")}
 
-            # Insert new data into profile database in mongo.db
+            # update new data into profile database in mongo.db
             mongo.db.profile.update_one(
                 {"_id": ObjectId(profile_id)}, {"$set": new_item})
-            
+
             flash("Profile has been Updated")
             return redirect(url_for("profile", username=session["user"]))
         # If Image field is empty
@@ -165,7 +170,7 @@ def edit_profile(profile_id):
                         "profile_description": request.form.get(
                             "profile_description")}
 
-            # Insert new data into profile database in mongo.db
+            # Update new data into profile database in mongo.db
             mongo.db.profile.update_one(
                 {"_id": ObjectId(profile_id)}, {"$set": new_item})
             flash("Profile has been Updated")
@@ -175,7 +180,7 @@ def edit_profile(profile_id):
     return render_template("edit_profile.html", profile=profile)
 
 
-# Funcion to delete profile from database
+# Function to delete profile from database
 @app.route("/delete_profile/<profile_id>")
 def delete_profile(profile_id):
     # Find file from mongodb with same profile_id
@@ -203,9 +208,11 @@ def add_item():
     if request.method == "POST":
         # Add image file to mongodb
         item_image = request.files["item_image"]
-        mongo.save_file(item_image.filename, item_image)
+        # Create random filename to prevent duplication
+        random_string = str(random.randint(0, 10000000))
+        mongo.save_file(random_string, item_image)
         new_item = {"item_category": request.form.get("item_category"),
-                    "item_image": item_image.filename,
+                    "item_image": random_string,
                     "item_name": request.form.get("item_name"),
                     "item_description": request.form.get("item_description"),
                     "item_price": request.form.get("item_price"),
@@ -226,12 +233,25 @@ def edit_item(item_id):
     if request.method == "POST":
         # Add image file to mongodb
         # username not modifed
-        item_image = request.files["item_image"]
-        # If image has been updated
+        item_image = request.files["item_image"]        
+        # If image has been changed
         if item_image:
-            mongo.save_file(item_image.filename, item_image)
+            # Remove fs.files and chunks first from database
+            # Obtain file from mongodb with same item_id
+            item = mongo.db.items.find_one({"_id": ObjectId(item_id)})
+            # Find fs.files doc with matching filename
+            fs_files = mongo.db.fs.files.find_one(
+                {"filename": item["item_image"]})
+            # Remove data from fs.files database using filename as reference
+            mongo.db.fs.files.remove({"filename": item["item_image"]})
+            # Remove data from fs.chunks database using files_id
+            mongo.db.fs.chunks.remove({"files_id": fs_files["_id"]})
+            # Update complete item record of item with item_id
+            # create random filename to prevent duplication
+            random_string = str(random.randint(0, 10000000))
+            mongo.save_file(random_string, item_image)
             new_item = {"item_category": request.form.get("item_category"),
-                        "item_image": item_image.filename,
+                        "item_image": random_string,
                         "item_name": request.form.get("item_name"),
                         "item_description": request.form.get(
                             "item_description"),
