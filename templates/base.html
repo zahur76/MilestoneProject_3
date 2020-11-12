@@ -26,7 +26,7 @@
                         <li><a href="{{ url_for('profile' , username=session['user']) }}">Profile</a></li>
                         <!-- Will show only when Admin is logged in -->  
                         {% if session.user == "admin" %}
-                            <li><a href="#">Manage Categories</a></li>
+                            <li><a href="{{ url_for('control_center') }}">Manage Categories</a></li>
                         {% endif %} 
                         <li><a href="{{ url_for('logout') }}">logout</a></li> 
                     <!-- Will not show when user is logged in -->
