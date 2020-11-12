@@ -132,11 +132,11 @@ def edit_profile(profile_id):
         profile_image = request.files["profile_image"]
         mongo.save_file(profile_image.filename, profile_image)
         # Retreive all information from form
+        # username not modifed
         new_item = {"profile_image": profile_image.filename,
                     "full_name": request.form.get("profile_fullname"),
                     "profile_description": request.form.get(
-                        "profile_description"),
-                    "username": session["user"]}
+                        "profile_description")}
 
         # Insert new data into profile database in mongo.db
         mongo.db.profile.update_one(
@@ -199,6 +199,7 @@ def add_item():
 def edit_item(item_id):
     if request.method == "POST":
         # Add image file to mongodb
+        # username not modifed
         item_image = request.files["item_image"]
         mongo.save_file(item_image.filename, item_image)
         new_item = {"item_category": request.form.get("item_category"),
@@ -206,7 +207,6 @@ def edit_item(item_id):
                     "item_name": request.form.get("item_name"),
                     "item_description": request.form.get("item_description"),
                     "item_price": request.form.get("item_price"),
-                    "username": session["user"],
                     "contact_number": request.form.get("contact_number"),
                     "email": request.form.get("email")}
         # Update data in items database in mongo.db
