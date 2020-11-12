@@ -91,7 +91,7 @@ def logout():
     return redirect(url_for("all_items"))
 
 
-# Profile page
+# Profile page 
 @app.route("/profile/<username>")
 def profile(username):
     # Find user and profile database for username
@@ -123,7 +123,7 @@ def add_profile():
     return render_template("add_profile.html")
 
 
-# Edit Profile info for specific user
+# Function to edit Profile in database
 @app.route("/edit_profile/<profile_id>", methods=["GET", "POST"])
 def edit_profile(profile_id):
     if request.method == "POST":
@@ -146,6 +146,27 @@ def edit_profile(profile_id):
     profile = mongo.db.profile.find_one({"_id": ObjectId(profile_id)})
 
     return render_template("edit_profile.html", profile=profile)
+
+
+# Funcion to delete profile from database
+@app.route("/delete_profile/<profile_id>")
+def delete_profile(profile_id):
+    # Find file from mongodb with same profile_id
+    profile = mongo.db.profile.find_one({"_id": ObjectId(profile_id)})
+    # Find fs.files doc with matching filename
+    fs_files = mongo.db.fs.files.find_one(
+        {"filename": profile["profile_image"]})
+    # Remove data from fs.files database using filename as reference
+    mongo.db.fs.files.remove({"filename": profile["profile_image"]})
+    # Remove data from fs.chunks database using files_id as reference
+    mongo.db.fs.chunks.remove({"files_id": fs_files["_id"]})
+    # Remove profile with specific profile_id
+    mongo.db.profile.remove({"_id": ObjectId(profile_id)})
+    flash("Profile has been deleted")
+
+    # Redirect to profile page for user
+    return redirect(url_for("profile", username=session["user"]))
+
 
 # Function to retrieve form data from add_item page
 # Save and retrieve file coding tutorial obtained from:
