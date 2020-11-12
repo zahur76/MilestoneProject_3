@@ -4,13 +4,14 @@
             <h3 class="center-align">{{ username.username }}'s Profile Page</h3>
             <div class="row">                
                 <div class="col s12 m6 offset-m3">                    
-                    <!-- If there is a session user but no profile has been created in profile database-->                      
-                    {% if session.user and profile.username|length == 0 %}
+                    <!-- If there is a session user but no profile has been created in profile database
+                        for that profile user -->                      
+                    {% if session.user == username.username and profile.username|length == 0 %}
                         <div class="center-align">
                             <a href="{{ url_for('add_profile')}}" class="waves-effect waves-light btn">Create profile</a>
                         </div>
                     <!-- Display buttons if logged in user same as profile user or admin -->
-                    <!-- If no profile is present for user then only user will have access to the profile page -->
+                    <!-- If no profile is present for user then only the user will have access to the profile page -->
                     {% elif profile.username == session.user or session.user == "admin" %} 
                         <a href="{{ url_for('edit_profile', profile_id=profile._id) }}" class="waves-effect waves-light btn">Edit</a>
                         <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" class="waves-effect waves-light btn">Delete </a>
