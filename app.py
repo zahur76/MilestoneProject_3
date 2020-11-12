@@ -243,28 +243,44 @@ def delete_item(item_id):
 def file(filename):
     return mongo.send_file(filename)
 
+
 # Add category
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
-    if request.method == "POST":        
+    if request.method == "POST":
         # Add category to database
         mongo.db.categories.insert_one(
             {"category_name": request.form.get("category_name")})
         flash("Category has been inserted")
         return redirect("control_center")
     return render_template("add_category.html")
-    
+
+
+# Edit category
+@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    if request.method == "POST":
+        # Update datebase with updated category name
+        updated_category = {"category_name": request.form.get("category_name")}
+        mongo.db.categories.update_one(
+            {"_id": ObjectId(category_id)}, {"$set": updated_category})
+        flash("Category updated")
+        return redirect("control_center")
+    # obtain category with category_id
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("edit_category.html", category=category)
+
 
 # Control center
 @app.route("/control_center")
 def control_center():
     profiles = list(mongo.db.profile.find())
-    items =  list(mongo.db.items.find())
-    categories =  list(mongo.db.categories.find())
+    items = list(mongo.db.items.find())
+    categories = list(mongo.db.categories.find())
 
     return render_template(
         "control_center.html", profiles=profiles,
-         items=items, categories=categories)
+        items=items, categories=categories)
 
 
 if __name__ == "__main__":
