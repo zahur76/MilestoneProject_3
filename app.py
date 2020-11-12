@@ -127,25 +127,39 @@ def add_profile():
 # Function to edit Profile in database
 @app.route("/edit_profile/<profile_id>", methods=["GET", "POST"])
 def edit_profile(profile_id):
+    # If image field has been changed
     if request.method == "POST":
         # Add image file to mongodb
         profile_image = request.files["profile_image"]
-        mongo.save_file(profile_image.filename, profile_image)
-        # Retreive all information from form
-        # username not modifed
-        new_item = {"profile_image": profile_image.filename,
-                    "full_name": request.form.get("profile_fullname"),
-                    "profile_description": request.form.get(
-                        "profile_description")}
+        if profile_image:
+            mongo.save_file(profile_image.filename, profile_image)
+            # Retreive all information from form
+            # username not modifed
+            new_item = {"profile_image": profile_image.filename,
+                        "full_name": request.form.get("profile_fullname"),
+                        "profile_description": request.form.get(
+                            "profile_description")}
 
-        # Insert new data into profile database in mongo.db
-        mongo.db.profile.update_one(
-            {"_id": ObjectId(profile_id)}, {"$set": new_item})
-        flash("Profile has been Updated")
-        return redirect(url_for("all_items"))
+            # Insert new data into profile database in mongo.db
+            mongo.db.profile.update_one(
+                {"_id": ObjectId(profile_id)}, {"$set": new_item})
+            flash("Profile has been Updated")
+            return redirect(url_for("profile", username=session["user"]))
+        # if Image field is empty
+        else:
+            # Retreive all information from form
+            # username and Image not modifed
+            new_item = {"full_name": request.form.get("profile_fullname"),
+                        "profile_description": request.form.get(
+                            "profile_description")}
+
+            # Insert new data into profile database in mongo.db
+            mongo.db.profile.update_one(
+                {"_id": ObjectId(profile_id)}, {"$set": new_item})
+            flash("Profile has been Updated")
+            return redirect(url_for("profile", username=session["user"]))
 
     profile = mongo.db.profile.find_one({"_id": ObjectId(profile_id)})
-
     return render_template("edit_profile.html", profile=profile)
 
 
