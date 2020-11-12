@@ -248,8 +248,9 @@ def file(filename):
 @app.route("/control_center")
 def control_center():
     profiles = list(mongo.db.profile.find())
+    items =  list(mongo.db.items.find())
 
-    return render_template("control_center.html", profiles=profiles)
+    return render_template("control_center.html", profiles=profiles, items=items)
 
 
 if __name__ == "__main__":
