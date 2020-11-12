@@ -25,12 +25,13 @@ def all_items():
     # Find all items in item database
     items = list(mongo.db.items.find())
     profiles = list(mongo.db.profile.find())
-    user_list = []
+    profile_list = []
     # Create a list of users with profiles for comparison in items page
     for profile in profiles:
-        user_list.append(profile["username"])
+        profile_list.append(profile["username"])
 
-    return render_template("items.html", items=items, users=user_list)
+    return render_template(
+        "items.html", items=items, profile_list=profile_list)
 
 
 # Registration modal
@@ -91,7 +92,7 @@ def logout():
     return redirect(url_for("all_items"))
 
 
-# Profile page 
+# Profile page
 @app.route("/profile/<username>")
 def profile(username):
     # Find user and profile database for username
