@@ -7,13 +7,24 @@ html {
 }
 
 /*-----------------------------------------------fonts */
+h3 {
+    font-family: 'Parisienne', cursive;
+    border-bottom: 1px solid black;
+    margin: auto;
+    margin-top: 20px;  
+    width: 400px;
+}
+
 .flash-message {
-    font-family: 'Parisienne', cursive;      
+    font-family: 'Parisienne', cursive;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white; 
+    width: 500px;     
 }
 
 /* Main body */
 body {
-    background: rgb(218, 101, 101);
+    background: rgb(239, 236, 236);       
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -34,7 +45,7 @@ li a {
     background-image: url("../images/room.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;    
+    background-position: center;       
     height: 600px;
 }
 
@@ -65,10 +76,14 @@ img {
     font-family: 'Fredericka the Great', cursive;  
 }
 
-/*---------------------------------------------Header section */
+/*---------------------------------------------Header/Navbar section */
 .brand-logo {
     font-family: 'Fredericka the Great', cursive;    
     margin-left: 10px;
+}
+
+.brown {
+    background-color: #918783 !important;
 }
 
 /*----------------------------------------Media Screen section */
@@ -79,4 +94,13 @@ img {
     .hero-image {
         height: 300px;
     }
+    h3 {
+        width: 300px;            
+    }
+    .flash-message {
+        width: 300px;
+        font-size: 26px;
+    }
 }
+
+
