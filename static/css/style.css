@@ -10,10 +10,16 @@ html {
 /*-----------------------------------------------fonts */
 h3 {
     font-family: 'Parisienne', cursive;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(0, 0, 0);
     margin: auto;
-    margin-top: 20px;  
+    margin-top: 20px; 
+    margin-bottom: 20px; 
     width: 400px;
+}
+
+h5 {
+    font-family: 'Parisienne', cursive;
+    border-bottom: 1px solid rgb(255, 255, 255);
 }
 
 .flash-message {
@@ -25,7 +31,7 @@ h3 {
 
 /* Main body */
 body {
-    background: rgb(239, 236, 236);       
+    background: #bcaaa4;       
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -61,10 +67,6 @@ li a {
     font-family: 'Source Serif Pro', serif;
 }
 
-.menu {
-    border-right: 1px solid black
-}
-
 img {
     width: 100%;
     max-height: 300px; 
@@ -83,7 +85,16 @@ img {
         margin: 0 !important;
 }
 
-/*---------------------------------------------Modal section */
+/*---------------------------------------------Add Item page */
+.add-item-background {
+    background: linear-gradient(rgba(58, 50, 50, 0.9), rgba(0, 0, 0, 0.9)),url("../images/add_items.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/*-------------------------.--------------------Modal section */
 .modal {
     border-radius: 10px;    
 }
@@ -111,7 +122,9 @@ img {
         height: 300px;
     }
     h3 {
-        width: 300px;            
+        width: 300px;
+        margin: 10px;
+
     }
     .flash-message {
         width: 300px;
