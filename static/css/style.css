@@ -85,6 +85,11 @@ img {
         margin: 0 !important;
 }
 
+.add-item-row {
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+}
+
 /*---------------------------------------------Add Item page */
 .add-item-background {
     background: linear-gradient(rgba(58, 50, 50, 0.9), rgba(0, 0, 0, 0.9)),url("../images/add_items.jpg");
