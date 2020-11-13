@@ -1,74 +1,81 @@
 {% extends 'base.html' %}    
-    {% block content %}                    
+    {% block content %}                            
         <div class="hero-image">
             <div class="banner">
                 <h2 class="white-text center-align banner-text">“To be an artist is to believe in life.”</h2>
                 <p class="white-text center-align"> - Henry Moore </p>
             </div>            
-        </div>
+        </div>        
         <div class="row">
             <div class="col s4 hide-on-med-and-down">                 
             </div>
             <div class="col s12">
-                <h3 class="center-align">Items for sale</h3> 
+                <h3 class="center-align black-text">Items for sale</h3> 
             </div>
             <div class="col s4 hide-on-med-and-down">                
             </div>
-        </div>      
-         <div class="row">
-            <div class="col s10 offset-s1 m-8 l6 offset-l2">                
-                {% for item in items %}
-                    <div class="card-panel brown lighten-3">
-                        {% if session.user == item.username or session.user=="admin" %}
-                            <div class="row">                            
+        </div>
+        <section class="add-item-background">      
+            <div class="row">
+                <div class="col s10 offset-s1 m-8 l6 offset-l2">                
+                    {% for item in items %}
+                        <br>
+                        <div class="card-panel brown lighten-3">
+                            {% if session.user == item.username or session.user=="admin" %}
+                                <div class="row">                            
+                                    <div class="col s12">
+                                        <!-- Check to see if creater of item or admin is logged in -->
+                                        <!-- Permits user/admin to modify/delete item-->                                    
+                                        <a href="{{ url_for('edit_item', item_id = item._id) }}" class="waves-effect brown-text text-lighten-4 
+                                            brown lighten-1 waves-light btn-small">
+                                            <i class="far fa-edit"></i>Edit</a> 
+                                            <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
+                                                class="waves-effect brown lighten-1 waves-light btn-small brown-text text-lighten-4 ">
+                                            <i class="fas fa-trash-alt "></i> Delete
+                                        </a>                          
+                                    </div>                                                    
+                                </div>
+                            {% endif %}  
+                            <div class="row item-header">
                                 <div class="col s12">
-                                    <!-- Check to see if creater of item or admin is logged in -->
-                                    <!-- Permits user/admin to modify/delete item-->                                    
-                                    <a href="{{ url_for('edit_item', item_id = item._id) }}" class="waves-effect brown lighten-1 waves-light btn-small">
-                                    <i class="far fa-edit"></i>Edit</a> 
-                                    <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
-                                        class="waves-effect brown lighten-1 waves-light btn-small">
-                                        <i class="fas fa-trash-alt"></i> Delete</a>                          
-                                </div>                                                    
+                                    <p class="center-align" id="{{ item.username }}"><strong>{{ item.item_name }}</strong></p>
+                                </div>
                             </div>
-                        {% endif %}  
-                        <div class="row item-header">
-                            <div class="col s12">
-                                <p class="center-align" id="{{ item.username }}"><strong>{{ item.item_name }}</strong></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m6">
-                                <img src="{{ url_for('file', filename = item.item_image ) }}">
-                            </div>
-                            <div class="information col s12 m6">
-                                <p class="first_item"><strong>Category:</strong> {{ item.item_category }}</p>
-                                <p><strong>Description:</strong><br>{{ item.item_description }}</p>
-                                <p><strong>Price Rs:</strong> {{ item.item_price}}</p>
-                                <p><strong>seller:</strong> {{ item.username}}</p>
-                                <p><strong>contact number:</strong> {{ item.contact_number }}</p>
-                                <p><strong>Email:</strong> {{ item.email }}</p>
-                                <!-- Check whether profile exists for that user to expose profile button-->                                     
-                                {% if item.username in profile_list %}
-                                    <a href="{{ url_for('profile' , username=item.username) }}" class="waves-effect brown lighten-1 waves-light btn">View Profile</a>
-                                <!-- If profile does not exist for signed in user in database--> 
-                                {% elif item.username not in profile_list and item.username == session.user %}
-                                    <a href="{{ url_for('profile' , username=session['user']) }}" class="waves-effect brown lighten-1 waves-light btn">View Profile</a>
-                                {% endif %}                                                                                               
+                            <div class="row">
+                                <div class="col s12 m6">
+                                    <img src="{{ url_for('file', filename = item.item_image ) }}">
+                                </div>
+                                <div class="information col s12 m6">
+                                    <p class="first_item"><strong>Category:</strong> {{ item.item_category }}</p>
+                                    <p><strong>Description:</strong><br>{{ item.item_description }}</p>
+                                    <p><strong>Price Rs:</strong> {{ item.item_price}}</p>
+                                    <p><strong>seller:</strong> {{ item.username}}</p>
+                                    <p><strong>contact number:</strong> {{ item.contact_number }}</p>
+                                    <p><strong>Email:</strong> {{ item.email }}</p>
+                                    <!-- Check whether profile exists for that user to expose profile button-->                                     
+                                    {% if item.username in profile_list %}
+                                        <a href="{{ url_for('profile' , username=item.username) }}" 
+                                            class="waves-effect brown lighten-1 waves-light btn">View Profile</a>
+                                    <!-- If profile does not exist for signed in user in database--> 
+                                    {% elif item.username not in profile_list and item.username == session.user %}
+                                        <a href="{{ url_for('profile' , username=session['user']) }}" 
+                                            class="waves-effect brown lighten-1 waves-light btn">View Profile</a>
+                                    {% endif %}                                                                                               
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}                
+                    {% endfor %}                
+                </div>
+                <div class="item_links col m2 offset-m2 hide-on-med-and-down">
+                    <h5 class="center-align brown-text text-lighten-4">Item list</h5>
+                    {% for item in items %}
+                        <ul>    
+                            <!-- Use username for scrollspy reference since it remains unchanged after edit -->
+                            <li><a class="brown-text text-lighten-4" href="#{{ item.username }}">{{ item.item_name }}</a></li>                   
+                        </ul>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="item_links col m2 offset-m2 hide-on-med-and-down">
-                <h5 class="center-align">Item list</h5>
-                {% for item in items %}
-                    <ul>    
-                        <!-- Use username for scrollspy reference since it remains unchanged after edit -->
-                        <li><a class="black-text" href="#{{ item.username }}">{{ item.item_name }}</a></li>                   
-                    </ul>
-                {% endfor %}
-            </div>
-        </div>                 
+        </section>                 
     {% endblock %}   
     
