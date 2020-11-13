@@ -1,20 +1,28 @@
 {% extends 'base.html' %}    
-    {% block content %}                
-        {{ profile_list }} 
-        {{ session["user"] }}              
-        <div class="hero-image"></div>                   
-        <h3 class="center-align">Items for sale</h3>
+    {% block content %}                    
+        <div class="hero-image"></div>
         <div class="row">
+            <div class="col s4 hide-on-med-and-down">                 
+            </div>
+            <div class="col s12">
+                <h3 class="center-align">Items for sale</h3> 
+            </div>
+            <div class="col s4 hide-on-med-and-down">
+                
+            </div>
+        </div>      
+         <div class="row">
             <div class="col s10 offset-s1 m-8 l6 offset-l2">                
                 {% for item in items %}
-                    <div class="card-panel">
+                    <div class="card-panel brown lighten-3">
                         {% if session.user == item.username or session.user=="admin" %}
                             <div class="row">                            
                                 <div class="col s12">
                                     <!-- Check to see if creater of item or admin is logged in -->
                                     <!-- Permits user/admin to modify/delete item-->                                    
-                                    <a href="{{ url_for('edit_item', item_id = item._id) }}" class="waves-effect waves-light btn-small">Edit</a> 
-                                    <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" class="waves-effect waves-light btn-small">Delete</a>                          
+                                    <a href="{{ url_for('edit_item', item_id = item._id) }}" class="waves-effect brown lighten-1 waves-light btn-small">Edit</a> 
+                                    <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
+                                        class="waves-effect brown lighten-1 waves-light btn-small">Delete</a>                          
                                 </div>                                                    
                             </div>
                         {% endif %}  
@@ -36,10 +44,10 @@
                                 <p><strong>Email:</strong> {{ item.email }}</p>
                                 <!-- Check whether profile exists for that user to expose profile button-->                                     
                                 {% if item.username in profile_list %}
-                                    <a href="{{ url_for('profile' , username=item.username) }}" class="waves-effect waves-light btn">View Profile</a>
+                                    <a href="{{ url_for('profile' , username=item.username) }}" class="waves-effect brown lighten-1 waves-light btn">View Profile</a>
                                 <!-- If profile does not exist for signed in user in database--> 
                                 {% elif item.username not in profile_list and item.username == session.user %}
-                                    <a href="{{ url_for('profile' , username=session['user']) }}" class="waves-effect waves-light btn">View Profile</a>
+                                    <a href="{{ url_for('profile' , username=session['user']) }}" class="waves-effect brown lighten-1 waves-light btn">View Profile</a>
                                 {% endif %}                                                                                               
                             </div>
                         </div>
@@ -50,7 +58,7 @@
                 {% for item in items %}
                     <ul>    
                         <!-- Use username for scrollspy reference since it remains unchanged after edit -->
-                        <li><a href="#{{ item.username }}">{{ item.item_name }}</a></li>                   
+                        <li><a class="black-text" href="#{{ item.username }}">{{ item.item_name }}</a></li>                   
                     </ul>
                 {% endfor %}
             </div>
