@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,300&family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital@1&display=swap');
 
 /* To make scroll behavior smooth. Source https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section2 */
 html {
@@ -42,11 +43,22 @@ li a {
 /*--------------------------------------------Items page */
 
 .hero-image {
-    background-image: url("../images/room.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../images/room.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;       
     height: 600px;
+    position: relative;
+}
+
+.banner {
+    position: absolute;    
+    bottom: 200px;
+    width: 100%;              
+}
+
+.banner-text {
+    font-family: 'Source Serif Pro', serif;
 }
 
 .menu {
@@ -65,6 +77,10 @@ img {
 
 .first_item {
     margin-top: 0;
+}
+
+.item-header p {
+        margin: 0 !important;
 }
 
 /*---------------------------------------------Modal section */
@@ -100,6 +116,26 @@ img {
     .flash-message {
         width: 300px;
         font-size: 26px;
+    }
+    .information p {
+        margin: 10px 0 !important;
+    }
+    .banner {
+        bottom: 100px;    
+    }
+    .banner-text {
+        margin-bottom: 0px;        
+        font-size: 20px !important;
+    } 
+}
+
+@media screen and (min-width: 577px) and (max-width:768px){
+    .banner {
+        bottom: 250px;
+    }
+    .banner-text {
+        margin-bottom: 0px;        
+        font-size: 40px !important;
     }
 }
 
