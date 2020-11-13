@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+
 /* To make scroll behavior smooth. Source https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section2 */
 html {
   scroll-behavior: smooth;
@@ -51,3 +53,19 @@ img {
     border-radius: 10px;    
 }
 
+.modal-content h4 {
+    font-family: 'Fredericka the Great', cursive;  
+}
+
+/* Header section */
+.brand-logo {
+    font-family: 'Fredericka the Great', cursive;    
+    margin-left: 10px;
+}
+
+/* Media Screen section */
+@media screen and (max-width: 576px){
+    .brand-logo {
+        font-size: 26px !important;
+    }
+}
