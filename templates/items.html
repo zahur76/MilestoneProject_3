@@ -1,6 +1,11 @@
 {% extends 'base.html' %}    
     {% block content %}                    
-        <div class="hero-image"></div>
+        <div class="hero-image">
+            <div class="banner">
+                <h2 class="white-text center-align banner-text">"What is done in love is done well"</h2>
+                <p class="white-text center-align"> - Vincent Van Gogh </p>
+            </div>            
+        </div>
         <div class="row">
             <div class="col s4 hide-on-med-and-down">                 
             </div>
@@ -25,7 +30,7 @@
                                 </div>                                                    
                             </div>
                         {% endif %}  
-                        <div class="row">
+                        <div class="row item-header">
                             <div class="col s12">
                                 <p class="center-align" id="{{ item.username }}"><strong>{{ item.item_name }}</strong></p>
                             </div>
