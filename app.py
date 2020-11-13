@@ -1,5 +1,5 @@
 import os
-import random
+import uuid
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -109,11 +109,12 @@ def add_profile():
     if request.method == "POST":
         # Add image file to mongodb
         profile_image = request.files["profile_image"]
-        # Create random file name
-        random_string = str(random.randint(0, 10000000))
-        mongo.save_file(random_string, profile_image)
+        # Create unique file name using UUID. Resource obtained from:
+        # https://www.geeksforgeeks.org/generating-random-ids-using-uuid-python/
+        unique_filename = str(uuid.uuid1())
+        mongo.save_file(unique_filename, profile_image)
         # Retreive all information from form
-        new_item = {"profile_image": random_string,
+        new_item = {"profile_image": unique_filename,
                     "full_name": request.form.get("profile_fullname"),
                     "profile_description": request.form.get(
                         "profile_description"),
@@ -129,7 +130,7 @@ def add_profile():
 
 # Function to edit Profile in database
 @app.route("/edit_profile/<profile_id>", methods=["GET", "POST"])
-def edit_profile(profile_id):    
+def edit_profile(profile_id):
     if request.method == "POST":
         # Add image file to mongodb
         profile_image = request.files["profile_image"]
@@ -145,13 +146,13 @@ def edit_profile(profile_id):
             mongo.db.fs.files.remove({"filename": profile["profile_image"]})
             # Remove data from fs.chunks database using files_id as reference
             mongo.db.fs.chunks.remove({"files_id": fs_files["_id"]})
-            
-            # Create a random filename
-            random_string = str(random.randint(0, 10000000))
-            mongo.save_file(random_string, profile_image)
+
+            # Create unique file name using UUID
+            unique_filename = str(uuid.uuid1())
+            mongo.save_file(unique_filename, profile_image)
             # Retrieve all information from form
             # username not modifed
-            new_item = {"profile_image": random_string,
+            new_item = {"profile_image": unique_filename,
                         "full_name": request.form.get("profile_fullname"),
                         "profile_description": request.form.get(
                             "profile_description")}
@@ -208,11 +209,11 @@ def add_item():
     if request.method == "POST":
         # Add image file to mongodb
         item_image = request.files["item_image"]
-        # Create random filename to prevent duplication
-        random_string = str(random.randint(0, 10000000))
-        mongo.save_file(random_string, item_image)
+        # Create unique file name using UUID
+        unique_filename = str(uuid.uuid1())
+        mongo.save_file(unique_filename, item_image)
         new_item = {"item_category": request.form.get("item_category"),
-                    "item_image": random_string,
+                    "item_image": unique_filename,
                     "item_name": request.form.get("item_name"),
                     "item_description": request.form.get("item_description"),
                     "item_price": request.form.get("item_price"),
@@ -233,7 +234,7 @@ def edit_item(item_id):
     if request.method == "POST":
         # Add image file to mongodb
         # username not modifed
-        item_image = request.files["item_image"]        
+        item_image = request.files["item_image"]
         # If image has been changed
         if item_image:
             # Remove fs.files and chunks first from database
@@ -247,11 +248,11 @@ def edit_item(item_id):
             # Remove data from fs.chunks database using files_id
             mongo.db.fs.chunks.remove({"files_id": fs_files["_id"]})
             # Update complete item record of item with item_id
-            # create random filename to prevent duplication
-            random_string = str(random.randint(0, 10000000))
-            mongo.save_file(random_string, item_image)
+            # Create unique filename to prevent duplication
+            unique_filename = str(uuid.uuid1())
+            mongo.save_file(unique_filename, item_image)
             new_item = {"item_category": request.form.get("item_category"),
-                        "item_image": random_string,
+                        "item_image": unique_filename,
                         "item_name": request.form.get("item_name"),
                         "item_description": request.form.get(
                             "item_description"),
