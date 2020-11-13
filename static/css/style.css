@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,300&family=Parisienne&display=swap');
 
 /* To make scroll behavior smooth. Source https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section2 */
 html {
   scroll-behavior: smooth;
+}
+
+/*-----------------------------------------------fonts */
+.flash-message {
+    font-family: 'Parisienne', cursive;      
 }
 
 /* Main body */
@@ -13,7 +19,7 @@ body {
     flex-direction: column;
 }
 
-/*  Required for sticky footer */
+/*----------------------------Required for sticky footer */
 main {
     flex: 1 0 auto;
 }
@@ -22,12 +28,14 @@ li a {
     color: rgb(172, 172, 185) !important;
 }
 
-/* Items page */
+/*--------------------------------------------Items page */
 
 .hero-image {
-    background: lightsalmon;
-    width: 100%;
-    height: 500px;
+    background-image: url("../images/room.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;    
+    height: 600px;
 }
 
 .menu {
@@ -48,7 +56,7 @@ img {
     margin-top: 0;
 }
 
-/* Modal section */
+/*---------------------------------------------Modal section */
 .modal {
     border-radius: 10px;    
 }
@@ -57,15 +65,18 @@ img {
     font-family: 'Fredericka the Great', cursive;  
 }
 
-/* Header section */
+/*---------------------------------------------Header section */
 .brand-logo {
     font-family: 'Fredericka the Great', cursive;    
     margin-left: 10px;
 }
 
-/* Media Screen section */
+/*----------------------------------------Media Screen section */
 @media screen and (max-width: 576px){
     .brand-logo {
-        font-size: 26px !important;
+        font-size: 26px !important;        
+    }
+    .hero-image {
+        height: 300px;
     }
 }
