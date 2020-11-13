@@ -13,7 +13,7 @@
     <!-- navbar -->
         <nav>        
             <!-- navbar on medium screen size and above -->
-            <div class="nav-wrapper brown lighten-3">
+            <div class="nav-wrapper brown">
                 <a href="{{ url_for('all_items') }}" class="brand-logo">Artist for life</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down"> 
@@ -38,7 +38,7 @@
             </div>
         </nav>
         <!-- navbar on mobile devices -->
-        <ul class="sidenav brown lighten-3" id="mobile-demo">
+        <ul class="sidenav brown" id="mobile-demo">
             <h4 class="center-align white-text brand-logo">Artist for life</h4>
             <li><a href="{{ url_for('all_items') }}" class="white-text" >Home</a></li>
             <li><a href="#" class="white-text" >About</a></li>                    
@@ -71,7 +71,7 @@
         {% endblock %}
     </main>
     <!-- Footer -->
-    <footer class="page-footer brown lighten-3">
+    <footer class="page-footer brown">
         <div class="row">
             <div class="col s6">
                 © 2014 Copyright Zahur
@@ -84,7 +84,7 @@
     <!-- Modal section -->    
     <!-- Registration Modal -->    
     <div id="register" class="modal">
-        <div class="modal-content brown lighten-3"> 
+        <div class="modal-content brown"> 
             <h4 class="center-align">Register</h4>
             <div class="row">                
                 <form class="col s12" method="POST" action="{{ url_for('register') }}">
