@@ -13,45 +13,45 @@
     <!-- navbar -->
         <nav>        
             <!-- navbar on medium screen size and above -->
-            <div class="nav-wrapper teal">
-                <a href="{{ url_for('all_items') }}" class="brand-logo m2">Artist for life</a>
+            <div class="nav-wrapper brown lighten-3">
+                <a href="{{ url_for('all_items') }}" class="brand-logo">Artist for life</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down"> 
                     <!-- Will show for all users -->                   
-                    <li><a href="{{ url_for('all_items') }}">Home</a></li>
-                    <li><a href="#">About</a></li> 
+                    <li><a href="{{ url_for('all_items') }}" class="white-text" >Home</a></li>
+                    <li><a class="white-text" href="#">About</a></li> 
                     <!-- Will show for only those logged in -->                      
                     {% if session.user %}
-                        <li><a href="{{ url_for('add_item') }}">Add Item</a></li>
-                        <li><a href="{{ url_for('profile' , username=session['user']) }}">Profile</a></li>
+                        <li><a href="{{ url_for('add_item') }}" class="white-text" >Add Item</a></li>
+                        <li><a href="{{ url_for('profile' , username=session['user']) }}" class="white-text" >Profile</a></li>
                         <!-- Will show only when Admin is logged in -->  
                         {% if session.user == "admin" %}
-                            <li><a href="{{ url_for('control_center') }}">Manage Categories</a></li>
+                            <li><a href="{{ url_for('control_center') }}" class="white-text" >Manage Categories</a></li>
                         {% endif %} 
-                        <li><a href="{{ url_for('logout') }}">logout</a></li> 
+                        <li><a href="{{ url_for('logout') }}" class="white-text" >logout</a></li> 
                     <!-- Will not show when user is logged in -->
                     {% else %} 
-                        <li><a class="modal-trigger" href="#login">Login</a></li> 
-                        <li><a class="modal-trigger" href="#register">Register</a></li>                        
+                        <li><a class="modal-trigger white-text" href="#login">Login</a></li> 
+                        <li><a class="modal-trigger white-text" href="#register">Register</a></li>                        
                     {% endif %}                     
                 </ul>
             </div>
         </nav>
         <!-- navbar on mobile devices -->
-        <ul class="sidenav teal" id="mobile-demo">
-            <h4 class="center-align">Artist for life</h4>
-            <li><a href="{{ url_for('all_items') }}">Home</a></li>
-            <li><a href="#">About</a></li>                    
+        <ul class="sidenav brown lighten-3" id="mobile-demo">
+            <h4 class="center-align white-text">Artist for life</h4>
+            <li><a href="{{ url_for('all_items') }}" class="white-text" >Home</a></li>
+            <li><a href="#" class="white-text" >About</a></li>                    
             {% if session.user %}
-                <li><a href="{{ url_for('add_item') }}">Add Item</a></li>
-                <li><a href="{{ url_for('profile' , username=session['user']) }}">Profile</a></li>
+                <li><a href="{{ url_for('add_item') }}" class="white-text" >Add Item</a></li>
+                <li><a href="{{ url_for('profile' , username=session['user']) }}" class="white-text" >Profile</a></li>
                 {% if session.user == "admin" %}
                     <li><a href="#">Manage Categories</a></li>
                 {% endif %} 
-                <li><a href="{{ url_for('logout') }}">logout</a></li>
+                <li><a href="{{ url_for('logout') }}" class="white-text" >logout</a></li>
             {% else %} 
-                <li><a class="modal-trigger" href="#login">Login</a></li> 
-                <li><a class="modal-trigger" href="#register">Register</a></li>                        
+                <li><a class="modal-trigger white-text" href="#login">Login</a></li> 
+                <li><a class="modal-trigger white-text" href="#register">Register</a></li>                        
             {% endif %}
         </ul>
     </header>
@@ -99,7 +99,7 @@
     <!-- Modal section -->    
     <!-- Registration Modal -->    
     <div id="register" class="modal">
-        <div class="modal-content brown lighten-4"> 
+        <div class="modal-content brown lighten-3"> 
             <h4 class="center-align">Register</h4>
             <div class="row">                
                 <form class="col s12" method="POST" action="{{ url_for('register') }}">
@@ -108,13 +108,13 @@
                             <i class="fas fa-user-plus prefix brown-text text-lighten-1"></i>
                             <input id="username" name="username" type="text" minlength="5" maxlength="15" 
                                 pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                            <label for="username">First Name</label>
+                            <label class="black-text" for="username">Username</label>
                         </div>
                             <div class="input-field col s12">
                             <i class="fas fa-user-lock prefix brown-text text-lighten-1"></i>
                             <input id="password" name="password" type="text" minlength="5" maxlength="15" 
                                 pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                            <label for="password">Password</label>
+                            <label class="black-text" for="password">Password</label>
                         </div>
                     </div>
                     <div class="row">
@@ -131,7 +131,7 @@
     </div>
     <!-- login Modal -->    
     <div id="login" class="modal">
-        <div class="modal-content brown lighten-4"> 
+        <div class="modal-content brown lighten-3"> 
             <h4 class="center-align">Sign In</h4>
             <div class="row">                
                 <form class="col s12" method="POST" action="{{ url_for('login') }}">
@@ -140,13 +140,13 @@
                             <i class="fas fa-user-plus prefix brown-text text-lighten-1"></i>
                             <input id="username2" name="username2" type="text" minlength="5" maxlength="15" 
                                 pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                            <label for="username2">Username</label>
+                            <label class="black-text" for="username2">Username</label>
                         </div>
                             <div class="input-field col s12">
                             <i class="fas fa-user-lock prefix brown-text text-lighten-1"></i>
                             <input id="password2" name="password2" type="text" minlength="5" maxlength="15" 
                                 pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                            <label for="password2">Password</label>
+                            <label class="black-text" for="password2">Password</label>
                         </div>
                     </div>
                     <div class="row">
