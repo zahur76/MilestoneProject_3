@@ -94,6 +94,10 @@ img {
     background-attachment: fixed;
 }
 
+.add-item-form {
+    margin-top: 40px;
+}
+
 /*-------------------------.--------------------Modal section */
 .modal {
     border-radius: 10px;    
