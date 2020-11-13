@@ -127,14 +127,16 @@ img {
     .brand-logo {
         font-size: 26px !important;        
     }
+
     .hero-image {
         height: 300px;
     }
+
     h3 {
         width: 300px;
-        margin: 10px;
+        margin: 10px auto;
+    }        
 
-    }
     .flash-message {
         width: 300px;
         font-size: 26px;
@@ -142,12 +144,14 @@ img {
     .information p {
         margin: 10px 0 !important;
     }
+
     .banner {
         bottom: 100px;    
     }
+
     .banner-text {
         margin-bottom: 0px;        
-        font-size: 20px !important;
+        font-size: 22px !important;
     } 
 }
 
