@@ -11,14 +11,17 @@
                             <!-- If there is a session user but no profile has been created in profile database
                                 for that profile user -->
                             {% if session.user == username.username and profile.username|length == 0 %}
-                                <div class="center-align">
-                                    <a href="{{ url_for('add_profile')}}" class="waves-effect waves-light btn">Create profile</a>
+                                <div class="center-align" style="margin-top: 20px;">
+                                    <a href="{{ url_for('add_profile')}}" 
+                                        class="waves-effect btn-large brown lighten-1 brown-text text-lighten-4">Create profile</a>
                                 </div>
                             <!-- Display buttons if logged in user same as profile user or admin -->
                             <!-- If no profile is present for user then only the user will have access to the profile page -->
                             {% elif profile.username == session.user or session.user == "admin" %} 
-                                <a href="{{ url_for('edit_profile', profile_id=profile._id) }}" class="waves-effect waves-light btn">Edit</a>
-                                <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" class="waves-effect waves-light btn">Delete </a>                                                         
+                                <a href="{{ url_for('edit_profile', profile_id=profile._id) }}"
+                                     class="waves-effect btn-small brown lighten-1 brown-text text-lighten-4" style="margin-top: 20px;">Edit</a>
+                                <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" 
+                                     class="waves-effect btn-small brown lighten-1 brown-text text-lighten-4" style="margin-top: 20px;">Delete </a>                                                         
                             {% endif %}
                         {% else %}
                         {% endif %}
@@ -39,7 +42,7 @@
                         </div>
                     </div>    
                 {% else %} 
-                        <h3 class="center-align">No profile to show</h3>
+                        <h3 class="center-align white-text" style="border-bottom: 1px solid white;">No profile to show</h3>
                 {% endif %}                      
             </div>
         </section>
