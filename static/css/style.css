@@ -42,11 +42,11 @@ a {
 /* card and card panels --------------------------------------------*/
 
 .card {
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .card-panel {
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 /* Main body--------------------------------------------------------*/
