@@ -76,7 +76,7 @@ def login():
                 return redirect(url_for("profile", username=session["user"]))
             # Password do not match
             else:
-                flash("Incorrect Password/Password")
+                flash("Incorrect Username/Password")
                 return redirect(url_for("all_items"))
         else:
             # No username exists in user database
