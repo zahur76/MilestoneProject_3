@@ -15,15 +15,17 @@
                         </div>
                     <!-- Display buttons if logged in user same as profile user or admin -->
                     <!-- If no profile is present for user then only the user will have access to the profile page -->
-                    {% elif profile.username == session.user or session.user == "admin" %} 
-                        <a href="{{ url_for('edit_profile', profile_id=profile._id) }}"
-                                class="z-depth-5 waves-effect btn-large brown lighten-1 brown-text text-lighten-4" 
-                                    style="margin-top: 20px;">
-                                <i class="far fa-edit"></i>Edit</a>
-                        <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" 
-                                class="z-depth-5 waves-effect btn-large brown lighten-1 brown-text text-lighten-4" 
-                                    style="margin-top: 20px;">
-                                <i class="fas fa-trash-alt "></i> Delete</a>                                                         
+                    {% elif profile.username == session.user or session.user == "admin" %}
+                        <div class="center-align">
+                            <a href="{{ url_for('edit_profile', profile_id=profile._id) }}"
+                                    class="z-depth-5 waves-effect btn-large brown lighten-1 brown-text text-lighten-4" 
+                                        style="margin-top: 20px;">
+                                    <i class="far fa-edit"></i>Edit</a>
+                            <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" 
+                                    class="z-depth-5 waves-effect btn-large brown lighten-1 brown-text text-lighten-4" 
+                                        style="margin-top: 20px;">
+                                    <i class="fas fa-trash-alt "></i> Delete</a>
+                        </div>                                                          
                     {% endif %}
                 {% else %}
                 {% endif %}
@@ -46,7 +48,8 @@
                         </div>
                     </div>    
                 {% else %} 
-                        <h3 class="center-align white-text" style="border-bottom: 1px solid white;">No profile to show</h3>
+                        <h3 class="center-align white-text" style="border-bottom: 1px solid white;">
+                            No profile to show</h3>
                 {% endif %}                      
             </div>
         </section>
