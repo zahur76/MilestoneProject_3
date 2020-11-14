@@ -166,6 +166,7 @@ img {
     h3 {
         width: 300px;
         margin: 10px auto;
+        font-size: 36px;
     }        
 
     .flash-message {
