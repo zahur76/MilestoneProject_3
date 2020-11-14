@@ -91,7 +91,7 @@ img {
 }
 
 /*---------------------------------------------Add Item page */
-.add-item-background {
+.page-background {
     background: linear-gradient(rgba(58, 50, 50, 0.9), rgba(0, 0, 0, 0.9)),url("../images/add_items.jpg");
     background-size: cover;
     background-repeat: no-repeat;
