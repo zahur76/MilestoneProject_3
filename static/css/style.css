@@ -7,7 +7,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/*-----------------------------------------------fonts */
+/* fonts -----------------------------------------------*/
 h3 {
     font-family: 'Parisienne', cursive;
     border-bottom: 1px solid rgb(0, 0, 0);
@@ -29,7 +29,17 @@ h5 {
     width: 500px;     
 }
 
-/* Main body */
+
+/* Button section --------------------------------------------------*/
+button {
+    border-radius: 5px !important;
+}
+
+a {
+    border-radius: 5px !important;
+}
+
+/* Main body--------------------------------------------------------*/
 body {
     background: #efebe9;       
     display: flex;
@@ -37,7 +47,7 @@ body {
     flex-direction: column;
 }
 
-/*----------------------------Required for sticky footer */
+/* Required for sticky footer --------------------------------------*/
 main {
     flex: 1 0 auto;
 }
@@ -46,7 +56,7 @@ li a {
     color: rgb(172, 172, 185) !important;
 }
 
-/*--------------------------------------------Items page */
+/* Items page -------------------------------------------------------*/
 
 .hero-image {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../images/room.jpg");
@@ -90,7 +100,7 @@ img {
     padding-bottom: 20px;
 }
 
-/*---------------------------------------------Add Item page */
+/* Add Item page --------------------------------------------------*/
 .page-background {
     background: linear-gradient(rgba(58, 50, 50, 0.6), rgba(0, 0, 0, 0.6)),url("../images/add_items.jpg");
     background-size: cover;
@@ -104,7 +114,7 @@ img {
     margin-top: 40px;
 }
 
-/*-------------------------.--------------------Modal section */
+/* Modal section----------------------------------------------------*/
 .modal {
     border-radius: 10px;    
 }
@@ -113,7 +123,7 @@ img {
     font-family: 'Fredericka the Great', cursive;  
 }
 
-/*---------------------------------------------Header/Navbar section */
+/* Header/Navbar section---------------------------------------------*/
 .brand-logo {
     font-family: 'Fredericka the Great', cursive;    
     margin-left: 10px;
@@ -123,7 +133,7 @@ img {
     background-color: #918783 !important;
 }
 
-/*----------------------------------------Media Screen section */
+/* Media Screen section ---------------------------------------------*/
 @media screen and (max-width: 576px){
     .brand-logo {
         font-size: 26px !important;        
