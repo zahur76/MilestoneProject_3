@@ -59,7 +59,7 @@
                                     <!-- If profile does not exist for signed in user in database--> 
                                     {% elif item.username not in profile_list and item.username == session.user %}
                                         <a href="{{ url_for('profile' , username=session['user']) }}" 
-                                            class="waves-effect brown lighten-1 brown-text text-lighten-4waves-light btn">View Profile</a>
+                                            class="waves-effect brown lighten-1 brown-text text-lighten-4 waves-light btn">View Profile</a>
                                     {% endif %}                                                                                               
                                 </div>
                             </div>
