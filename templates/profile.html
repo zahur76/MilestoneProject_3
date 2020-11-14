@@ -1,38 +1,40 @@
 {% extends 'base.html' %}
     {% block content %} 
-        <h3 class="center-align">{{ username.username }}'s Profile Page</h3> 
+        <h3 class="center-align">{{ username.username }}'s Profile Page</h3>
+        <div class="row">                
+            <div class="col s12 m6 offset-m3">
+                <!-- Logic to ensure edit/delete button will not display if no session user -->
+                <!-- session user dictionary will be empty --> 
+                {% if session.user %}                       
+                    <!-- If there is a session user but no profile has been created in profile database
+                        for that profile user -->
+                    {% if session.user == username.username and profile.username|length == 0 %}
+                        <div class="center-align">
+                            <a href="{{ url_for('add_profile')}}" 
+                                class="z-depth-5 waves-effect btn-large brown lighten-1 brown-text text-lighten-4">Create profile</a>
+                        </div>
+                    <!-- Display buttons if logged in user same as profile user or admin -->
+                    <!-- If no profile is present for user then only the user will have access to the profile page -->
+                    {% elif profile.username == session.user or session.user == "admin" %} 
+                        <a href="{{ url_for('edit_profile', profile_id=profile._id) }}"
+                                class="z-depth-5 waves-effect btn-large brown lighten-1 brown-text text-lighten-4" 
+                                    style="margin-top: 20px;">
+                                <i class="far fa-edit"></i>Edit</a>
+                        <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" 
+                                class="z-depth-5 waves-effect btn-large brown lighten-1 brown-text text-lighten-4" 
+                                    style="margin-top: 20px;">
+                                <i class="fas fa-trash-alt "></i> Delete</a>                                                         
+                    {% endif %}
+                {% else %}
+                {% endif %}
+            </div>                
+        </div> 
         <section class="page-background"> 
-            <div class="container">             
-                <div class="row">                
-                    <div class="col s12 m6 offset-m3">
-                        <!-- Logic to ensure edit/delete button will not display if no session user -->
-                        <!-- session user dictionary will be empty --> 
-                        {% if session.user %}                       
-                            <!-- If there is a session user but no profile has been created in profile database
-                                for that profile user -->
-                            {% if session.user == username.username and profile.username|length == 0 %}
-                                <div class="center-align" style="margin-top: 20px;">
-                                    <a href="{{ url_for('add_profile')}}" 
-                                        class="z-depth-5 waves-effect btn-large brown lighten-1 brown-text text-lighten-4">Create profile</a>
-                                </div>
-                            <!-- Display buttons if logged in user same as profile user or admin -->
-                            <!-- If no profile is present for user then only the user will have access to the profile page -->
-                            {% elif profile.username == session.user or session.user == "admin" %} 
-                                <a href="{{ url_for('edit_profile', profile_id=profile._id) }}"
-                                     class="z-depth-5 waves-effect btn-large brown lighten-1 brown-text text-lighten-4" style="margin-top: 20px;">
-                                     <i class="far fa-edit"></i>Edit</a>
-                                <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" 
-                                     class="z-depth-5 waves-effect btn-large brown lighten-1 brown-text text-lighten-4" style="margin-top: 20px;">
-                                     <i class="fas fa-trash-alt "></i> Delete</a>                                                         
-                            {% endif %}
-                        {% else %}
-                        {% endif %}
-                    </div>                
-                </div>            
+            <div class="container">                             
                 {% if profile %} 
                     <div class="row">
                         <div class="col s12 m6 offset-m3">
-                            <div class="card large brown lighten-5">
+                            <div class="card large brown lighten-5" style="margin-top: 40px;">
                                 <div class="card-image">
                                     <img src="{{ url_for('file', filename = profile.profile_image ) }}">                                
                                 </div>
