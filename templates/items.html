@@ -37,8 +37,10 @@
                                 </div>
                             {% endif %}  
                             <div class="row item-header">
+                                <!-- Provide item id for scrollspy since it is unique -->
+                                <p id= "{{ item._id }}"></p>
                                 <div class="col s12">
-                                    <p class="center-align" id="{{ item.username }}"><strong>{{ item.item_name }}</strong></p>
+                                    <p class="center-align" id="{{ item.username }}"><strong>{{ item.item_name }}</strong></p>                                    
                                 </div>
                             </div>
                             <div class="row">
@@ -46,7 +48,7 @@
                                     <img src="{{ url_for('file', filename = item.item_image ) }}">
                                 </div>
                                 <div class="information col s12 m6">
-                                    <p class="first_item"><strong>Category:</strong> {{ item.item_category }}</p>
+                                    <p class="first_item"><strong>Category:</strong> {{ item.item_category }}</p>                                    
                                     <p><strong>Description:</strong><br>{{ item.item_description }}</p>
                                     <p><strong>Price Rs:</strong> {{ item.item_price}}</p>
                                     <p><strong>seller:</strong> {{ item.username}}</p>
@@ -71,7 +73,7 @@
                     {% for item in items %}
                         <ul>    
                             <!-- Use username for scrollspy reference since it remains unchanged after edit -->
-                            <li><a class="white-text" href="#{{ item.username }}">{{ item.item_name }}</a></li>                   
+                            <li><a class="white-text" href="#{{ item._id }}">{{ item.item_name }}</a></li>                   
                         </ul>
                     {% endfor %}
                 </div>
