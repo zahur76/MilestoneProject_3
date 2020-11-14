@@ -1,50 +1,52 @@
 {% extends 'base.html' %}
-    {% block content %}               
-        <div class="container">            
-            <h3 class="center-align">Add Profile</h3>
-            <div class="row">
-                <div class="col s12 m10 l8 offset-m1 offset-l2">
-                    <div class="row card-panel grey lighten-5">
-                        <form class="col s12" method="POST" action="{{ url_for('add_profile') }}" enctype="multipart/form-data">            
-                            <!-- Profile Image Upload -->
-                            <div class="row">                                
-                                <div class="input-field col s12">                                    
-                                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-                                    <input class="tooltipped validate" data-position="top" data-tooltip="Upload Profile Image!" 
-                                        id="profile_image" name="profile_image" type="file" required>
-                                    <label for="profile_image"></label>                                   
+    {% block content %} 
+        <h3 class="center-align">Add Profile</h3>  
+        <section class="page-background">
+            <div class="container">          
+                <div class="row">
+                    <div class="col s12 m10 l8 offset-m1 offset-l2">
+                        <div class="row card-panel grey lighten-5">
+                            <form class="col s12" method="POST" action="{{ url_for('add_profile') }}" enctype="multipart/form-data">            
+                                <!-- Profile Image Upload -->
+                                <div class="row">                                
+                                    <div class="input-field col s12">                                    
+                                        <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                                        <input class="tooltipped validate" data-position="top" data-tooltip="Upload Profile Image!" 
+                                            id="profile_image" name="profile_image" type="file" required>
+                                        <label for="profile_image"></label>                                   
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Profile user fullname -->
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                                    <input id="profile_fullname" name="profile_fullname" minlength="5" maxlength="50" 
-                                        type="text" class="validate" required>
-                                    <label for="profile_fullname">Full name</label>
+                                <!-- Profile user fullname -->
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                                        <input id="profile_fullname" name="profile_fullname" minlength="5" maxlength="50" 
+                                            type="text" class="validate" required>
+                                        <label for="profile_fullname">Full name</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Profile user Description -->
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>                    
-                                    <textarea id="profile_description" name="profile_description" class="materialize-textarea validate" minlength="5" 
-                                        maxlength="200" required></textarea>
-                                    <label for="profile_description">Personal Description</label>
+                                <!-- Profile user Description -->
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>                    
+                                        <textarea id="profile_description" name="profile_description" class="materialize-textarea validate" minlength="5" 
+                                            maxlength="200" required></textarea>
+                                        <label for="profile_description">Personal Description</label>
+                                    </div>
+                                </div>               
+                                <!-- Submit button -->
+                                <div class="row">
+                                    <div class="col s12 center-align">
+                                        <button type="submit" class="btn-large light-blue darken-1 text-shadow">
+                                            Add Profile<i class="fas fa-square right"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>               
-                            <!-- Submit button -->
-                            <div class="row">
-                                <div class="col s12 center-align">
-                                    <button type="submit" class="btn-large light-blue darken-1 text-shadow">
-                                        Add Item<i class="fas fa-square right"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div> 
+                            </form>
+                        </div> 
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     {% endblock %}
     
