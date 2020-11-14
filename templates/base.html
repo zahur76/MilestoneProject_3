@@ -18,17 +18,17 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down"> 
                     <!-- Will show for all users -->                   
-                    <li><a href="{{ url_for('all_items') }}" class="white-text" >Home</a></li>
+                    <li><a href="{{ url_for('all_items') }}" class="white-text">Home</a></li>
                     <li><a class="white-text" href="#">About</a></li> 
                     <!-- Will show for only those logged in -->                      
                     {% if session.user %}
-                        <li><a href="{{ url_for('add_item') }}" class="white-text" >Add Item</a></li>
-                        <li><a href="{{ url_for('profile' , username=session['user']) }}" class="white-text" >Profile</a></li>
+                        <li><a href="{{ url_for('add_item') }}" class="white-text">Add Item</a></li>
+                        <li><a href="{{ url_for('profile' , username=session['user']) }}" class="white-text">Profile</a></li>
                         <!-- Will show only when Admin is logged in -->  
                         {% if session.user == "admin" %}
                             <li><a href="{{ url_for('control_center') }}" class="white-text" >Manage Categories</a></li>
                         {% endif %} 
-                        <li><a href="{{ url_for('logout') }}" class="white-text" >logout</a></li> 
+                        <li><a href="{{ url_for('logout') }}" class="white-text">logout</a></li> 
                     <!-- Will not show when user is logged in -->
                     {% else %} 
                         <li><a class="modal-trigger white-text" href="#login">Login</a></li> 
@@ -44,9 +44,9 @@
             <li><a href="#" class="white-text" >About</a></li>                    
             {% if session.user %}
                 <li><a href="{{ url_for('add_item') }}" class="white-text" >Add Item</a></li>
-                <li><a href="{{ url_for('profile' , username=session['user']) }}" class="white-text" >Profile</a></li>
+                <li><a href="{{ url_for('profile' , username=session['user']) }}" class="white-text">Profile</a></li>
                 {% if session.user == "admin" %}
-                    <li><a href="#">Manage Categories</a></li>
+                    <li><a href="{{ url_for('control_center') }}" class="white-text">Manage Categories</a></li>
                 {% endif %} 
                 <li><a href="{{ url_for('logout') }}" class="white-text" >logout</a></li>
             {% else %} 
