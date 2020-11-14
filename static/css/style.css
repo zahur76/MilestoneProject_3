@@ -112,7 +112,7 @@ img {
 
 /* Add Item page --------------------------------------------------*/
 .page-background {
-    background: linear-gradient(rgba(58, 50, 50, 0.6), rgba(0, 0, 0, 0.6)),url("../images/add_items.jpg");
+    background: linear-gradient(rgba(58, 50, 50, 0.6), rgba(0, 0, 0, 0.6)),url("../images/background-image.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
