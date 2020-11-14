@@ -85,7 +85,7 @@
     <!-- Registration Modal -->    
     <div id="register" class="modal">
         <div class="modal-content brown lighten-5"> 
-            <h4 class="center-align">Register</h4>
+            <h4 class="center-align">Register</h4>            
             <div class="row">                
                 <form class="col s12" method="POST" action="{{ url_for('register') }}">
                     <div class="row">
@@ -118,18 +118,8 @@
     </div>
     <!-- login Modal -->    
     <div id="login" class="modal">
-        <div class="modal-content brown lighten-5">
-             <div class="flash">
-            <!-- Display Flash messages on all pages -->
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <h3 class="flash-message center-align black-text">{{ message }}</h3>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </div> 
-            <h4 class="center-align">Sign In</h4>
+        <div class="modal-content brown lighten-5">             
+            <h4 class="center-align">Sign In</h4>            
             <div class="row">                
                 <form class="col s12" method="POST" action="{{ url_for('login') }}">
                     <div class="row">
