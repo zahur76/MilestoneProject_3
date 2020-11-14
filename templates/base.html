@@ -118,7 +118,17 @@
     </div>
     <!-- login Modal -->    
     <div id="login" class="modal">
-        <div class="modal-content brown lighten-5"> 
+        <div class="modal-content brown lighten-5">
+             <div class="flash">
+            <!-- Display Flash messages on all pages -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <h3 class="flash-message center-align black-text">{{ message }}</h3>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div> 
             <h4 class="center-align">Sign In</h4>
             <div class="row">                
                 <form class="col s12" method="POST" action="{{ url_for('login') }}">
@@ -137,7 +147,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button type="submit" class="submit col s12 m4 offset-m4 btn-large z-depth-5 waves-effect brown
+                        <button id="login_submit" type="submit" class="submit col s12 m4 offset-m4 btn-large z-depth-5 waves-effect brown
                             lighten-1 brown-text text-lighten-4"><strong>Submit</strong></button>
                     </div>
                 </form>
