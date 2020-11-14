@@ -34,7 +34,21 @@ $(document).ready(function(){
     /* Function to clear flash messages after 5's*/  
     setTimeout(function(){
         $(".flash-message").hide("slow");
-    }, 5000 ); // 5 secs    
+    }, 5000 ); // 5 secs  
+
+    /* Function to reopen modals if password or username is incorrect or already exists*/  
+    setTimeout(function(){
+        flash_message = $(".flash-message").text()
+        console.log(flash_message)
+        if(flash_message=="Incorrect Username/Password"){
+            $("#login").modal("open");
+        }
+        if(flash_message=="Username already exists!"){
+            $("#register").modal("open");
+        }
+    }, 3000 ); // 5 secs 
+    
+    
 })
 
 
