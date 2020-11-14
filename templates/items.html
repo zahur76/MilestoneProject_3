@@ -27,10 +27,10 @@
                                         <!-- Check to see if creater of item or admin is logged in -->
                                         <!-- Permits user/admin to modify/delete item-->                                    
                                         <a href="{{ url_for('edit_item', item_id = item._id) }}" class="waves-effect brown-text text-lighten-4 
-                                            brown lighten-1 waves-light btn-small">
+                                            z-depth-3 brown lighten-1 waves-light btn-small">
                                             <i class="far fa-edit"></i>Edit</a> 
                                             <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
-                                                class="waves-effect brown lighten-1 waves-light btn-small brown-text text-lighten-4 ">
+                                                class="z-depth-3 waves-effect brown lighten-1 waves-light btn-small brown-text text-lighten-4 ">
                                             <i class="fas fa-trash-alt "></i> Delete
                                         </a>                          
                                     </div>                                                    
@@ -55,11 +55,11 @@
                                     <!-- Check whether profile exists for that user to expose profile button-->                                     
                                     {% if item.username in profile_list %}
                                         <a href="{{ url_for('profile' , username=item.username) }}" 
-                                            class="waves-effect brown lighten-1 brown-text text-lighten-4 waves-light btn">View Profile</a>
+                                            class="z-depth-3 waves-effect brown lighten-1 brown-text text-lighten-4 waves-light btn">View Profile</a>
                                     <!-- If profile does not exist for signed in user in database--> 
                                     {% elif item.username not in profile_list and item.username == session.user %}
                                         <a href="{{ url_for('profile' , username=session['user']) }}" 
-                                            class="waves-effect brown lighten-1 brown-text text-lighten-4 waves-light btn">View Profile</a>
+                                            class="z-depth-3 waves-effect brown lighten-1 brown-text text-lighten-4 waves-light btn">View Profile</a>
                                     {% endif %}                                                                                               
                                 </div>
                             </div>
