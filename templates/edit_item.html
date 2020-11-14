@@ -1,93 +1,95 @@
 {% extends 'base.html' %}
-    {% block content %}               
-        <div class="container">            
-            <h3 class="center-align">Edit item</h3>
-            <div class="row">
-                <div class="col s12 m10 l8 offset-m1 offset-l2">
-                    <div class="row card-panel grey lighten-5">
-                        <form class="col s12" method="POST" action="{{ (url_for('edit_item', item_id=item._id))}}" enctype="multipart/form-data">            
-                            <!-- Dropdown menu for category -->
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-                                    <select id="item_category" name="item_category" class="validate" required>
-                                    <!-- Will display value in field as option but cannot be selected-->
-                                    <option value="" disabled>Choose option</option>
-                                    {% for category in categories %}
-                                        <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>  
-                                    {% endfor %}                  
-                                    </select>
-                                    <label for="item_category">Task Category</label>
+    {% block content %}
+        <h3 class="center-align">Edit item</h3>
+        <section class="page-background"> 
+            <div class="container">          
+                <div class="row add-item-row">
+                    <div class="col s12 m10 l8 offset-m1 offset-l2">
+                        <div class="row add-item-form card-panel brown lighten-5">
+                            <form class="col s12" method="POST" action="{{ (url_for('edit_item', item_id=item._id))}}" enctype="multipart/form-data">            
+                                <!-- Dropdown menu for category -->
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="fas fa-folder-open prefix brown-text text-lighten-2"></i>
+                                        <select id="item_category" name="item_category" class="validate" required>
+                                        <!-- Will display value in field as option but cannot be selected-->
+                                        <option value="" disabled>Choose option</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>  
+                                        {% endfor %}                  
+                                        </select>
+                                        <label for="item_category">Task Category</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Image Upload -->
-                            <div class="row">                                
-                                <div class="input-field col s12">                                    
-                                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-                                    <input class="tooltipped validate" data-position="top" data-tooltip="Upload image of Art work" 
-                                        value="{{ item.item_image }}" id="item_image" name="item_image" type="file" required>
-                                    <label for="item_image"></label>                                   
+                                <!-- Image Upload -->
+                                <div class="row">                                
+                                    <div class="input-field col s12">                                    
+                                        <i class="fas fa-folder-open prefix brown-text text-lighten-2"></i>
+                                        <input class="tooltipped validate" data-position="top" data-tooltip="Change Image if required!" 
+                                            value="{{ item.item_image }}" id="item_image" name="item_image" type="file">
+                                        <label for="item_image"></label>                                   
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Item name -->
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                                    <input id="item_name" name="item_name" minlength="5" maxlength="50" 
-                                        value="{{ item.item_name }}" type="text" class="validate" required>
-                                    <label for="item_name">Task Name</label>
+                                <!-- Item name -->
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="fas fa-pencil-alt prefix brown-text text-lighten-2"></i>
+                                        <input id="item_name" name="item_name" minlength="5" maxlength="50" 
+                                            value="{{ item.item_name }}" type="text" class="validate" required>
+                                        <label for="item_name">Task Name</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Item Decription -->
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>                    
-                                    <textarea id="item_description" name="item_description" class="materialize-textarea validate" minlength="5" 
-                                        maxlength="200" required>{{- item.item_description -}}</textarea>
-                                    <label for="item_description">Item Description</label>
+                                <!-- Item Decription -->
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="fas fa-pencil-alt prefix brown-text text-lighten-2"></i>                    
+                                        <textarea id="item_description" name="item_description" class="materialize-textarea validate" minlength="5" 
+                                            maxlength="200" required>{{- item.item_description -}}</textarea>
+                                        <label for="item_description">Item Description</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Item price -->
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="fas fa-dollar-sign prefix light-blue-text text-darken-4"></i>
-                                    <input id="item_price" name="item_price" minlength="5" maxlength="50" 
-                                        value="{{ item.item_price }}" pattern="^[0-9]{5,50}$" type="number" class="validate" required>
-                                    <label for="item_price">Item Price</label>
+                                <!-- Item price -->
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="fas fa-dollar-sign prefix brown-text text-lighten-2"></i>
+                                        <input id="item_price" name="item_price" minlength="5" maxlength="50" 
+                                            value="{{ item.item_price }}" pattern="^[0-9]{5,50}$" type="number" class="validate" required>
+                                        <label for="item_price">Item Price</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Contact number -->
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="fas fa-phone prefix light-blue-text text-darken-4"></i>
-                                    <input id="contact_number" name="contact_number" minlength="7" maxlength="15" 
-                                        value="{{ item.contact_number }}" pattern="^[0-9]{7,15}$" type="text" class="validate" required>
-                                    <label for="contact_number">Contact number</label>
+                                <!-- Contact number -->
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="fas fa-phone prefix brown-text text-lighten-2"></i>
+                                        <input id="contact_number" name="contact_number" minlength="7" maxlength="15" 
+                                            value="{{ item.contact_number }}" pattern="^[0-9]{7,15}$" type="text" class="validate" required>
+                                        <label for="contact_number">Contact number</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Email Address -->
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <i class="fas fa-envelope-square prefix light-blue-text text-darken-4"></i>
-                                    <input id="email" name="email" type="email" class="validate" value="{{ item.email }}" required>
-                                    <label for="email">Email Address</label>
+                                <!-- Email Address -->
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="fas fa-envelope-square prefix brown-text text-lighten-24"></i>
+                                        <input id="email" name="email" type="email" class="validate" value="{{ item.email }}" required>
+                                        <label for="email">Email Address</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Submit button -->
-                            <div class="row">
-                                <div class="col s12 center-align">
-                                    <button type="submit" class="btn-large light-blue darken-1 text-shadow">
-                                        Confirm<i class="fas fa-edit right"></i>
-                                    </button>
-                                    <a href="{{ url_for('all_items') }}" class="btn-large light-blue darken-1 text-shadow">
-                                        Cancel<i class="fas fa-times-circle right"></i>
-                                    </a>
+                                <!-- Submit button -->
+                                <div class="row">
+                                    <div class="col s12 center-align">
+                                        <button type="submit" class="btn-small waves-effect brown lighten-1 brown-text text-lighten-4">
+                                            Confirm<i class="fas fa-edit right"></i>
+                                        </button>
+                                        <a href="{{ url_for('all_items') }}" class="btn-small waves-effect brown lighten-1 brown-text text-lighten-4">
+                                            Cancel<i class="fas fa-times-circle right"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div> 
+                            </form>
+                        </div> 
+                    </div>
                 </div>
             </div>
-        </div>        
+        </section>        
     {% endblock %}
     
