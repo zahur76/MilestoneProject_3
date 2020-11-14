@@ -39,6 +39,16 @@ a {
     border-radius: 5px !important;
 }
 
+/* card and card panels --------------------------------------------*/
+
+.card {
+    border-radius: 10px;
+}
+
+.card-panel {
+    border-radius: 10px;
+}
+
 /* Main body--------------------------------------------------------*/
 body {
     background: #efebe9;       
