@@ -38,8 +38,8 @@
             </div>
         </nav>
         <!-- navbar on mobile devices -->
-        <ul class="sidenav brown" id="mobile-demo">
-            <h4 class="center-align white-text brand-logo">Artist for life</h4>
+        <ul class="sidenav brown" id="mobile-demo">            
+            <a href="{{ url_for('all_items') }}"><h4 class="center-align white-text brand-logo">Artist for life</h4></a>
             <li><a href="{{ url_for('all_items') }}" class="white-text" >Home</a></li>
             <li><a href="#" class="white-text" >About</a></li>                    
             {% if session.user %}
