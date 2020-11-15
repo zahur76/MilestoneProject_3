@@ -49,6 +49,10 @@ a {
     border-radius: 20px;
 }
 
+.card-image {
+    border-radius: 20px;
+}
+
 /* Main body--------------------------------------------------------*/
 body {
     background: #efebe9;       
