@@ -147,6 +147,12 @@ img {
     font-family: 'Fredericka the Great', cursive;  
 }
 
+#login-message, #register-message {
+    color: red;
+    margin: 0;
+    padding: 0;
+}
+
 /* Header/Navbar section---------------------------------------------*/
 .brand-logo {
     font-family: 'Fredericka the Great', cursive;    
