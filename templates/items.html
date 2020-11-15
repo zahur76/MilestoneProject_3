@@ -104,8 +104,13 @@
             </div>            
         </section>
         <!-- Materialize pagination -->
-        <ul class="pagination center-align">
-            <li class="disabled"><a href="#!"><i class="fas fa-chevron-left"></i></a></li>
+        <ul class="pagination center-align"> 
+            <!-- Activcate/deactivate arrow navs depending on page number -->           
+            {% if page_number == 0 %}                
+                <li class="disabled"><a href="#!"><i class="fas fa-chevron-left"></i></a></li>
+            {% else %}
+                <li class="waves-effect"><a href="{{ url_for('all_items', page_number = page_number -1 ) }}"><i class="fas fa-chevron-left"></i></a></li>
+            {% endif %} 
             {% for link in links %}
                 <!-- Display active link only if the page number is same as link -->
                 {% if link == page_number %}           
@@ -113,8 +118,13 @@
                 {% else %}
                     <li><a href="{{ url_for('all_items', page_number = link) }}">{{ link + 1 }}</a></li>
                 {% endif %}  
-            {% endfor %}          
-            <li class="waves-effect"><a href="#!"><i class="fas fa-chevron-right"></i></a></li>
+            {% endfor %}
+            <!-- Activcate/deactivate arrow navs depending on page number -->
+            {% if page_number + 1 == total_links %}                    
+                <li class="disabled"><a href="#!"><i class="fas fa-chevron-right"></i></a></li>
+            {% else %}
+                <li class="waves-effect"><a href="{{ url_for('all_items', page_number = page_number + 1 ) }}"><i class="fas fa-chevron-right"></i></a></li>
+            {% endif %}
         </ul>                 
     {% endblock %}   
     
