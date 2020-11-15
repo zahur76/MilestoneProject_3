@@ -42,9 +42,13 @@ $(document).ready(function(){
         console.log(flash_message)
         if(flash_message=="Incorrect Username/Password"){
             $("#login").modal("open");
+            /* Provide message in modal */
+            $("#login-message").text("Incorrect Username/Password")
         }
         if(flash_message=="Username already exists!"){
             $("#register").modal("open");
+            /* Provide message in modal */
+            $("#register-message").text("Username already exists!")
         }
     }, 3000 ); // 5 secs 
     
