@@ -85,7 +85,8 @@
     <!-- Registration Modal -->    
     <div id="register" class="modal">
         <div class="modal-content brown lighten-5"> 
-            <h4 class="center-align">Register</h4>            
+            <h4 class="center-align">Register</h4>
+            <p id="register-message" class="center-align"></p>                     
             <div class="row">                
                 <form class="col s12" method="POST" action="{{ url_for('register') }}">
                     <div class="row">
@@ -119,7 +120,8 @@
     <!-- login Modal -->    
     <div id="login" class="modal">
         <div class="modal-content brown lighten-5">             
-            <h4 class="center-align">Sign In</h4>            
+            <h4 class="center-align">Sign In</h4>
+            <p id="login-message" class="center-align"></p>               
             <div class="row">                
                 <form class="col s12" method="POST" action="{{ url_for('login') }}">
                     <div class="row">
@@ -144,6 +146,9 @@
                 <div class="row">
                     <div class="col s12">
                         <p class="center-align">New here? Register <a class="login-modal modal-trigger brown-text text-lighten-1" href="#register"> here</a></p>
+                    </div>
+                    <div class="col s12">
+                        <p id="login-message"></p>
                     </div>
                 </div>                
             </div>
