@@ -91,13 +91,13 @@
                 <form class="col s12" method="POST" action="{{ url_for('register') }}">
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="fas fa-user-plus prefix brown-text text-lighten-1"></i>
+                            <i class="fas fa-user-plus prefix brown-text text-lighten-2"></i>
                             <input id="username" name="username" type="text" minlength="5" maxlength="15" 
                                 pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                             <label class="black-text" for="username">Username</label>
                         </div>
                             <div class="input-field col s12">
-                            <i class="fas fa-user-lock prefix brown-text text-lighten-1"></i>
+                            <i class="fas fa-user-lock prefix brown-text text-lighten-2"></i>
                             <input id="password" name="password" type="password" minlength="5" maxlength="15" 
                                 pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                             <label class="black-text" for="password">Password</label>
@@ -105,13 +105,13 @@
                     </div>
                     <div class="row">
                         <button type="submit" class="submit col s12 m4 offset-m4 btn-large z-depth-5 waves-effect brown
-                            lighten-1 brown-text text-lighten-4"><strong>Submit</strong></button>
+                             lighten-2 brown-text text-lighten-5"><strong>Submit</strong></button>
                     </div>
                 </form>
                 <div class="row">
                     <div class="col s12">
                         <p class="center-align">Already registered?Login<a class="register-modal modal-trigger 
-                            brown-text text-lighten-1" href="#login"> here</a></p>
+                            brown-text" href="#login"> here</a></p>
                     </div>
                 </div>                
             </div>
@@ -126,13 +126,13 @@
                 <form class="col s12" method="POST" action="{{ url_for('login') }}">
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="fas fa-user-plus prefix brown-text text-lighten-1"></i>
+                            <i class="fas fa-user-plus prefix brown-text text-lighten-2"></i>
                             <input id="username2" name="username2" type="text" minlength="5" maxlength="15" 
                                 pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                             <label class="black-text" for="username2">Username</label>
                         </div>
                             <div class="input-field col s12">
-                            <i class="fas fa-user-lock prefix brown-text text-lighten-1"></i>
+                            <i class="fas fa-user-lock prefix brown-text text-lighten-2"></i>
                             <input id="password2" name="password2" type="password" minlength="5" maxlength="15" 
                                 pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                             <label class="black-text" for="password2">Password</label>
@@ -140,16 +140,13 @@
                     </div>
                     <div class="row">
                         <button id="login_submit" type="submit" class="submit col s12 m4 offset-m4 btn-large z-depth-5 waves-effect brown
-                            lighten-1 brown-text text-lighten-4"><strong>Submit</strong></button>
+                                 lighten-2 brown-text text-lighten-5"><strong>Submit</strong></button>
                     </div>
                 </form>
                 <div class="row">
                     <div class="col s12">
-                        <p class="center-align">New here? Register <a class="login-modal modal-trigger brown-text text-lighten-1" href="#register"> here</a></p>
-                    </div>
-                    <div class="col s12">
-                        <p id="login-message"></p>
-                    </div>
+                        <p class="center-align">New here? Register <a class="login-modal modal-trigger brown-text" href="#register"> here</a></p>
+                    </div>                    
                 </div>                
             </div>
         </div>
