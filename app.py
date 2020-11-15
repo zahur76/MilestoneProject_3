@@ -47,7 +47,8 @@ def all_items(page_number=0):
 
     return render_template(
         "items.html", profile_list=profile_list,
-        items=items, links=link_list, page_number=int(page_number))
+        items=items, links=link_list, page_number=int(page_number),
+        total_links=links_number)
 
 
 # Registration modal
