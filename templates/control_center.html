@@ -20,10 +20,10 @@
                                         </div>
                                         <div class="col s8 m7">
                                             <a href="{{ url_for('edit_profile', profile_id=profile._id) }}" 
-                                                class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
+                                                class="z-depth-3 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
                                                 <i class="far fa-edit"></i> Edit</a>
                                             <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" 
-                                                class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
+                                                class="z-depth-3 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
                                                 <i class="fas fa-trash-alt "></i> Delete
                                             </a>
                                         </div>                                                                        
@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="col s5 m4 offset-m5 offset-s4">
                                         <a href="{{ url_for('add_category') }}" 
-                                            class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
+                                            class="z-depth-3 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
                                             <i class="fas fa-plus"></i> Category
                                         </a> 
                                     </div>
@@ -47,11 +47,11 @@
                                         </div>
                                         <div class="col s8 m7">
                                             <a href="{{ url_for('edit_category', category_id=category._id) }}" 
-                                                class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
+                                                class="z-depth-3 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
                                                 <i class="far fa-edit"></i> Edit
                                             </a> 
                                             <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_category', category_id=category._id) }}" 
-                                                class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
+                                                class="z-depth-3 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
                                                 <i class="fas fa-trash-alt "></i> Delete
                                             </a>
                                         </div>                                                                        
@@ -69,10 +69,10 @@
                                         </div>
                                         <div class="col s8 m7">
                                             <a href="{{ url_for('edit_item', item_id = item._id) }}" 
-                                                class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
+                                                class="z-depth-5 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
                                                 <i class="far fa-edit"></i> Edit</a> 
                                             <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
-                                                class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
+                                                class="z-depth-5 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
                                                 <i class="fas fa-trash-alt "></i> Delete
                                             </a>
                                         </div>                                                                        
