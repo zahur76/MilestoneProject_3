@@ -24,7 +24,7 @@ mongo = PyMongo(app)
 # Main Page
 @app.route("/")
 @app.route("/<page_number>")
-#  Set default value to 1
+#  Set default value to 0
 def all_items(page_number=0):
     # Find all items in item database
     complete_item_list = list(mongo.db.items.find())
