@@ -28,28 +28,7 @@
                                             </a>
                                         </div>                                                                        
                                     </div>
-                                {% endfor %}
-                                <div class="row">
-                                    <div class="col s12">
-                                        <h3 class="center-align">Items</h3>
-                                    </div>
-                                </div>
-                                {% for item in items %}
-                                    <div class="profile row">
-                                        <div class="col s4 m5">
-                                            <p class="right-align black-text">{{ item.item_name }}</p>
-                                        </div>
-                                        <div class="col s8 m7">
-                                            <a href="{{ url_for('edit_item', item_id = item._id) }}" 
-                                                class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
-                                                <i class="far fa-edit"></i> Edit</a> 
-                                            <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
-                                                class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
-                                                <i class="fas fa-trash-alt "></i> Delete
-                                            </a>
-                                        </div>                                                                        
-                                    </div>
-                                {% endfor %}
+                                {% endfor %} 
                                 <div class="row">
                                     <div class="col s12">
                                         <h3 class="center-align">Categories</h3>
@@ -78,9 +57,30 @@
                                         </div>                                                                        
                                     </div>
                                 {% endfor %}
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <h3 class="center-align">Items</h3>
+                                        </div>
+                                    </div>
+                                {% for item in items %}
+                                    <div class="profile row">
+                                        <div class="col s4 m5">
+                                            <p class="right-align black-text">{{ item.item_name }}</p>
+                                        </div>
+                                        <div class="col s8 m7">
+                                            <a href="{{ url_for('edit_item', item_id = item._id) }}" 
+                                                class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
+                                                <i class="far fa-edit"></i> Edit</a> 
+                                            <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
+                                                class="z-depth-3 btn-small waves-effect brown lighten-1 brown-text text-lighten-5">
+                                                <i class="fas fa-trash-alt "></i> Delete
+                                            </a>
+                                        </div>                                                                        
+                                    </div>
+                                {% endfor %}                                
                             </div>
                         </div>
-                    <div>                                
+                    </div>                                
                 </div>
             </section>
         {% endif %}
