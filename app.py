@@ -1,5 +1,6 @@
 import os
 import uuid
+import math
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -22,17 +23,31 @@ mongo = PyMongo(app)
 
 # Main Page
 @app.route("/")
-def all_items():
+@app.route("/<page_number>")
+#  Set default value to 1
+def all_items(page_number=0):
     # Find all items in item database
-    items = list(mongo.db.items.find())
+    complete_item_list = list(mongo.db.items.find())
     profiles = list(mongo.db.profile.find())
     profile_list = []
     # Create a list of users with profiles for comparison in items page
     for profile in profiles:
         profile_list.append(profile["username"])
 
+    # Pagination
+    items_per_page = 5
+    # Find first index of list to show on items page
+    index_1 = int(page_number) * items_per_page
+    # Slice items list depending on page number
+    items = complete_item_list[index_1:(index_1)+items_per_page]
+    # Total list count required to display paginations numbers
+    total = (mongo.db.items.find()).count()
+    links_number = math.ceil(total/items_per_page)
+    link_list = list(range(links_number))
+
     return render_template(
-        "items.html", items=items, profile_list=profile_list)
+        "items.html", profile_list=profile_list,
+        items=items, links=link_list, page_number=int(page_number))
 
 
 # Registration modal
