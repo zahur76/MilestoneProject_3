@@ -10,7 +10,7 @@
                                 <!-- Profile Image Upload -->
                                 <div class="row">                                
                                     <div class="input-field col s12">                                    
-                                        <i class="fas fa-folder-open prefix brown-text text-lighten-1"></i>
+                                        <i class="fas fa-folder-open prefix brown-text text-lighten-2"></i>
                                         <input class="tooltipped validate" data-position="top" data-tooltip="Change Profile Image if you want!" 
                                             id="profile_image" name="profile_image" type="file">
                                         <label for="profile_image"></label>                                   
@@ -19,7 +19,7 @@
                                 <!-- Profile user fullname -->
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <i class="fas fa-pencil-alt prefix brown-text text-lighten-1"></i>
+                                        <i class="fas fa-pencil-alt prefix brown-text text-lighten-2"></i>
                                         <input id="profile_fullname" name="profile_fullname" minlength="5" maxlength="50" 
                                             value="{{ profile.full_name }}" type="text" class="validate" required>
                                         <label for="profile_fullname">Full name</label>
@@ -28,7 +28,7 @@
                                 <!-- Profile user Description -->
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <i class="fas fa-pencil-alt prefix brown-text text-lighten-1"></i>                    
+                                        <i class="fas fa-pencil-alt prefix brown-text text-lighten-2"></i>                    
                                         <textarea id="profile_description" name="profile_description" class="materialize-textarea validate" minlength="5" 
                                             maxlength="200" required>
                                                 {{- profile.profile_description -}}
@@ -39,12 +39,12 @@
                                 <!-- Submit button -->
                                 <div class="row">
                                     <div class="col s12 center-align">
-                                        <button type="submit" class="z-depth-3 waves-effect btn-small brown 
-                                            lighten-1 brown-text text-lighten-5">
+                                        <button type="submit" class="z-depth-5 waves-effect btn-small brown 
+                                            lighten-2 brown-text text-lighten-5">
                                             Confirm<i class="fas fa-square right"></i>
                                         </button>
-                                        <a href="{{ url_for('all_items') }}" class="z-depth-3 waves-effect btn-small brown
-                                             lighten-1 brown-text text-lighten-5">
+                                        <a href="{{ url_for('all_items') }}" class="z-depth-5 waves-effect btn-small brown
+                                             lighten-2 brown-text text-lighten-5">
                                             Cancel<i class="fas fa-times-circle right"></i>
                                         </a>
                                     </div>
