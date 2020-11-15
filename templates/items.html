@@ -1,5 +1,5 @@
 {% extends 'base.html' %}    
-    {% block content %}                            
+    {% block content %}                                
         <div class="hero-image">
             <div class="banner">
                 <h2 class="white-text center-align banner-text">“To be an artist is to believe in life.”</h2>
@@ -15,11 +15,24 @@
             <div class="col s4 hide-on-med-and-down">                
             </div>
         </div>
-        <section class="page-background">      
+        <!-- Materialize pagination -->
+        <ul class="pagination center-align">
+            <li class="disabled"><a href="#!"><i class="fas fa-chevron-left"></i></a></li>
+            {% for link in links %}
+                <!-- Display active link only if the page number is same as link -->
+                {% if link == page_number %}           
+                    <li class="active grey darken-2"><a href="{{ url_for('all_items', page_number = link) }}">{{ link + 1 }}</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('all_items', page_number = link) }}">{{ link + 1 }}</a></li>
+                {% endif %}  
+            {% endfor %}          
+            <li class="waves-effect"><a href="#!"><i class="fas fa-chevron-right"></i></a></li>
+        </ul>                 
+        <section class="page-background">                   
             <div class="row add-item-row">
-                <div class="col s10 offset-s1 m-8 l6 offset-l2">                
-                    {% for item in items %}
-                        <br>
+                <div class="col s10 offset-s1 m-8 l6 offset-l2">                                       
+                    {% for item in items %}                    
+                        <br>                         
                         <div class="card-panel brown lighten-3">
                             {% if session.user == item.username or session.user=="admin" %}
                                 <div class="row">                            
@@ -65,9 +78,9 @@
                                     {% endif %}                                                                                               
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}                
-                </div>
+                        </div>                        
+                    {% endfor %}                                  
+                </div>                
                 <div class="item-links col m2 offset-m2 hide-on-med-and-down">
                     <h5 class="center-align white-text item-list">Item list</h5>
                     {% for item in items %}
@@ -77,7 +90,20 @@
                         </ul>
                     {% endfor %}
                 </div>
-            </div>
-        </section>                 
+            </div>            
+        </section>
+        <!-- Materialize pagination -->
+        <ul class="pagination center-align">
+            <li class="disabled"><a href="#!"><i class="fas fa-chevron-left"></i></a></li>
+            {% for link in links %}
+                <!-- Display active link only if the page number is same as link -->
+                {% if link == page_number %}           
+                    <li class="active grey darken-2"><a href="{{ url_for('all_items', page_number = link) }}">{{ link + 1 }}</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('all_items', page_number = link) }}">{{ link + 1 }}</a></li>
+                {% endif %}  
+            {% endfor %}          
+            <li class="waves-effect"><a href="#!"><i class="fas fa-chevron-right"></i></a></li>
+        </ul>                 
     {% endblock %}   
     
