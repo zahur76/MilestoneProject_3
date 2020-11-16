@@ -1,0 +1,146 @@
+{% extends 'base.html' %}    
+    {% block content %}                                
+        <div class="hero-image">
+            <div class="banner">
+                <h2 class="white-text center-align banner-text">“To be an artist is to believe in life.”</h2>
+                <p class="white-text center-align"> - Henry Moore </p>
+            </div>            
+        </div>        
+        <div class="row">
+            <div class="col s4 hide-on-med-and-down">                 
+            </div>
+            <div class="col s12">
+                <h3 class="center-align black-text">Items for sale</h3> 
+            </div>
+            <div class="col s4 hide-on-med-and-down">                
+            </div>
+        </div>
+        <!-- Search bar -->
+        <div class="container">        
+            <div class="row card-panel grey lighten-5">
+                <form action="{{ url_for('search', page_number = page_number) }}" method="post" class="col s12">
+                    <div class="row valign-wrapper center-align">
+                        <div class="input-field col s12 m8">
+                            <i class="fas fa-search prefix light-blue-text text-darken-4"></i>
+                            <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                            <label for="query">Search Categories</label>
+                        </div>
+                        <div class="col s12 m4">
+                            <a href="{{ url_for('all_items') }}" class="red btn text-shadow">Reset</a>
+                            <button type="submit" class="light-blue darken-1 btn text-shadow">
+                                <i class="fas fa-search left"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Materialize pagination -->
+        <ul class="pagination center-align"> 
+            <!-- Activcate/deactivate arrow navs depending on page number -->           
+            {% if page_number == 0 %}                
+                <li class="disabled"><a href="#!"><i class="fas fa-chevron-left"></i></a></li>
+            {% else %}
+                <li class="waves-effect"><a href="{{ url_for('search', page_number = page_number -1, query = query) }}"><i class="fas fa-chevron-left"></i></a></li>
+            {% endif %} 
+            {% for link in links %}
+                <!-- Display active link only if the page number is same as link -->
+                {% if link == page_number %}           
+                    <li class="active grey darken-2"><a href="{{ url_for('search', page_number = link, query = query) }}">{{ link + 1 }}</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('search', page_number = link, query = query) }}">{{ link + 1 }}</a></li>
+                {% endif %}  
+            {% endfor %}
+            <!-- Activcate/deactivate arrow navs depending on page number -->
+            {% if page_number + 1 == total_links %}                    
+                <li class="disabled"><a href="#!"><i class="fas fa-chevron-right"></i></a></li>
+            {% else %}
+                <li class="waves-effect"><a href="{{ url_for('search', page_number = page_number + 1, query = query) }}"><i class="fas fa-chevron-right"></i></a></li>
+            {% endif %}
+        </ul>                 
+        <section class="page-background">                   
+            <div class="row add-item-row">
+                <div class="col s10 offset-s1 m-8 l6 offset-l2">                                       
+                    {% for item in items %}                    
+                        <br>                         
+                        <div class="card-panel medium brown lighten-5">
+                            {% if session.user == item.username or session.user=="admin" %}
+                                <div class="row">                            
+                                    <div class="col s12">
+                                        <!-- Check to see if creater of item or admin is logged in -->
+                                        <!-- Permits user/admin to modify/delete item-->                                    
+                                        <a href="{{ url_for('edit_item', item_id = item._id) }}" class="waves-effect brown lighten-2 brown-text text-lighten-5
+                                            z-depth-3 brown waves-light btn-small">
+                                            <i class="far fa-edit"></i>Edit</a> 
+                                            <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
+                                                class="z-depth-3 waves-effect brown waves-light btn-small brown lighten-2 brown-text text-lighten-5">
+                                            <i class="fas fa-trash-alt "></i> Delete
+                                        </a>                          
+                                    </div>                                                    
+                                </div>
+                            {% endif %}  
+                            <div class="row item-header">
+                                <!-- Provide item id for scrollspy since it is unique -->
+                                <p id= "{{ item._id }}"></p>
+                                <div class="col s12">
+                                    <h5 class="center-align" style="border-bottom: 1px solid black" 
+                                        id="{{ item.username }}"><strong>{{ item.item_name }}</strong></h5>                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m6">
+                                    <img src="{{ url_for('file', filename = item.item_image) }}" class="materialboxed"
+                                        alt="{{ item.item_name }}">
+                                </div>
+                                <div class="information col s12 m6">
+                                    <p class="first_item"><strong>Category:</strong> {{ item.item_category }}</p>                                    
+                                    <p><strong>Description:</strong><br>{{ item.item_description }}</p>
+                                    <p><strong>Price Rs:</strong> {{ item.item_price}}</p>
+                                    <p><strong>seller:</strong> {{ item.username}}</p>
+                                    <p><strong>contact number:</strong> {{ item.contact_number }}</p>
+                                    <p><strong>Email:</strong> {{ item.email }}</p>
+                                    <!-- Provides link to profile page -->
+                                    <a href="{{ url_for('profile' , username=item.username) }}" 
+                                    class="z-depth-3 waves-effect brown lighten-2 brown-text text-lighten-5 waves-light btn">
+                                        Seller Profile</a>                                                                                                                                   
+                                </div>
+                            </div>
+                        </div>                        
+                    {% endfor %}                                  
+                </div>                
+                <div class="item-links col m2 offset-m2 hide-on-med-and-down">
+                    <h5 class="center-align white-text item-list">Item list</h5>
+                    {% for item in items %}
+                        <ul class="center-align">    
+                            <!-- Use username for scrollspy reference since it remains unchanged after edit -->
+                            <li><a class="white-text" href="#{{ item._id }}">{{ item.item_name }}</a></li>                   
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>            
+        </section>
+        <!-- Materialize pagination -->
+        <ul class="pagination center-align"> 
+            <!-- Activcate/deactivate arrow navs depending on page number -->           
+            {% if page_number == 0 %}                
+                <li class="disabled"><a href="#!"><i class="fas fa-chevron-left"></i></a></li>
+            {% else %}
+                <li class="waves-effect"><a href="{{ url_for('search', page_number = page_number -1, query = query) }}"><i class="fas fa-chevron-left"></i></a></li>
+            {% endif %} 
+            {% for link in links %}
+                <!-- Display active link only if the page number is same as link -->
+                {% if link == page_number %}           
+                    <li class="active grey darken-2"><a href="{{ url_for('search', page_number = link, query = query) }}">{{ link + 1 }}</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('search', page_number = link, query = query) }}">{{ link + 1 }}</a></li>
+                {% endif %}  
+            {% endfor %}
+            <!-- Activcate/deactivate arrow navs depending on page number -->
+            {% if page_number + 1 == total_links %}                    
+                <li class="disabled"><a href="#!"><i class="fas fa-chevron-right"></i></a></li>
+            {% else %}
+                <li class="waves-effect"><a href="{{ url_for('search', page_number = page_number + 1, query = query) }}"><i class="fas fa-chevron-right"></i></a></li>
+            {% endif %}
+        </ul>                 
+    {% endblock %}   
+    
