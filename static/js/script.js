@@ -8,6 +8,7 @@ $(document).ready(function(){
     $('.tooltipped').tooltip();
     /* Scrollspy for main item page from materialize */
     $('.scrollspy').scrollSpy();
+    /* Media box from materialize */
     $('.materialboxed').materialbox();  
     
     /* Function to ensure modal does not close if fields are invalid */
@@ -44,7 +45,7 @@ $(document).ready(function(){
         if(flash_message=="Incorrect Username/Password"){
             $("#login").modal("open");
             /* Provide message in modal */
-            $("#login-message").text("Incorrect Username/Password")
+            $("#login-message").text("!Incorrect Username/Password")
         }
         if(flash_message=="Username already exists!"){
             $("#register").modal("open");
