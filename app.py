@@ -51,6 +51,36 @@ def all_items(page_number=0):
         total_links=links_number)
 
 
+@app.route("/search/<page_number>", methods=["GET", "POST"])
+@app.route("/search/<page_number>/<query>", methods=["GET", "POST"])
+def search(page_number=0, query=""):
+    # Check to verify if new search or previous search
+    if request.method == "POST":
+        # New request
+        query = request.form.get("query")
+    else:
+        # Previous request with links being used to change page
+        query == query
+    # Obtain list of items matching search criteria
+    complete_item_list = list(mongo.db.items.find(
+        {"$text": {"$search": query}}))
+
+    # Pagination
+    items_per_page = 5
+    # Find first index of list to show on items page
+    index_1 = int(page_number) * items_per_page
+    # Slice items list depending on page number
+    items = complete_item_list[index_1:(index_1)+items_per_page]
+    # Total list count required to display paginations numbers
+    item_list_count = len(complete_item_list)
+    links_number = math.ceil(item_list_count/items_per_page)
+    link_list = list(range(links_number))
+    # Query sent to be used as reference when changing pages
+    return render_template(
+        "search_items.html", items=items, links=link_list,
+        page_number=int(page_number), total_links=links_number, query=query)
+
+
 # Registration modal
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -115,8 +145,9 @@ def profile(username):
     # Find user and profile database for username
     user = mongo.db.users.find_one({"username": username})
     profile = mongo.db.profile.find_one({"username": username})
+    items = list(mongo.db.items.find({"username": username}))
     return render_template(
-        'profile.html', username=user, profile=profile)
+        'profile.html', username=user, profile=profile, items=items)
 
 
 # Add Profile info to profile page
