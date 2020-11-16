@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
-    {% block content %} 
+    {% block content %}     
+    {{ items }}
+    {{ items[0].email }}
         <h3 class="center-align">{{ username.username }}'s Profile Page</h3>
         <div class="row">                
             <div class="col s12 m6 offset-m3">
@@ -27,21 +29,30 @@
                     {% endif %}
                 {% else %}
                 {% endif %}
-            </div>                
+            </div>
+            {% if profile %}            
+            {% else %}
+                <div class="col s12 center-align">
+                    <p style="margin-bottom: 0;"><strong>Email:</strong> {{ items[0].email }}</p><br>
+                    <p style="margin-top: 0;"><strong>Contact number:</strong> {{ items[0].contact_number }}</p>
+                </div>
+            {% endif %}                
         </div> 
         <section class="page-background"> 
             <div class="container">                             
                 {% if profile %} 
                     <div class="row">
                         <div class="col s12 m6 offset-m3">
-                            <div class="card large brown lighten-5" style="margin-top: 40px;">
+                            <div class="card large brown lighten-5" style="margin-top: 40px; border-radius: 0;">
                                 <div class="card-image">
                                     <img src="{{ url_for('file', filename = profile.profile_image ) }}">                                
                                 </div>
-                                <div class="card-content">
-                                    <span class="card-title">{{ profile.full_name }}</span>
-                                    {{ profile.profile_description }}
-                                </div>                            
+                                <div class="card-content center-align">
+                                    <span class="card-title"><strong>{{ profile.full_name }}</strong></span>
+                                    {{ profile.profile_description }}<br><br>
+                                    <strong>Email:</strong> {{ items[0].email }}<br>
+                                    <strong>Contact number:</strong> {{ items[0].contact_number }}
+                                </div>                                                          
                             </div>
                         </div>
                     </div>    
