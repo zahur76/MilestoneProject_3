@@ -84,7 +84,7 @@
                                 {% endif %}
                                 <p class="white-text center-align">{{ item.item_name }}</p>                               
                                 <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
-                                    style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }}"
+                                    style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                     alt="{{ item.item_name }}">                            
                             </div>
                         {% endfor %} 
