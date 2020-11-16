@@ -48,6 +48,7 @@ a {
     border-radius: 20px;
 }
 
+
 /* Main body--------------------------------------------------------*/
 body {
     background: #efebe9;       
@@ -88,7 +89,7 @@ li a {
 
 img {
     width: 100%;
-    max-height: 300px; 
+    height: auto; 
     object-fit: cover;     
 }
 
