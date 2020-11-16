@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-    {% block content %}  
+    {% block content %}         
         <h3 class="center-align">{{ username.username }}'s Profile Page</h3>
         <div class="row">                
             <div class="col s12 m6 offset-m3">
@@ -30,7 +30,7 @@
             </div>
             {% if profile %}            
             {% else %}
-                {% if item %}                
+                {% if items %}                
                 <div class="col s12 center-align">
                     <p style="margin-bottom: 0;"><strong>Email:</strong> {{ items[0].email }}</p><br>
                     <p style="margin-top: 0;"><strong>Contact number:</strong> {{ items[0].contact_number }}</p>                
@@ -38,7 +38,7 @@
                 {% endif %}                   
             {% endif %}                
         </div> 
-        <section class="page-background"> 
+        <section class="page-background" style="padding-bottom: 20px;"> 
             <div class="container">                             
                 {% if profile %} 
                     <div class="row">
@@ -50,7 +50,7 @@
                                 <div class="card-content center-align">
                                     <span class="card-title"><strong>{{ profile.full_name }}</strong></span>
                                     {{ profile.profile_description }}<br><br>
-                                    {% if item %}                                     
+                                    {% if items %}                                     
                                         <strong>Email:</strong> {{ items[0].email }}<br>
                                         <strong>Contact number:</strong> {{ items[0].contact_number }}
                                     {% endif %}                                    
@@ -65,7 +65,7 @@
                     <div class="row">
                         {% for item in items %}
                         <div class="col s12 m6 l4">
-                            <img src="{{ url_for('file', filename = item.item_image ) }}">
+                            <img src="{{ url_for('file', filename = item.item_image ) }}" style="height: 300px; margin-bottom: 20px">
                         </div>
                         {% endfor %} 
                     </div>
