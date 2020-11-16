@@ -29,7 +29,6 @@ h5 {
     width: 500px;     
 }
 
-
 /* Button section --------------------------------------------------*/
 button {
     border-radius: 5px !important;
@@ -46,10 +45,6 @@ a {
 }
 
 .card-panel {
-    border-radius: 20px;
-}
-
-.card-image {
     border-radius: 20px;
 }
 
@@ -140,11 +135,20 @@ img {
 
 /* Modal section----------------------------------------------------*/
 .modal {
-    border-radius: 10px;    
+    border-radius: 10px;        
+}
+
+.modal-content {
+    background: url("../images/paint-brushes.png");
+    background-size: cover;
+    background-repeat: no-repeat;    
 }
 
 .modal-content h4 {
-    font-family: 'Fredericka the Great', cursive;  
+    font-family: 'Fredericka the Great', cursive;
+    border-radius: 10px;   
+    background-size: cover;
+    background-repeat: no-repeat;   
 }
 
 #login-message, #register-message {
@@ -206,5 +210,3 @@ img {
         font-size: 40px !important;
     }
 }
-
-
