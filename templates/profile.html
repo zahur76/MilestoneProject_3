@@ -63,12 +63,10 @@
                             </div>
                         </div>
                     </div>    
-                {% else %} 
-                        <h3 class="center-align white-text" style="border-bottom: 1px solid white; padding-top:40px;">
-                            No profile to show</h3>
-                {% endif %}
-                    {% if item %} 
-                    <h3 class="center-align white-text" style="border-bottom: 1px solid white">My work</h3>
+                {% else %}                        
+                {% endif %}                    
+                    {% if items %} 
+                    <h3 class="center-align white-text" style="border-bottom: 1px solid white; padding-top: 20px;">My work</h3>
                     {% endif %}               
                     <div class="row">
                         {% for item in items %}                       
