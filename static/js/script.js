@@ -7,7 +7,8 @@ $(document).ready(function(){
     $('select').formSelect();
     $('.tooltipped').tooltip();
     /* Scrollspy for main item page from materialize */
-    $('.scrollspy').scrollSpy();  
+    $('.scrollspy').scrollSpy();
+    $('.materialboxed').materialbox();  
     
     /* Function to ensure modal does not close if fields are invalid */
     $(".submit").click(function(){
