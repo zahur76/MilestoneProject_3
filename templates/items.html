@@ -78,15 +78,10 @@
                                     <p><strong>seller:</strong> {{ item.username}}</p>
                                     <p><strong>contact number:</strong> {{ item.contact_number }}</p>
                                     <p><strong>Email:</strong> {{ item.email }}</p>
-                                    <!-- Check whether profile exists for that user to expose profile button-->                                     
-                                    {% if item.username in profile_list %}
-                                        <a href="{{ url_for('profile' , username=item.username) }}" 
-                                            class="z-depth-3 waves-effect brown lighten-2 brown-text text-lighten-5 waves-light btn">View Profile</a>
-                                    <!-- If profile does not exist for signed in user in database--> 
-                                    {% elif item.username not in profile_list and item.username == session.user %}
-                                        <a href="{{ url_for('profile' , username=session['user']) }}" 
-                                            class="z-depth-3 waves-effect brown lighten-2 brown-text text-lighten-5 waves-light btn">View Profile</a>
-                                    {% endif %}                                                                                               
+                                    <!-- Provides link to profile page -->
+                                    <a href="{{ url_for('profile' , username=item.username) }}" 
+                                    class="z-depth-3 waves-effect brown lighten-2 brown-text text-lighten-5 waves-light btn">View Profile</a>
+                                                                                                                                   
                                 </div>
                             </div>
                         </div>                        
