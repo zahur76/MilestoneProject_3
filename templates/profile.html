@@ -68,8 +68,20 @@
                 {% endif %} 
                     <h3 class="center-align white-text" style="border-bottom: 1px solid white">My work</h3>               
                     <div class="row">
-                        {% for item in items %}
+                        {% for item in items %}                       
                             <div class="col s12 m6 l4">
+                                {% if session.user == item.username or session.user == admin %}
+                                    <div class="center-align" style="margin-bottom: 20px;">
+                                        <a href="{{ url_for('edit_item', item_id = item._id) }}" class="waves-effect brown lighten-2 brown-text text-lighten-5
+                                            z-depth-3 brown waves-light btn-small">
+                                            <i class="far fa-edit"></i>Edit</a> 
+                                            <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
+                                                class="z-depth-3 waves-effect brown waves-light btn-small brown lighten-2 brown-text text-lighten-5">
+                                            <i class="fas fa-trash-alt "></i> Delete
+                                        </a>
+                                    </div>                          
+                                {% endif %}
+                                <p class="white-text center-align">{{ item.item_name }}</p>                               
                                 <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
                                     style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }}">                            
                             </div>
