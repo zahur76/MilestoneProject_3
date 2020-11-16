@@ -43,18 +43,22 @@
                 {% if profile %} 
                     <div class="row">
                         <div class="col s12 m6 offset-m3">
-                            <div class="card large brown lighten-5" style="margin-top: 40px; border-radius: 0;">
-                                <div class="card-image">
-                                    <img src="{{ url_for('file', filename = profile.profile_image ) }}">                                
-                                </div>
-                                <div class="card-content center-align">
-                                    <span class="card-title"><strong>{{ profile.full_name }}</strong></span>
-                                    {{ profile.profile_description }}<br><br>
-                                    {% if items %}                                     
-                                        <strong>Email:</strong> {{ items[0].email }}<br>
-                                        <strong>Contact number:</strong> {{ items[0].contact_number }}
-                                    {% endif %}                                    
-                                </div>                                                          
+                            <div class="brown lighten-5" style="margin-top: 40px; border-radius: 0;">
+                                <div class="row">
+                                    <div class="col s12">
+                                         <img src="{{ url_for('file', filename = profile.profile_image ) }}"> 
+                                    </div>
+                                    <div class="col s12">
+                                        <div class="card-content center-align" style="margin-bottom: 20px;">
+                                            <span class="card-title"><strong>{{ profile.full_name }}</strong></span><br>
+                                            {{ profile.profile_description }}<br><br>
+                                            {% if items %}                                     
+                                                <strong>Email:</strong> {{ items[0].email }}<br>
+                                                <strong>Contact number:</strong> {{ items[0].contact_number }}
+                                            {% endif %}                                    
+                                        </div> 
+                                    </div>
+                                </div>                                        
                             </div>
                         </div>
                     </div>    
