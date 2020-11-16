@@ -69,7 +69,8 @@
                             </div>
                             <div class="row">
                                 <div class="col s12 m6">
-                                    <img src="{{ url_for('file', filename = item.item_image) }}" class="materialboxed">
+                                    <img src="{{ url_for('file', filename = item.item_image) }}" class="materialboxed"
+                                        alt="{{ item.item_name }}">
                                 </div>
                                 <div class="information col s12 m6">
                                     <p class="first_item"><strong>Category:</strong> {{ item.item_category }}</p>                                    
