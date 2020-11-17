@@ -8,6 +8,7 @@ html {
 }
 
 /* fonts -----------------------------------------------*/
+
 h3 {
     font-family: 'Parisienne', cursive;
     border-bottom: 1px solid rgb(0, 0, 0);
@@ -30,6 +31,7 @@ h5 {
 }
 
 /* Button section --------------------------------------------------*/
+
 button {
     border-radius: 5px !important;
 }
@@ -39,6 +41,7 @@ a {
 }
 
 /* Main body--------------------------------------------------------*/
+
 body {
     background: #efebe9;       
     display: flex;
@@ -47,6 +50,7 @@ body {
 }
 
 /* Required for sticky footer --------------------------------------*/
+
 main {
     flex: 1 0 auto;
 }
@@ -78,7 +82,15 @@ li a {
 
 img {
     width: 100%;
-    height: 300px; 
+    height: 300px;; 
+    object-fit: contain;         
+}
+
+/* Images for profile page --------------------------------------------*/
+
+.profile img {
+    width: 100%;
+    height: auto; 
     object-fit: cover;         
 }
 
@@ -100,6 +112,7 @@ img {
 }
 
 /* Add Item page --------------------------------------------------*/
+
 .page-background {
     background: linear-gradient(rgba(58, 50, 50, 0.6), rgba(0, 0, 0, 0.6)),url("../images/background-image.png");
     background-size: cover;
@@ -114,6 +127,7 @@ img {
 }
 
 /* Control center --------------------------------------------------*/
+
 .control-background {
     background: linear-gradient(rgba(58, 50, 50, 0.6), rgba(0, 0, 0, 0.6)),url("../images/mother_board.jpg");
     background-size: cover;
@@ -124,6 +138,7 @@ img {
 }
 
 /* Modal section----------------------------------------------------*/
+
 .modal {
     border-radius: 10px;        
 }
@@ -148,6 +163,7 @@ img {
 }
 
 /* Header/Navbar section---------------------------------------------*/
+
 .brand-logo {
     font-family: 'Fredericka the Great', cursive;    
     margin-left: 10px;
@@ -158,6 +174,7 @@ img {
 }
 
 /* Media Screen section ---------------------------------------------*/
+
 @media screen and (max-width: 576px){
     .brand-logo {
         font-size: 26px !important;        
@@ -188,11 +205,11 @@ img {
     .banner-text {
         margin-bottom: 0px;        
         font-size: 22px !important;
-    } 
+    }
 
     img {
         height: 250px;
-    }
+    }    
 }
 
 @media screen and (min-width: 577px) and (max-width:768px){
