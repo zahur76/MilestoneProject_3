@@ -38,17 +38,6 @@ a {
     border-radius: 5px !important;
 }
 
-/* card and card panels --------------------------------------------*/
-
-.card {
-    border-radius: 20px;
-}
-
-.card-panel {
-    border-radius: 20px;
-}
-
-
 /* Main body--------------------------------------------------------*/
 body {
     background: #efebe9;       
@@ -90,7 +79,7 @@ li a {
 img {
     width: 100%;
     height: auto; 
-    object-fit: cover;     
+    object-fit: cover;         
 }
 
 .information {
