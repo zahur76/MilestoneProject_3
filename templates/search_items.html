@@ -34,6 +34,12 @@
                 </form>                
             </div>
         </div>
+        <div class="center-align">
+            <h4 >Matches: {{ total }}</h4>
+            <a href="{{ url_for('all_items') }}" class="waves-effect brown lighten-2 brown-text text-lighten-5
+                            z-depth-5 brown waves-light btn">
+                            Reset Search</a>
+        </div>
         <!-- Materialize pagination -->
         <ul class="pagination center-align"> 
             <!-- Activcate/deactivate arrow navs depending on page number -->           
