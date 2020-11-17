@@ -45,7 +45,7 @@
                         <div class="col s12 m6 offset-m3 l4 offset-l4">
                             <div class="brown lighten-5" style="margin-top: 40px; border-radius: 0;">
                                 <div class="row">
-                                    <div class="col s12">
+                                    <div class="profile col s12">
                                          <img src="{{ url_for('file', filename = profile.profile_image ) }}" 
                                             alt="{{ profile.full_name }}"> 
                                     </div>
@@ -70,7 +70,7 @@
                 {% endif %}               
                 <div class="row">
                     {% for item in items %}                       
-                        <div class="col s12 m6 l4">
+                        <div class="profile col s12 m6 l4">
                             <p class="white-text center-align">{{ item.item_name }}</p>  
                             {% if session.user == item.username or session.user == "admin" %}
                                 <div class="center-align" style="margin-bottom: 20px;">
