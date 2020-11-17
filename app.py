@@ -80,7 +80,8 @@ def search(page_number=0, query=""):
     # Query sent to be used as reference when changing pages
     return render_template(
         "search_items.html", items=items, links=link_list,
-        page_number=int(page_number), total_links=links_number, query=query)
+        page_number=int(page_number), total_links=links_number,
+        total=item_list_count, query=query)
 
 
 # Registration modal
