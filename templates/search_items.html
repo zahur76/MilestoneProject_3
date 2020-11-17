@@ -57,7 +57,14 @@
                 <li class="waves-effect"><a href="{{ url_for('search', page_number = page_number + 1, query = query) }}"><i class="fas fa-chevron-right"></i></a></li>
             {% endif %}
         </ul>                 
-        <section class="page-background">                   
+        <section class="page-background">
+            {% if session.user %}
+            <div class="center-align" style="padding-top: 20px;">
+            <a href="{{ url_for('add_item') }}" class="waves-effect brown lighten-2 brown-text text-lighten-5
+                        z-depth-5 brown waves-light btn">
+                        Add Item</a>
+            </div> 
+            {% endif %}                   
             <div class="row add-item-row">
                 <div class="col s10 offset-s1 m-8 l6 offset-l2">                                       
                     {% for item in items %}                    
