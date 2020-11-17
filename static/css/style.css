@@ -209,7 +209,11 @@ img {
 
     img {
         height: 250px;
-    }    
+    }
+
+    .footer-notes {
+        font-size: 14px !important;
+    }   
 }
 
 @media screen and (min-width: 577px) and (max-width:768px){
