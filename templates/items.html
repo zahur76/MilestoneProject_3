@@ -59,7 +59,7 @@
         </ul>                 
         <section class="page-background">                   
             <div class="row add-item-row">
-                <div class="col s10 offset-s1 m-8 l5 offset-l3">                                       
+                <div class="col s10 offset-s1 m-8 l6 offset-l2">                                       
                     {% for item in items %}                    
                         <br>                         
                         <div class="card-panel medium brown lighten-5">
@@ -87,11 +87,11 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col s12 m6">
+                                <div class="col s12 m7">
                                     <img src="{{ url_for('file', filename = item.item_image) }}" class="materialboxed"
                                         alt="{{ item.item_name }}">
                                 </div>
-                                <div class="information col s12 m6">
+                                <div class="information col s12 m5">
                                     <p class="first_item"><strong>Category:</strong> {{ item.item_category }}</p>                                    
                                     <p><strong>Description:</strong><br>{{ item.item_description }}</p>
                                     <p><strong>Price Rs:</strong> {{ item.item_price}}</p>
