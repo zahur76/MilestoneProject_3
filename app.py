@@ -51,7 +51,9 @@ def all_items(page_number=0):
         total_links=links_number)
 
 
+# For initial search with no page number
 @app.route("/search", methods=["GET", "POST"])
+# For page navigation when page number and query specified
 @app.route("/search/<query>/<page_number>", methods=["GET", "POST"])
 def search(page_number=0, query=""):
     # Check to verify if new search or previous search
