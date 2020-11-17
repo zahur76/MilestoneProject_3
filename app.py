@@ -393,14 +393,27 @@ def delete_category(category_id):
 
 # Control center
 @app.route("/control_center")
-def control_center():
+@app.route("/control_center/<page_number>")
+def control_center(page_number=0):
     profiles = list(mongo.db.profile.find())
     items = list(mongo.db.items.find())
     categories = list(mongo.db.categories.find())
 
+    # Pagination
+    items_per_page = 5
+    # Find first index of list to show on items page
+    index_1 = int(page_number) * items_per_page
+    # Slice items list depending on page number
+    items_list = items[index_1:(index_1)+items_per_page]
+    # Total list count required to display paginations numbers
+    total = (mongo.db.items.find()).count()
+    links_number = math.ceil(total/items_per_page)
+    link_list = list(range(links_number))
+
     return render_template(
         "control_center.html", profiles=profiles,
-        items=items, categories=categories)
+        items=items_list, categories=categories, links=link_list,
+        page_number=int(page_number), total_links=links_number)
 
 
 if __name__ == "__main__":
