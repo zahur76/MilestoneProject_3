@@ -19,7 +19,7 @@
                 <ul class="right hide-on-med-and-down"> 
                     <!-- Will show for all users -->                   
                     <li><a href="{{ url_for('all_items') }}" class="white-text">Home</a></li>
-                    <li><a class="white-text" href="#">About</a></li> 
+                    <li><a class="white-text modal-trigger" href="#about">About</a></li> 
                     <!-- Will show for only those logged in -->                      
                     {% if session.user %}
                         <li><a href="{{ url_for('add_item') }}" class="white-text">Add Item</a></li>
@@ -41,7 +41,7 @@
         <ul class="sidenav brown" id="mobile-demo">            
             <a href="{{ url_for('all_items') }}"><h4 class="center-align white-text brand-logo">Artist for life</h4></a>
             <li><a href="{{ url_for('all_items') }}" class="white-text" >Home</a></li>
-            <li><a href="#" class="white-text" >About</a></li>                    
+            <li><a class="white-text modal-trigger" href="#about">About</a></li>                    
             {% if session.user %}
                 <li><a href="{{ url_for('add_item') }}" class="white-text" >Add Item</a></li>
                 <li><a href="{{ url_for('profile' , username=session['user']) }}" class="white-text">Profile</a></li>
@@ -149,6 +149,17 @@
                     </div>                    
                 </div>                
             </div>
+        </div>
+    </div>
+    <!-- About Modal -->
+     <!-- Modal Structure -->
+    <div id="about" class="modal">
+        <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
     </div>
     <!-- All script tags -->
