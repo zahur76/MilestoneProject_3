@@ -62,7 +62,30 @@
                                             <h3 class="center-align">Items</h3>
                                         </div>
                                     </div>
-                                {% for item in items %}
+                                    <!-- Materialize pagination -->
+                                    <ul class="pagination center-align"> 
+                                        <!-- Activcate/deactivate arrow navs depending on page number -->           
+                                        {% if page_number == 0 %}                
+                                            <li class="disabled"><a href="#!"><i class="fas fa-chevron-left"></i></a></li>
+                                        {% else %}
+                                            <li class="waves-effect"><a href="{{ url_for('control_center', page_number = page_number -1 ) }}"><i class="fas fa-chevron-left"></i></a></li>
+                                        {% endif %} 
+                                        {% for link in links %}
+                                            <!-- Display active link only if the page number is same as link -->
+                                            {% if link == page_number %}           
+                                                <li class="active grey darken-2"><a href="{{ url_for('control_center', page_number = link) }}">{{ link + 1 }}</a></li>
+                                            {% else %}
+                                                <li><a href="{{ url_for('control_center', page_number = link) }}">{{ link + 1 }}</a></li>
+                                            {% endif %}  
+                                        {% endfor %}
+                                        <!-- Activcate/deactivate arrow navs depending on page number -->
+                                        {% if page_number + 1 == total_links %}                    
+                                            <li class="disabled"><a href="#!"><i class="fas fa-chevron-right"></i></a></li>
+                                        {% else %}
+                                            <li class="waves-effect"><a href="{{ url_for('control_center', page_number = page_number + 1 ) }}"><i class="fas fa-chevron-right"></i></a></li>
+                                        {% endif %}
+                                    </ul>
+                                {% for item in items %}                                    
                                     <div class="profile row">
                                         <div class="col s4 m5">
                                             <p class="right-align black-text">{{ item.item_name }}</p>
