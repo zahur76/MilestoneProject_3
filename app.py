@@ -51,8 +51,8 @@ def all_items(page_number=0):
         total_links=links_number)
 
 
-@app.route("/search/<page_number>", methods=["GET", "POST"])
-@app.route("/search/<page_number>/<query>", methods=["GET", "POST"])
+@app.route("/search", methods=["GET", "POST"])
+@app.route("/search/<query>/<page_number>", methods=["GET", "POST"])
 def search(page_number=0, query=""):
     # Check to verify if new search or previous search
     if request.method == "POST":
