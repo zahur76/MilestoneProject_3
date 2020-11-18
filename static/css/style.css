@@ -35,6 +35,10 @@ h5 {
     width: 500px;     
 }
 
+strong{
+ font-weight: bold;
+}
+
 /* Button section --------------------------------------------------*/
 
 button {
