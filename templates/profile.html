@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
-    {% block content %}         
-        <h3 class="center-align">{{ username.username }}'s Profile Page</h3>
+    {% block content %}
+        {% if profile %}         
+            <h3 class="center-align">{{ profile.full_name}}'s Profile Page</h3>
+        {% else %}
+            <h3 class="center-align">{{ username.username }}'s Profile Page</h3>
+        {% endif %}
         <div class="row">                
             <div class="col s12 m6 offset-m3">
                 <!-- Logic to ensure edit/delete button will not display if no session user -->
@@ -11,7 +15,7 @@
                     {% if session.user == username.username and profile.username|length == 0 %}
                         <div class="center-align">
                             <a href="{{ url_for('add_profile')}}" 
-                                class="z-depth-5 waves-effect btn-large brown lighten-2 brown-text text-lighten-5">Create profile</a>
+                                class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">Create profile</a>
                         </div>
                     <!-- Display buttons if logged in user same as profile user or admin -->
                     <!-- If no profile is present for user then only the user will have access to the profile page -->
