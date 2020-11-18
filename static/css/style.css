@@ -35,8 +35,9 @@ h5 {
     width: 500px;     
 }
 
-strong{
- font-weight: bold;
+/* To make strong tag bold on mobiles ----------------------------*/
+strong {
+    font-weight: bold;
 }
 
 /* Button section --------------------------------------------------*/
