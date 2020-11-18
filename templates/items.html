@@ -1,5 +1,5 @@
 {% extends 'base.html' %}    
-    {% block content %}                                
+    {% block content %}                                      
         <div class="hero-image">
             <div class="banner">
                 <h2 class="white-text center-align banner-text">“To be an artist is to believe in life.”</h2>
@@ -102,7 +102,14 @@
                                     <p class="first_item"><strong>Category:</strong> {{ item.item_category }}</p>                                    
                                     <p><strong>Description:</strong><br>{{ item.item_description }}</p>
                                     <p><strong>Price Rs:</strong> {{ item.item_price}}</p>
-                                    <p><strong>seller:</strong> {{ item.username}}</p>
+                                    <!-- Make fullname appear instead of username if profile has been created --> 
+                                    {% for profile in profiles %} 
+                                        {% if item.username == profile.username %}                                  
+                                            <p><strong>seller:</strong> {{ profile.full_name }}</p>
+                                        {% elif item.username not in profile_list and loop.index == 1 %}
+                                            <p><strong>seller:</strong> {{ item.username }}</p>                                            
+                                        {% endif %}
+                                    {% endfor %}
                                     <p><strong>contact number:</strong> {{ item.contact_number }}</p>
                                     <p><strong>Email:</strong> {{ item.email }}</p>
                                     <!-- Provides link to profile page -->
@@ -147,6 +154,6 @@
             {% else %}
                 <li class="waves-effect"><a href="{{ url_for('all_items', page_number = page_number + 1 ) }}"><i class="fas fa-chevron-right"></i></a></li>
             {% endif %}
-        </ul>                 
+        </ul>                         
     {% endblock %}   
     
