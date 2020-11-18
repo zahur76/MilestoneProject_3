@@ -155,19 +155,24 @@
             </div>
         </div>
     </div>
-    <!-- About Modal -->
-     <!-- Modal Structure -->
+    <!-- About Modal -->     
     <div id="about" class="modal">
-        <div class="modal-content">
-        <h4>Who Are We?</h4>
+        <div class="modal-content" style="background: #efebe9;">
+        <h4 class="center-align">Who Are We?</h4>
         <p>Artist for life is a gateway to expose your art work to the world! Register for free
         and show the world what your made of! In just a few clicks your work will be added to 
-        ever growing gallery of items from artists just as passionate about their works as 
-        yourself whereby potential buyers will come to you. This will free up more time so you 
-        can bring to the world your new art work</p>
+        ever growing gallery of items from artists just as passionate about their creations as 
+        yourself while also attracting potential buyers. You no longer need to worry about how
+        to get your ideas out there but rather on what your next work masterpiece will be!</p>
         </div>
         <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        {% if session.user %}
+            <a href="#" class="modal-close waves-effect btn z-depth-5 waves-effect brown
+                                 lighten-2 brown-text text-lighten-5">Close</a>
+        {% else %}
+            <a href="#register" class="modal-trigger modal-close waves-effect btn z-depth-5 waves-effect brown
+                                 lighten-2 brown-text text-lighten-5">Register</a>
+        {% endif %}        
         </div>
     </div>
     <!-- All script tags -->
