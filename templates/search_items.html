@@ -110,8 +110,12 @@
                                     <p><strong>Description:</strong><br>{{ item.item_description }}</p>
                                     <p><strong>Price Rs:</strong> {{ item.item_price}}</p>
                                     <p><strong>seller:</strong> {{ item.username}}</p>
-                                    <p><strong>contact number:</strong> {{ item.contact_number }}</p>
-                                    <p><strong>Email:</strong> {{ item.email }}</p>
+                                    {% for user in users %}
+                                        {% if user.username == item.username %}                               
+                                            <p><strong>contact number:</strong> {{ user.contact_number }}</p>
+                                            <p><strong>Email:</strong> {{ user.email }}</p>
+                                        {% endif %}
+                                    {% endfor %}
                                     <!-- Provides link to profile page -->
                                     <a href="{{ url_for('profile' , username=item.username) }}" 
                                     class="z-depth-3 waves-effect brown lighten-2 brown-text text-lighten-5 waves-light btn">
