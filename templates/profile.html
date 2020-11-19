@@ -3,7 +3,7 @@
         {% if profile %}         
             <h3 class="center-align">{{ profile.full_name}}'s Profile Page</h3>
         {% else %}
-            <h3 class="center-align">{{ username.username }}'s Profile Page</h3>
+            <h3 class="center-align">{{ user.username }}'s Profile Page</h3>
         {% endif %}
         <div class="row">                
             <div class="col s12 m6 offset-m3">
@@ -12,7 +12,7 @@
                 {% if session.user %}                       
                     <!-- If there is a session user but no profile has been created in profile database
                         for that profile user -->
-                    {% if session.user == username.username and profile.username|length == 0 %}
+                    {% if session.user == user.username and profile.username|length == 0 %}
                         <div class="center-align">
                             <a href="{{ url_for('add_profile')}}" 
                                 class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">Create profile</a>
@@ -32,14 +32,13 @@
                 {% else %}
                 {% endif %}
             </div>
+            <!-- If profile exists will show contact in card below -->
             {% if profile %}            
-            {% else %}
-                {% if items %}                
+            {% else %}                              
                 <div class="col s12 center-align">
-                    <p style="margin-bottom: 0;"><strong>Email:</strong> {{ items[0].email }}</p><br>
-                    <p style="margin-top: 0;"><strong>Contact number:</strong> {{ items[0].contact_number }}</p>                
-                </div>
-                {% endif %}                   
+                    <p style="margin-bottom: 0;"><strong>Email:</strong> {{ user.email }}</p><br>
+                    <p style="margin-top: 0;"><strong>Contact number:</strong> {{ user.contact_number }}</p>                
+                </div>                                
             {% endif %}                
         </div> 
         <section class="page-background" style="padding-bottom: 20px;"> 
@@ -56,11 +55,9 @@
                                     <div class="col s12">
                                         <div class="card-content center-align" style="margin-bottom: 20px;">
                                             <span class="card-title"><strong>{{ profile.full_name }}</strong></span><br>
-                                            {{ profile.profile_description }}<br><br>
-                                            {% if items %}                                     
-                                                <strong>Email:</strong> {{ items[0].email }}<br>
-                                                <strong>Contact number:</strong> {{ items[0].contact_number }}
-                                            {% endif %}                                    
+                                            {{ profile.profile_description }}<br><br>                                                                              
+                                            <strong>Email:</strong> {{ user.email }}<br>
+                                            <strong>Contact number:</strong> {{ user.contact_number }}                                                                               
                                         </div> 
                                     </div>
                                 </div>                                        
