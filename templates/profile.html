@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-    {% block content %}
+    {% block content %}        
         {% if profile %}         
             <h3 class="center-align">{{ profile.full_name}}'s Profile Page</h3>
         {% else %}
@@ -13,21 +13,29 @@
                     <!-- If there is a session user but no profile has been created in profile database
                         for that profile user -->
                     {% if session.user == user.username and profile.username|length == 0 %}
-                        <div class="center-align">
-                            <a href="{{ url_for('add_profile')}}" 
-                                class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">Create profile</a>
-                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="center-align">
+                                    <a href="{{ url_for('add_profile')}}" 
+                                    class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">Create profile</a>
+                                </div>
+                            </div>                            
+                        </div>                        
                     <!-- Display buttons if logged in user same as profile user or admin -->
                     <!-- If no profile is present for user then only the user will have access to the profile page -->
                     {% elif profile.username == session.user or session.user == "admin" %}
-                        <div class="center-align">
-                            <a href="{{ url_for('edit_profile', profile_id=profile._id) }}"
-                                    class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">
-                                    <i class="far fa-edit"></i>Edit</a>
-                            <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" 
-                                    class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">
-                                    <i class="fas fa-trash-alt"></i> Delete</a>
-                        </div>                                                          
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="center-align">
+                                    <a href="{{ url_for('edit_profile', profile_id=profile._id) }}"
+                                            class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">
+                                            <i class="far fa-edit"></i>Edit</a>
+                                    <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" 
+                                            class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">
+                                            <i class="fas fa-trash-alt"></i> Delete</a>
+                                 </div> 
+                            </div>                            
+                        </div>                                                                                 
                     {% endif %}
                 {% else %}
                 {% endif %}
@@ -38,7 +46,15 @@
                 <div class="col s12 center-align">
                     <p style="margin-bottom: 0;"><strong>Email:</strong> {{ user.email }}</p><br>
                     <p style="margin-top: 0;"><strong>Contact number:</strong> {{ user.contact_number }}</p>                
-                </div>                                
+                </div> 
+                {% if session.user == user.username or session.user == "admin" %}
+                <div class="col s12">                    
+                    <div class="center-align">
+                        <a href="#" 
+                        class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">Edit contact details</a>
+                    </div>
+                </div> 
+                {% endif %}                              
             {% endif %}                
         </div> 
         <section class="page-background" style="padding-bottom: 20px;"> 
@@ -60,6 +76,14 @@
                                             <strong>Contact number:</strong> {{ user.contact_number }}                                                                               
                                         </div> 
                                     </div>
+                                    {% if session.user == profile.username or session.user == "admin" %}        
+                                        <div class="col s12">
+                                            <div class="center-align" style="margin-bottom: 10px;">
+                                                <a href="#" 
+                                                class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">Edit contact details</a>
+                                            </div>
+                                        </div> 
+                                    {% endif %}
                                 </div>                                        
                             </div>
                         </div>
