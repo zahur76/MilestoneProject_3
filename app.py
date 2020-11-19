@@ -61,7 +61,8 @@ def search(page_number=0, query=""):
     # Obtain list of items matching search criteria
     complete_item_list = list(mongo.db.items.find(
         {"$text": {"$search": query}}))
-
+    # Find all users to provide contact info
+    users = list(mongo.db.users.find())
     # Pagination
     items_per_page = 5
     # Find first index of list to show on items page
@@ -74,7 +75,7 @@ def search(page_number=0, query=""):
     link_list = list(range(links_number))
     # Query sent to be used as reference when changing pages
     return render_template(
-        "search_items.html", items=items, links=link_list,
+        "search_items.html", users=users, items=items, links=link_list,
         page_number=int(page_number), total_links=links_number,
         total=item_list_count, query=query)
 
