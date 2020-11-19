@@ -198,7 +198,11 @@ img {
         width: 300px;
         margin: 10px auto;
         font-size: 26px;
-    }        
+    } 
+
+    h4 {
+        font-size: 26px; 
+    }       
 
     .flash-message {
         width: 300px;
@@ -235,4 +239,3 @@ img {
         font-size: 40px !important;
     }    
 }
-
