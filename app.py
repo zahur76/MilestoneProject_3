@@ -28,12 +28,8 @@ mongo = PyMongo(app)
 def all_items(page_number=0):
     # Find all items in item database
     complete_item_list = list(mongo.db.items.find())
-    profiles = list(mongo.db.profile.find())
-    profile_list = []
-    # Create a list of users with profiles for comparison in items page
-    for profile in profiles:
-        profile_list.append(profile["username"])
-
+    # Find all users to provide contact info
+    users = list(mongo.db.users.find())
     # Pagination
     items_per_page = 5
     # Find first index of list to show on items page
@@ -46,9 +42,8 @@ def all_items(page_number=0):
     link_list = list(range(links_number))
 
     return render_template(
-        "items.html", profiles=profiles, profile_list=profile_list,
-        items=items, links=link_list, page_number=int(page_number),
-        total_links=links_number)
+        "items.html", users=users, items=items, links=link_list,
+        page_number=int(page_number), total_links=links_number)
 
 
 # For initial search with no page number
@@ -159,7 +154,7 @@ def profile(username):
     profile = mongo.db.profile.find_one({"username": username})
     items = list(mongo.db.items.find({"username": username}))
     return render_template(
-        'profile.html', username=user, profile=profile, items=items)
+        'profile.html', user=user, profile=profile, items=items)
 
 
 # Add Profile info to profile page
