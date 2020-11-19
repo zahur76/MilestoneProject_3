@@ -11,15 +11,6 @@ $(document).ready(function(){
     /* Media box from materialize */
     $('.materialboxed').materialbox();  
     
-    /* Function to ensure modal does not close if fields are invalid */
-    $(".submit").click(function(){
-        let username_attr = $("#username").attr("class");
-        let password_attr = $("#username").attr("class");        
-        if(username_attr=="validate valid" || password_attr=="validate valid"){
-            $(".submit").addClass("modal-close")
-        }        
-    })
-
     /* Code to provide validation for dropdown field */
     /* code source https://stackoverflow.com/questions/34248898/how-to-validate-select-option-for-a-materialize-dropdown */
     $("select[required]").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
