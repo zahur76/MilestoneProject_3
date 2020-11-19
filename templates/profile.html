@@ -50,7 +50,7 @@
                 {% if session.user == user.username or session.user == "admin" %}
                 <div class="col s12">                    
                     <div class="center-align">
-                        <a href="#" 
+                        <a href="{{ url_for('edit_contact', contact_id= user._id) }}" 
                         class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">Edit contact details</a>
                     </div>
                 </div> 
@@ -79,7 +79,7 @@
                                     {% if session.user == profile.username or session.user == "admin" %}        
                                         <div class="col s12">
                                             <div class="center-align" style="margin-bottom: 10px;">
-                                                <a href="#" 
+                                                <a href="{{ url_for('edit_contact', contact_id= user._id) }}" 
                                                 class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">Edit contact details</a>
                                             </div>
                                         </div> 
