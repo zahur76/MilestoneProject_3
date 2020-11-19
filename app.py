@@ -91,16 +91,25 @@ def register():
         # Find a match in exsiting user database
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
+        # Find a match in exsiting email database
+        existing_email = mongo.db.users.find_one(
+            {"email": request.form.get("email").lower()})
         # If a match is found and existing_user returns a username
         if existing_user:
             flash("Username already exists!")
+            return redirect(url_for("all_items"))
+        # If exisiting email returns something
+        elif existing_email:
+            flash("Email already exists!")
             return redirect(url_for("all_items"))
         # If no match is found
         else:
             # Store username/password into users database
             register = {"username": request.form.get("username").lower(),
                         "password": generate_password_hash(
-                        request.form.get("password"))}
+                        request.form.get("password")),
+                        "contact_number": request.form.get("contact_number"),
+                        "email": request.form.get("email")}
             mongo.db.users.insert_one(register)
             # Add username into session cookie
             session["user"] = request.form.get("username").lower()

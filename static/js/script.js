@@ -45,16 +45,19 @@ $(document).ready(function(){
         if(flash_message=="Incorrect Username/Password"){
             $("#login").modal("open");
             /* Provide message in modal */
-            $("#login-message").text("!Incorrect Username/Password")
+            $("#login-message").text("Incorrect Username/Password!")
         }
         if(flash_message=="Username already exists!"){
             $("#register").modal("open");
             /* Provide message in modal */
             $("#register-message").text("Username already exists!")
         }
-    }, 3000 ); // 5 secs 
-    
-    
+        if(flash_message=="Email already exists!"){
+            $("#register").modal("open");
+            /* Provide message in modal */
+            $("#register-message").text("Email already exists!")
+        }
+    }, 3000 ); // 5 secs    
 })
 
 
