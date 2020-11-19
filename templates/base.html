@@ -88,13 +88,13 @@
     <!-- Modal section -->    
     <!-- Registration Modal -->    
     <div id="register" class="modal">
-        <div class="modal-content"> 
+        <div class="modal-content" style="background: #efebe9;"> 
             <h4 class="center-align" style="margin: 0;">Register</h4>
             <p id="register-message" class="center-align"></p>                     
-            <div class="row">                
+            <div class="row" style="margin: 0;">                
                 <form class="col s12" method="POST" action="{{ url_for('register') }}">
                     <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s12 m6">
                             <i class="fas fa-user-plus prefix brown-text text-lighten-2"></i>
                             <input id="username" name="username" type="text" minlength="5" maxlength="15" 
                                 pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
@@ -102,7 +102,7 @@
                             <span class="helper-text" data-error="Incorrect format!" data-success="right!">
                                 Username must be 5-15 characters long and use only numbers and letters</span>
                         </div>
-                        <div class="input-field col s12">
+                        <div class="input-field col m6">
                             <i class="fas fa-user-lock prefix brown-text text-lighten-2"></i>
                             <input id="password" name="password" type="password" minlength="5" maxlength="15" 
                                 pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
@@ -110,6 +110,29 @@
                             <span class="helper-text" data-error="Incorrect format!" data-success="right!">
                                 Password must be 5-15 characters long and use only numbers and letters</span>
                         </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m6">
+                        <!-- Contact number -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="fas fa-phone prefix brown-text text-lighten-2"></i>
+                                    <input id="contact_number" name="contact_number" minlength="7" maxlength="15" 
+                                        pattern="^[0-9]{7,15}$" type="text" class="validate" required>
+                                    <label for="contact_number">Contact number</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                            <!-- Email Address -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="fas fa-envelope-square prefix brown-text text-lighten-2"></i>
+                                    <input id="email" name="email" type="email" class="validate" required>
+                                    <label for="email">Email Address</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <button type="submit" class="submit col s12 m4 offset-m4 btn-large z-depth-5 waves-effect brown
