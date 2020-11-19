@@ -256,6 +256,24 @@ def delete_profile(profile_id):
     return redirect(url_for("profile", username=session["user"]))
 
 
+# Function to modify contact details
+@app.route("/edit_contact/<contact_id>", methods=["GET", "POST"])
+def edit_contact(contact_id):
+    user = mongo.db.users.find_one({"_id": ObjectId(contact_id)})
+
+    # Update record with new email and phone number
+    if request.method == "POST":
+        new_contact = {
+            "email": request.form.get("email"),
+            "contact_number": request.form.get("contact_number")}
+        mongo.db.users.update_one(
+            {"_id": ObjectId(contact_id)}, {"$set": new_contact})
+        flash("Contact info has been updated")
+        return redirect(url_for("profile", username=session["user"]))
+
+    return render_template("edit_contact.html", user=user)
+
+
 # Function to retrieve form data from add_item page
 # Save and retrieve file coding tutorial obtained from:
     #  https://www.youtube.com/watch?v=DsgAuceHha4
