@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+    {% block content %} 
+        {{ user._id }}  
+        <h3 class="center-align">Edit Contact info</h3>
+        <section class="page-background">                      
+            <div class="container">           
+                <div class="row">
+                    <div class="col s12 m10 l8 offset-m1 offset-l2">
+                        <div class="row card-panel brown lighten-5" style="margin-top: 40px;">
+                            <form class="col s12" method="POST" action="{{ url_for('edit_contact', contact_id=user._id) }}" enctype="multipart/form-data">            
+                                <div class="row">
+                                    <div class="col s12">
+                                    <!-- Contact number -->
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <i class="fas fa-phone prefix brown-text text-lighten-2"></i>
+                                                <input id="contact_number" name="contact_number" minlength="7" maxlength="15" 
+                                                    value="{{ user.contact_number }}" pattern="^[0-9]{7,15}$" type="text" class="validate" required>
+                                                <label for="contact_number">Contact number</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12">
+                                    <!-- Email Address -->
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <i class="fas fa-envelope-square prefix brown-text text-lighten-2"></i>
+                                                <input id="email" name="email" type="email" class="validate" required 
+                                                     value="{{ user.email }}">
+                                                <label for="email">Email Address</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Submit button -->
+                                <div class="row">
+                                    <div class="col s12 center-align">
+                                        <button type="submit" class="z-depth-5 waves-effect btn-small brown 
+                                            lighten-2 brown-text text-lighten-5">
+                                            Confirm<i class="fas fa-square right"></i>
+                                        </button>
+                                        <a href="{{ url_for('all_items') }}" class="z-depth-5 waves-effect btn-small brown
+                                             lighten-2 brown-text text-lighten-5">
+                                            Cancel<i class="fas fa-times-circle right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+    
