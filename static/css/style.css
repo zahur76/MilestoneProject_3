@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,300&family=Parisienne&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 
 /* To make scroll behavior smooth. Source https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section2 */
 html {
@@ -34,6 +35,18 @@ h5 {
     width: 700px; 
     border-bottom: none;
 }
+
+/*-- Sold image ------------------------------------------------*/
+.sold {
+    font-family: 'Alfa Slab One', cursive;
+    color: red;    
+    border: 4px solid red;    
+    width: 50%;
+    text-align: center;
+    position: relative;
+    bottom: 200px;    
+}
+
 
 /* To make strong tag bold on mobiles ----------------------------*/
 strong {
@@ -200,6 +213,10 @@ img {
         font-size: 26px;
     } 
 
+    .sold {
+        font-size: 40px;
+    }
+
     h4 {
         font-size: 26px; 
     }       
@@ -238,4 +255,11 @@ img {
         margin-bottom: 0px;        
         font-size: 40px !important;
     }    
+}
+
+/* modify container width for materialize ----------------------------------*/
+.container {
+  margin: 0 auto;
+  max-width: 997px;
+  width: 80%;
 }
