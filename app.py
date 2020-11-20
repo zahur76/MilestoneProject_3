@@ -290,9 +290,7 @@ def add_item():
                     "item_name": request.form.get("item_name"),
                     "item_description": request.form.get("item_description"),
                     "item_price": request.form.get("item_price"),
-                    "username": session["user"],
-                    "contact_number": request.form.get("contact_number"),
-                    "email": request.form.get("email")}
+                    "username": session["user"]}
         # Insert data into items database in mongo.db
         mongo.db.items.insert_one(new_item)
         flash("Item has been inserted")
@@ -329,9 +327,7 @@ def edit_item(item_id):
                         "item_name": request.form.get("item_name"),
                         "item_description": request.form.get(
                             "item_description"),
-                        "item_price": request.form.get("item_price"),
-                        "contact_number": request.form.get("contact_number"),
-                        "email": request.form.get("email")}
+                        "item_price": request.form.get("item_price")}
             # Update data in items database in mongo.db
             mongo.db.items.update_one(
                 {"_id": ObjectId(item_id)}, {"$set": new_item})
