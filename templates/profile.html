@@ -105,12 +105,39 @@
                                         <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
                                             class="z-depth-5 waves-effect brown waves-light btn-small brown lighten-2 brown-text text-lighten-5">
                                         <i class="fas fa-trash-alt "></i> Delete
-                                    </a>
-                                </div>                          
-                            {% endif %}                                                         
-                            <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
-                                style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
-                                alt="{{ item.item_name }}">                            
+                                    </a>                                    
+                                </div>
+                                <form class="col s12" method="POST" action="{{ url_for('sold', item_id = item._id) }}">
+                                    <div class="row">
+                                        {% if item.sold == "false" %}
+                                            <div class="col s12 center-align">
+                                                <input id="sold" name="sold" type="hidden" value="true">
+                                                <button type="submit" class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">
+                                                    Mark as sold
+                                                </button>
+                                            </div>
+                                        {% else %}
+                                            <div class="col s12 center-align">
+                                                <input id="sold" name="sold" type="hidden" value="false">
+                                                <button type="submit" class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">
+                                                    Mark as available
+                                                </button>
+                                            </div>
+                                        {% endif %}
+                                    </div>                                    
+                                </form>                                                        
+                            {% endif %}
+                            {% if item.sold == "false" %}                                                         
+                                <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
+                                    style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
+                                    alt="{{ item.item_name }}">
+                            {% else %}
+                                <img class="item-image" src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
+                                    style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
+                                    alt="{{ item.item_name }}">
+                                <h3 class="sold">SOLD</h3>
+                              
+                            {% endif %}                          
                         </div>
                     {% endfor %} 
                 </div>                                    
