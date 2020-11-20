@@ -44,8 +44,8 @@
             {% if profile %}            
             {% else %}                              
                 <div class="col s12 center-align">
-                    <p style="margin-bottom: 0;"><strong>Email:</strong> {{ user.email }}</p><br>
-                    <p style="margin-top: 0;"><strong>Contact number:</strong> {{ user.contact_number }}</p>                
+                    <p style="margin-bottom: 0;"><strong><i class="fas fa-envelope-square black-text" style="font-size: 22px;"></i></strong> {{ user.email }}</p><br>
+                    <p style="margin-top: 0;"><strong><i class="fas fa-phone black-text" style="font-size: 18px;"></i></strong> {{ user.contact_number }}</p>                
                 </div> 
                 {% if session.user == user.username or session.user == "admin" %}
                 <div class="col s12">                    
@@ -72,8 +72,8 @@
                                         <div class="card-content center-align" style="margin-bottom: 20px;">
                                             <span class="card-title"><strong>{{ profile.full_name }}</strong></span><br>
                                             {{ profile.profile_description }}<br><br>                                                                              
-                                            <strong>Email:</strong> {{ user.email }}<br>
-                                            <strong>Contact number:</strong> {{ user.contact_number }}                                                                               
+                                            <strong><i class="fas fa-envelope-square black-text" style="font-size: 22px;"></i></strong> {{ user.email }}<br>
+                                            <strong><i class="fas fa-phone black-text" style="font-size: 18px;"></i></strong> {{ user.contact_number }}                                                                               
                                         </div> 
                                     </div>
                                     {% if session.user == profile.username or session.user == "admin" %}        
