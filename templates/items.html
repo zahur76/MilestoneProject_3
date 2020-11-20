@@ -95,10 +95,20 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col s12 m7">
-                                    <img src="{{ url_for('file', filename = item.item_image) }}" class="materialboxed"
-                                        alt="{{ item.item_name }}">
-                                </div>
+                                {% if item.sold == "false" %} 
+                                    <div class="col s12 m7">
+                                        <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
+                                            style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
+                                            alt="{{ item.item_name }}">
+                                    </div>
+                                {% else %}
+                                    <div class="col s12 m7">
+                                        <img class="item-image" src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
+                                            style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
+                                            alt="{{ item.item_name }}">
+                                        <h3 class="sold">SOLD</h3>
+                                    </div>
+                                {% endif %}
                                 <div class="information col s12 m5">
                                     <p class="first_item"><strong>Category:</strong> {{ item.item_category }}</p>                                    
                                     <p><strong>Description:</strong><br>{{ item.item_description }}</p>
