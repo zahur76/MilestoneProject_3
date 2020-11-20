@@ -290,7 +290,8 @@ def add_item():
                     "item_name": request.form.get("item_name"),
                     "item_description": request.form.get("item_description"),
                     "item_price": request.form.get("item_price"),
-                    "username": session["user"]}
+                    "username": session["user"],
+                    "sold": "false"}
         # Insert data into items database in mongo.db
         mongo.db.items.insert_one(new_item)
         flash("Item has been inserted")
@@ -436,6 +437,24 @@ def control_center(page_number=0):
         "control_center.html", profiles=profiles,
         items=items_list, categories=categories, links=link_list,
         page_number=int(page_number), total_links=links_number)
+
+
+@app.route("/sold/<item_id>", methods=["POST"])
+def sold(item_id):
+    # Set item to having being sold
+    if request.form.get("sold") == "true":
+        mongo.db.items.update_one(
+            {"_id": ObjectId(item_id)},
+            {"$set": {"sold": request.form.get("sold")}})
+        flash("Item Sold")
+        return redirect(url_for("profile", username=session["user"]))
+    # Set item to still available
+    elif request.form.get("sold") == "false":
+        mongo.db.items.update_one(
+            {"_id": ObjectId(item_id)},
+            {"$set": {"sold": request.form.get("sold")}})
+        flash("Item still available")
+        return redirect(url_for("profile", username=session["user"]))
 
 
 if __name__ == "__main__":
