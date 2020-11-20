@@ -108,14 +108,16 @@
                                         {% if user.username == item.username %}                               
                                             <p><strong><i class="fas fa-phone black-text" style="font-size: 18px;"></i>
                                                 </strong> {{ user.contact_number }}</p>
-                                            <p><strong><i class="fas fa-envelope-square black-text" style="font-size: 20px;"></i>
+                                            <p><strong><i class="fas fa-envelope-square black-text" style="font-size: 22px;"></i>
                                                 </strong> {{ user.email }}</p>
                                         {% endif %}
                                     {% endfor %}
                                     <!-- Provides link to profile page -->
-                                    <a href="{{ url_for('profile' , username=item.username) }}" 
-                                    class="z-depth-3 waves-effect brown lighten-2 brown-text text-lighten-5 waves-light btn">
-                                        Seller Profile</a>                                                                                                                                   
+                                    <div class="center-align">
+                                        <a href="{{ url_for('profile' , username=item.username) }}" 
+                                        class="z-depth-3 waves-effect brown lighten-2 brown-text text-lighten-5 waves-light btn">
+                                            Seller Profile</a>  
+                                    </div>                                                                                                                                 
                                 </div>
                             </div>
                         </div>                        
