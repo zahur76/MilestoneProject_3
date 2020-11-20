@@ -107,8 +107,10 @@
                                         <i class="fas fa-trash-alt "></i> Delete
                                     </a>                                    
                                 </div>
+                                <!-- Function to allow users to set item as sold -->
                                 <form class="col s12" method="POST" action="{{ url_for('sold', item_id = item._id) }}">
                                     <div class="row">
+                                        <!-- items is still avaiable -->
                                         {% if item.sold == "false" %}
                                             <div class="col s12 center-align">
                                                 <input id="sold" name="sold" type="hidden" value="true">
@@ -117,6 +119,7 @@
                                                 </button>
                                             </div>
                                         {% else %}
+                                        <!-- items is not available -->
                                             <div class="col s12 center-align">
                                                 <input id="sold" name="sold" type="hidden" value="false">
                                                 <button type="submit" class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">

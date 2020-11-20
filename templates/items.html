@@ -87,14 +87,16 @@
                                 </div>
                             {% endif %}  
                             <div class="row item-header">
-                                <!-- Provide item id for scrollspy since it is unique -->
+                            <!-- Provide item id for scrollspy since it is unique -->
                                 <p id= "{{ item._id }}"></p>
                                 <div class="col s12">
                                     <h5 class="center-align" style="border-bottom: 1px solid black; margin-top: 0;" 
                                         id="{{ item.username }}"><strong>{{ item.item_name }}</strong></h5>                                    
                                 </div>
                             </div>
+                            <!-- Function to allow users to set item as sold -->
                             <div class="row">
+                                <!-- items is still avaiable -->
                                 {% if item.sold == "false" %} 
                                     <div class="col s12 m7">
                                         <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
@@ -102,6 +104,7 @@
                                             alt="{{ item.item_name }}">
                                     </div>
                                 {% else %}
+                                <!-- items is not available -->
                                     <div class="col s12 m7">
                                         <img class="item-image" src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
                                             style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
