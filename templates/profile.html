@@ -136,7 +136,7 @@
                                     style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                     alt="{{ item.item_name }}">
                             {% else %}
-                                <img class="item-image" src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
+                                <img class="item-image" src="{{ url_for('file', filename = item.item_image ) }}"  
                                     style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                     alt="{{ item.item_name }}">
                                 <h3 class="sold">SOLD</h3>                              
