@@ -262,7 +262,11 @@ img {
 
     .profile-cards {
         height: 400px !important;
-    }     
+    } 
+
+    .profile-cards-2 {
+        height: 300px !important;    
+    }
 }
 
 @media screen and (min-width: 577px) and (max-width:1025px){
@@ -281,6 +285,10 @@ img {
 
     .profile-cards {
         height: 425px !important;
+    }
+
+    .profile-cards-2 {
+        height: 325px !important;
     }
 }
 
