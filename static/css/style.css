@@ -251,8 +251,13 @@ img {
 
 @media screen and (min-width: 577px) and (max-width:1025px){
     img {
-        height: 265px;
-    }   
+        height: 250px;
+    }  
+
+    .sold {
+        font-size: 32px;
+        bottom: 160px;
+    } 
 }
 
 @media screen and (min-width: 577px) and (max-width:768px){
