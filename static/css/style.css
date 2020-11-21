@@ -246,7 +246,11 @@ img {
 
     .footer-notes {
         font-size: 14px !important;
-    }       
+    } 
+
+    .search-text {
+        font-size: 10px !important;
+    }      
 }
 
 @media screen and (min-width: 577px) and (max-width:1025px){
