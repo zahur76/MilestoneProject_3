@@ -246,20 +246,12 @@ img {
 
     .footer-notes {
         font-size: 14px !important;
-    } 
-
-    .item-image {
-        height: 250px !important;       
-    } 
-
-    .profile {
-        height: 425px !important;
-    } 
+    }       
 }
 
 @media screen and (min-width: 577px) and (max-width:1025px){
-    img{
-        height: 265px !important;
+    img {
+        height: 265px;
     }   
 }
 
