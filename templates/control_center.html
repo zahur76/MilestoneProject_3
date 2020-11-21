@@ -8,9 +8,9 @@
                     <div class="row">
                         <div class="col s12 m8 offset-m2">
                             <div class="card brown lighten-5">
-                                <div class="row">
+                                <div class="row center-align">
                                     <div class="col s12">
-                                        <h3 class="center-align">Profiles</h3>
+                                        <h4 class="underline">Profiles</h4>
                                     </div>
                                 </div>
                                 {% for profile in profiles %}
@@ -33,7 +33,7 @@
                                 {% endfor %} 
                                 <div class="row">
                                     <div class="col s12">
-                                        <h3 class="center-align">Categories</h3>
+                                        <h4 class="center-align underline">Categories</h4>
                                     </div>
                                     <div class="col s12 center-align">
                                         <a href="{{ url_for('add_category') }}" 
@@ -61,7 +61,7 @@
                                 {% endfor %}
                                     <div class="row">
                                         <div class="col s12">
-                                            <h3 class="center-align">Items</h3>
+                                            <h4 class="center-align underline">Items</h4>
                                         </div>
                                     </div>
                                     <!-- Materialize pagination -->
