@@ -94,8 +94,12 @@
                 <h3 class="center-align white-text" style="border-bottom: 1px solid white; padding-top: 20px;">My work</h3>
                 {% endif %}               
                 <div class="row">
-                    {% for item in items %}                       
-                        <div class="profile-cards col s12 m6 l4" style="height: 475px">
+                    {% for item in items %}
+                        {% if session.user == item.username or session.user == "admin" %}                      
+                            <div class="profile-cards col s12 m6 l4" style="height: 475px">
+                        {% else %}
+                            <div class="profile-cards-2 col s12 m6 l4" style="height: 375px">
+                        {% endif %}
                             <p class="white-text center-align">{{ item.item_name }}</p>  
                             {% if session.user == item.username or session.user == "admin" %}
                                 <div class="center-align" style="margin-bottom: 20px;">
