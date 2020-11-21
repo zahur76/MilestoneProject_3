@@ -113,9 +113,9 @@ img {
 /* Images for profile page --------------------------------------------*/
 
 .profile img {
-    width: 100%;
-    height: auto; 
-    object-fit: cover;         
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .information {
@@ -225,7 +225,7 @@ img {
 
     .flash-message {
         width: 300px;
-        font-size: 26px;
+        font-size: 22px;
     }
     .information p {
         margin: 10px 0 !important;
@@ -244,6 +244,10 @@ img {
         height: 225px;
     }
 
+    .profile img {
+        height: 225px;    
+    }
+
     .footer-notes {
         font-size: 14px !important;
     } 
@@ -257,6 +261,10 @@ img {
     img {
         height: 250px;
     }  
+
+    .profile img {
+        height: 250px;    
+    }
 
     .sold {
         font-size: 32px;
