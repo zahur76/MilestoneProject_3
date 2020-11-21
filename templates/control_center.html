@@ -14,17 +14,19 @@
                                     </div>
                                 </div>
                                 {% for profile in profiles %}
-                                    <div class="profile row">
-                                        <div class="col s4 m5">
-                                            <a href="{{ url_for('profile', username=profile.username) }}"><p class="right-align blue-text">{{ profile.username }}</p></a>
+                                    <div class="profile row center-align">
+                                        <div class="col s12">
+                                            <a href="{{ url_for('profile', username=profile.username) }}">
+                                                <p class="blue-text" style="margin-top: 0;">{{ profile.username }}</p>
+                                            </a>
                                         </div>
-                                        <div class="col s8 m7">
+                                        <div class="col s12">
                                             <a href="{{ url_for('edit_profile', profile_id=profile._id) }}" 
                                                 class="z-depth-3 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
-                                                <i class="far fa-edit"></i> Edit</a>
+                                                Edit</a>
                                             <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_profile', profile_id=profile._id) }}" 
                                                 class="z-depth-3 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
-                                                <i class="fas fa-trash-alt "></i> Delete
+                                                Delete
                                             </a>
                                         </div>                                                                        
                                     </div>
@@ -33,7 +35,7 @@
                                     <div class="col s12">
                                         <h3 class="center-align">Categories</h3>
                                     </div>
-                                    <div class="col s5 m4 offset-m5 offset-s4">
+                                    <div class="col s12 center-align">
                                         <a href="{{ url_for('add_category') }}" 
                                             class="z-depth-3 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
                                             <i class="fas fa-plus"></i> Category
@@ -41,18 +43,18 @@
                                     </div>
                                 </div>
                                 {% for category in categories %}
-                                    <div class="profile row">
-                                        <div class="col s4 m5">
-                                            <p class="right-align black-text">{{ category.category_name }}</p>
+                                    <div class="profile row center-align">
+                                        <div class="col s12">
+                                            <p class="black-text" style="margin-top: 0;">{{ category.category_name }}</p>
                                         </div>
-                                        <div class="col s8 m7">
+                                        <div class="col s12">
                                             <a href="{{ url_for('edit_category', category_id=category._id) }}" 
                                                 class="z-depth-3 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
-                                                <i class="far fa-edit"></i> Edit
+                                                Edit
                                             </a> 
                                             <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_category', category_id=category._id) }}" 
                                                 class="z-depth-3 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
-                                                <i class="fas fa-trash-alt "></i> Delete
+                                                Delete
                                             </a>
                                         </div>                                                                        
                                     </div>
@@ -86,17 +88,17 @@
                                         {% endif %}
                                     </ul>
                                 {% for item in items %}                                    
-                                    <div class="profile row">
-                                        <div class="col s4 m5">
-                                            <p class="right-align black-text">{{ item.item_name }}</p>
+                                    <div class="profile row center-align">
+                                        <div class="col s12">
+                                            <p class="black-text" style="margin-top: 0;">{{ item.item_name }}</p>
                                         </div>
-                                        <div class="col s8 m7">
+                                        <div class="col s12" style="padding-bottom: 10px;">
                                             <a href="{{ url_for('edit_item', item_id = item._id) }}" 
                                                 class="z-depth-5 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
-                                                <i class="far fa-edit"></i> Edit</a> 
+                                                Edit</a> 
                                             <a onclick="return confirm('Are you sure?');" href="{{ url_for('delete_item', item_id = item._id) }}" 
                                                 class="z-depth-5 btn-small waves-effect brown lighten-2 brown-text text-lighten-5">
-                                                <i class="fas fa-trash-alt "></i> Delete
+                                                Delete
                                             </a>
                                         </div>                                                                        
                                     </div>
