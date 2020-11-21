@@ -27,7 +27,7 @@
                         <li><a href="{{ url_for('profile' , username=session['user']) }}" class="white-text">Profile</a></li>
                         <!-- Will show only when Admin is logged in -->  
                         {% if session.user == "admin" %}
-                            <li><a href="{{ url_for('control_center') }}" class="white-text" >Manage Categories</a></li>
+                            <li><a href="{{ url_for('control_center') }}" class="white-text" >Control center</a></li>
                         {% endif %} 
                         <li><a href="{{ url_for('logout') }}" class="white-text">logout</a></li> 
                     <!-- Will not show when user is logged in -->
@@ -47,7 +47,7 @@
                 <li><a href="{{ url_for('add_item') }}" class="white-text" >Add Item</a></li>
                 <li><a href="{{ url_for('profile' , username=session['user']) }}" class="white-text">Profile</a></li>
                 {% if session.user == "admin" %}
-                    <li><a href="{{ url_for('control_center') }}" class="white-text">Manage Categories</a></li>
+                    <li><a href="{{ url_for('control_center') }}" class="white-text">Control center</a></li>
                 {% endif %} 
                 <li><a href="{{ url_for('logout') }}" class="white-text" >logout</a></li>
             {% else %} 
@@ -191,8 +191,8 @@
     <div id="about" class="modal">
         <div class="modal-content" style="background: #efebe9;">
         <h4 class="center-align">Who Are We?</h4>
-        <p>Artist for life is a gateway to expose your art work to the world! Register for free
-        and show the world what your made of! In just a few clicks your work will be added to 
+        <p>Artist For Life is a gateway to expose your art work to the world! Register for free
+        and show the world what you are made of! In just a few clicks your work will be added to 
         ever growing gallery of items from artists just as passionate about their creations as 
         yourself while also attracting potential buyers. You no longer need to worry about how
         to get your ideas out there but rather on what your next masterpiece will be!</p>
