@@ -201,7 +201,7 @@ img {
 
 @media screen and (max-width: 576px){
     .brand-logo {
-        font-size: 26px !important;        
+        font-size: 24px !important;        
     }
 
     .hero-image {
@@ -209,7 +209,7 @@ img {
     }
 
     h3 {
-        width: 350px;
+        width: 280px;
         margin: 10px auto;
         font-size: 26px;
     } 
@@ -250,12 +250,16 @@ img {
 
     .item-image {
         height: 250px !important;       
-    }  
+    } 
+
+    .profile {
+        height: 425px !important;
+    } 
 }
 
-@media screen and (min-width: 577px) and (max-width:1024px){
+@media screen and (min-width: 577px) and (max-width:1025px){
     img{
-        height: 275px;
+        height: 265px !important;
     }   
 }
 
