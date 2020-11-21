@@ -134,12 +134,12 @@
                             {% endif %}
                             {% if item.sold == "false" %}                                                         
                                 <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
-                                    margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
+                                    style="margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                     alt="{{ item.item_name }}">
                             {% else %}
                                 <div style="margin-bottom: -75px">
                                     <img class="item-image" src="{{ url_for('file', filename = item.item_image ) }}"  
-                                        margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
+                                        style="margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                         alt="{{ item.item_name }}">
                                     <h3 class="sold">SOLD</h3>  
                                 </div>                            
