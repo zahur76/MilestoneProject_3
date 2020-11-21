@@ -63,8 +63,8 @@
                     <div class="row">
                         <div class="col s12 m6 offset-m3 l4 offset-l4">
                             <div class="brown lighten-5" style="margin-top: 40px; border-radius: 0;">
-                                <div class="row">
-                                    <div class="profile col s12">
+                                <div class="profile row">
+                                    <div class="col s12">
                                          <img src="{{ url_for('file', filename = profile.profile_image ) }}" 
                                             alt="{{ profile.full_name }}"> 
                                     </div>
@@ -134,12 +134,12 @@
                             {% endif %}
                             {% if item.sold == "false" %}                                                         
                                 <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
-                                    style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
+                                    margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                     alt="{{ item.item_name }}">
                             {% else %}
                                 <div style="margin-bottom: -75px">
                                     <img class="item-image" src="{{ url_for('file', filename = item.item_image ) }}"  
-                                        style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
+                                        margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                         alt="{{ item.item_name }}">
                                     <h3 class="sold">SOLD</h3>  
                                 </div>                            

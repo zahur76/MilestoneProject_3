@@ -98,14 +98,14 @@
                             <div class="row">
                                 <!-- items is still avaiable -->
                                 {% if item.sold == "false" %} 
-                                    <div class="item-image col s12 m7">
+                                    <div class="col s12 m7">
                                         <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
                                             style="margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                             alt="{{ item.item_name }}">
                                     </div>
                                 {% else %}
                                 <!-- items is not available -->
-                                    <div class="item-image col s12 m7" style="height: 300px;">
+                                    <div class="col s12 m7" style="height: 300px;">
                                         <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
                                             style="margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                             alt="{{ item.item_name }}">
