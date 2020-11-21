@@ -95,7 +95,7 @@
                 {% endif %}               
                 <div class="row">
                     {% for item in items %}                       
-                        <div class="profile col s12 m6 l4" style="height: 475px;">
+                        <div class="col s12 m6 l4">
                             <p class="white-text center-align">{{ item.item_name }}</p>  
                             {% if session.user == item.username or session.user == "admin" %}
                                 <div class="center-align" style="margin-bottom: 20px;">
@@ -129,17 +129,20 @@
                                             </div>
                                         {% endif %}
                                     </div>                                    
-                                </form>                                                        
+                                </form>
+                            {% else %}                                                       
                             {% endif %}
                             {% if item.sold == "false" %}                                                         
                                 <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
                                     style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                     alt="{{ item.item_name }}">
                             {% else %}
-                                <img class="item-image" src="{{ url_for('file', filename = item.item_image ) }}"  
-                                    style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
-                                    alt="{{ item.item_name }}">
-                                <h3 class="sold">SOLD</h3>                              
+                                <div style="margin-bottom: -75px">
+                                    <img class="item-image" src="{{ url_for('file', filename = item.item_image ) }}"  
+                                        style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
+                                        alt="{{ item.item_name }}">
+                                    <h3 class="sold">SOLD</h3>  
+                                </div>                            
                             {% endif %}                          
                         </div>
                     {% endfor %} 
