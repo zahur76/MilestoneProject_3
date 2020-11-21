@@ -36,6 +36,10 @@ h5 {
     border-bottom: none;
 }
 
+.underline {
+     border-bottom: 1px solid black;
+}
+
 /*-- Sold image ------------------------------------------------*/
 .sold {
     font-family: 'Alfa Slab One', cursive;
@@ -254,7 +258,11 @@ img {
 
     .search-text {
         font-size: 10px !important;
-    }      
+    } 
+
+    .profile-cards {
+        height: 400px !important;
+    }     
 }
 
 @media screen and (min-width: 577px) and (max-width:1025px){
@@ -270,6 +278,10 @@ img {
         font-size: 32px;
         bottom: 160px;
     } 
+
+    .profile-cards {
+        height: 425px !important;
+    }
 }
 
 @media screen and (min-width: 577px) and (max-width:768px){
