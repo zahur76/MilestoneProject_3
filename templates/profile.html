@@ -95,7 +95,7 @@
                 {% endif %}               
                 <div class="row">
                     {% for item in items %}                       
-                        <div class="profile col s12 m6 l4">
+                        <div class="profile col s12 m6 l4" style="height: 475px;">
                             <p class="white-text center-align">{{ item.item_name }}</p>  
                             {% if session.user == item.username or session.user == "admin" %}
                                 <div class="center-align" style="margin-bottom: 20px;">
@@ -113,7 +113,8 @@
                                         <!-- items is still avaiable -->
                                         {% if item.sold == "false" %}
                                             <div class="col s12 center-align">
-                                                <input id="sold" name="sold" type="hidden" value="true">
+                                                <!-- Create a unique id for each item -->
+                                                <input id="sold + {{ loop.index }}" name="sold" type="hidden" value="true">
                                                 <button type="submit" class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">
                                                     Mark as sold
                                                 </button>
@@ -121,7 +122,7 @@
                                         {% else %}
                                         <!-- items is not available -->
                                             <div class="col s12 center-align">
-                                                <input id="sold" name="sold" type="hidden" value="false">
+                                                <input id="sold + {{ loop.index }}" name="sold" type="hidden" value="false">
                                                 <button type="submit" class="z-depth-5 waves-effect btn brown lighten-2 brown-text text-lighten-5">
                                                     Mark as available
                                                 </button>
@@ -138,8 +139,7 @@
                                 <img class="item-image" src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
                                     style="height: 300px; margin-bottom: 20px;" data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
                                     alt="{{ item.item_name }}">
-                                <h3 class="sold">SOLD</h3>
-                              
+                                <h3 class="sold">SOLD</h3>                              
                             {% endif %}                          
                         </div>
                     {% endfor %} 
