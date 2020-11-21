@@ -105,8 +105,8 @@ li a {
 
 img {
     width: 100%;
-    height: 300px;; 
-    object-fit: contain;         
+    height: 300px;
+    object-fit: cover;         
 }
 
 /* Images for profile page --------------------------------------------*/
@@ -244,7 +244,11 @@ img {
 
     .footer-notes {
         font-size: 14px !important;
-    }   
+    } 
+
+    .item-image {
+        height: 250px !important;       
+    }  
 }
 
 @media screen and (min-width: 577px) and (max-width:768px){
