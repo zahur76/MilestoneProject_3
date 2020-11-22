@@ -122,7 +122,7 @@
                                             <p><strong><i class="fas fa-phone black-text" style="font-size: 18px;"></i>
                                                 </strong> {{ user.contact_number }}</p>
                                             <p><strong><i class="fas fa-envelope-square black-text" style="font-size: 22px;"></i>
-                                                </strong> {{ user.email }}</p>
+                                                </strong><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
                                         {% endif %}
                                     {% endfor %}
                                     <!-- Provides link to profile page -->
