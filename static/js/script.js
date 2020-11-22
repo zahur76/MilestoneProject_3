@@ -18,11 +18,11 @@ $(document).ready(function(){
     /* Function to allow modals swap over */    
     $(".login-modal").click(function(){        
         $(".login-modal").addClass("modal-close");        
-    })
+    });
 
     $(".register-modal").click(function(){        
         $(".register-modal").addClass("modal-close");       
-    })
+    });
 
     /* Function to clear flash messages after 5's*/  
     setTimeout(function(){
@@ -31,21 +31,21 @@ $(document).ready(function(){
 
     /* Function to reopen modals if password or username is incorrect or already exists*/  
     setTimeout(function(){
-        flash_message = $(".flash-message").text()        
+        let flash_message = $(".flash-message").text();       
         if(flash_message=="Incorrect Username/Password"){
             $("#login").modal("open");
             /* Provide message in modal */
-            $("#login-message").text("Incorrect Username/Password!")
+            $("#login-message").text("Incorrect Username/Password!");
         }
         if(flash_message=="Username already exists!"){
             $("#register").modal("open");
             /* Provide message in modal */
-            $("#register-message").text("Username already exists!")
+            $("#register-message").text("Username already exists!");
         }
         if(flash_message=="Email already exists!"){
             $("#register").modal("open");
             /* Provide message in modal */
-            $("#register-message").text("Email already exists!")
+            $("#register-message").text("Email already exists!");
         }
     }, 3000 ); // 5 secs    
-})    
+});    
