@@ -49,7 +49,7 @@
                             </strong><a href="mailto:{{ user.email }}">{{ user.email }}</a></p><br>
                     <p style="margin-top: 0;"><strong>
                         <i class="fas fa-phone grey-text text-darken-3" style="font-size: 18px;"></i>
-                            </strong> {{ user.contact_number }}</p>                
+                            </strong><a href="tel:{{ user.contact_number }}">{{ user.contact_number }}</a></p>                
                 </div> 
                 {% if session.user == user.username or session.user == "admin" %}
                 <div class="col s12">                    
@@ -79,7 +79,7 @@
                                             <strong><i class="fas fa-envelope-square grey-text text-darken-3" style="font-size: 22px;"></i>
                                                 </strong><a href="mailto:{{ user.email }}">{{ user.email }}</a><br>
                                             <strong><i class="fas fa-phone grey-text text-darken-3" style="font-size: 18px;"></i>
-                                                </strong> {{ user.contact_number }}                                                                               
+                                                </strong><a href="tel:{{ user.contact_number }}">{{ user.contact_number }}</a>                                                                               
                                         </div> 
                                     </div>
                                     {% if session.user == profile.username or session.user == "admin" %}        
@@ -105,7 +105,7 @@
                             <div class="profile-cards col s12 m6 l4" style="height: 475px">
                         {% else %}
                             <div class="profile-cards-2 col s12 m6 l4" style="height: 375px">
-                        {% endif %}
+                        {% endif %}                            
                             <p class="white-text center-align">{{ item.item_name }}</p>  
                             {% if session.user == item.username or session.user == "admin" %}
                                 <div class="center-align" style="margin-bottom: 20px;">
@@ -141,7 +141,7 @@
                                     </div>                                    
                                 </form>
                             {% else %}                                                       
-                            {% endif %}
+                            {% endif %}                            
                             {% if item.sold == "false" %}                                                         
                                 <img src="{{ url_for('file', filename = item.item_image ) }}" class="materialboxed"  
                                     style="margin-bottom: 20px; " data-caption="{{ item.item_description }} (Rs {{ item.item_price }})"
@@ -153,11 +153,16 @@
                                         alt="{{ item.item_name }}">
                                     <h3 class="sold">SOLD</h3>  
                                 </div>                            
-                            {% endif %}                          
-                        </div>
+                            {% endif %}
+                        <!-- To provide closing tag for same condition used above -->
+                        {% if session.user == item.username or session.user == "admin" %}
+                            </div>
+                        {% else %}
+                            </div>
+                        {% endif %}
                     {% endfor %} 
-                </div>                                    
-            </div>    
+                </div>                                          
+            </div>            
         </section>
     {% endblock %}  
 
