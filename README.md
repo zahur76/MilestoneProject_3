@@ -571,7 +571,7 @@ This solution worked with no issues.
 Gitpod was used as an online IDE and then pushed to GITHUB. The Github account was then linked to 
 heroku for [hosting](http://artist-for-life.herokuapp.com/).
 
-To deploy the project on from Heroku the following steps were used:
+To deploy the project from Heroku the following steps were used:
 
 1. Login to heroku and create the artist for life repository by clicking on create new app.
 ![heroku deployment](static/doc/new.png)
