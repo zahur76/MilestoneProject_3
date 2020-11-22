@@ -31,8 +31,7 @@ $(document).ready(function(){
 
     /* Function to reopen modals if password or username is incorrect or already exists*/  
     setTimeout(function(){
-        flash_message = $(".flash-message").text()
-        console.log(flash_message)
+        flash_message = $(".flash-message").text()        
         if(flash_message=="Incorrect Username/Password"){
             $("#login").modal("open");
             /* Provide message in modal */
@@ -49,7 +48,4 @@ $(document).ready(function(){
             $("#register-message").text("Email already exists!")
         }
     }, 3000 ); // 5 secs    
-})
-
-
-    
+})    
