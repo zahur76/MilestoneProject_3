@@ -47,6 +47,8 @@ their art work to potential buyers and other ethusiasts in the Mauritian market.
 The site would permit the registered users to upload and manage their items while also creating a profile page. Thus providing 
 the user with the power of creating, updating and modifying their items by using a database system. 
 
+The live site can be found [here](http://artist-for-life.herokuapp.com/).
+
 ## UX 
 
 By visiting this site as a user I want to:
@@ -224,7 +226,7 @@ name and was added to improve user experience.
 The profile page also included a sold feature whereby the item could be listed as sold instead of deleting them and could be used
 as a marketing tool indicating that the seller items were in demand.
 
-Once the item sold feature was activated this would remove the item from items list on the main page.
+Once the item sold feature was activated the item would be removed from items list on the main page.
 
 ![Sold](static/doc/sold.png)
 
@@ -248,7 +250,7 @@ A basic footer was provided with a link to wikipedia containing a list of art mu
 * flask for the web framework
 * mongodb to store data 
 * Jquery to simplify DOM manipulation
-* pylint for python syntax
+* pylint, flake8, PEP8 for python syntax
 * official W3C validator to check HTML syntax
 * css official validator(jigsaw) to check css syntax
 * JSHint to check javacript syntax 
@@ -285,7 +287,7 @@ item details which contained information of different formats. Information could
 have to view several tables in order to deliver an answer, this was well suited for the items collections.
 
 Also flexible schema offered by mongodb was thought to be advantageous in the likely event that new fields would need to be
-added in the future.
+added in the future. This was hightlighted by the introduction of the sold feature into the items collection.
 
 The main database contained 4 collections:
 
@@ -298,7 +300,9 @@ The main database contained 4 collections:
 
 The user collection was used for registration and login purposes. The contact number and email fields were
 added to this collection instead of the items collection since it would only have to be entered once and would remain
-constant for that user. This would also prevent the user from having to add contact info with each item upload.
+constant for that user. This would also prevent the user from having to add contact info with each item upload and prevent 
+multi contact info for the same user.
+
 The username would be used as seller name.
 
 The profile collection was used to provide additional information on the seller and was purposely given its own 
@@ -347,7 +351,7 @@ This section provides details of testing performed during development. The follo
 |Debugging            |During the whole project                          |Chrome Devtools                                |
 |Reponsive design     |During the whole project                          |Chrome Devtools and reposnsive viewer extension|
 |Site testing         |As from when main site was completed              |By myself and relatives                        |
-|Browser compatibility|On project completion                             |Manual testing on browsers and parrotqa.com    |                    
+|Browser compatibility|On project completion                             |Manual testing on browsers                     |                    
 |Button/link testing  |During development and project completion         |Manual testing                                 |
 
 ### UX testing
@@ -395,19 +399,19 @@ Code syntax were checked for errors with the following validators:
 * official W3C validator located [here](https://validator.w3.org/)
 * css official validator(jigsaw) located [here](https://jigsaw.w3.org/css-validator/)
 * JSHint located [here](https://jshint.com/)
-* Pytlint for python code valiation
+* Pylint for python code validation
 
 Errors were corrected and final test results are given below:
 
-| Test                           | Expected result                | Results            |                                 
-|:-------------------------------|:-------------------------------|:-------------------|
-|W3C validator                   |No errors or warnings to show   |Passed              | 
-|css official validator(jigsaw)  |No errors found                 |Passed              |                            
-|JSHint located                  |Congratulations. No error found |Warnings present    |
-|Python validator (pylint)       |No errors                       |Passed              |
+| Test                                 | Expected result                | Results            |                                 
+|:-------------------------------------|:-------------------------------|:-------------------|
+|W3C validator                         |No errors or warnings to show   |Passed              | 
+|css official validator(jigsaw)        |No errors found                 |Passed              |                            
+|JSHint located                        |Congratulations. No error found |Warnings present    |
+|Python validator(pylint, Flake8, PEP8)|No errors                       |Passed              |
 
 For the W3C validator all errors due to jinja templates were filtered out.
-The error 'Doctype must be declared' first was also ignored.
+The error 'Doctype must be declared first' was also ignored and was due to the use of base.html template.
 
 The Jshint test results had the warning " 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz)." was due to
 syntax used for defining variables.
@@ -456,103 +460,105 @@ The site was tested on Google Chrome, FireFox, Internet Explorer, Safari and Ope
 
 The following gives test results for button and link testing not related to CRUD operations.
 
-|links                            |Expected result                                         | Results |                                 
-|:--------------------------------|:-------------------------------------------------------|:--------|
-|Register                         |Register modal to open                                  |Passed   |
-|Register submit(correct data)    |Flash message "You have been registered"                |Passed   |                                           
-|Register submit(incorrect data)  |Flash message error mesae and modal to reopen           |Passed   |
-|Login submit(correct data)       |Flash message "You have been logged in"                 |Passed   |
-|Login submit(incorrect data)     |Flash error message and modal to reopen                 |Passed   |
-|here text on modals              |Login/Register Modals to switch over                    |Passed   |
-|Logout                           |Flash message "You have been logged out"                |Passed   |
-|About                            |About Modal to open up                                  |Passed   |
-|Close on about modal             |About modal to close                                    |Passed   |
-|Artist for life logo             |Main index html page to load                            |Passed   |
-|Artist for life logo             |Main index html page to load                            |Passed   |
-|Control center                   |Control center html  page to load                       |Passed   |
-|Profile                          |Profile html page to load                               |Passed   |
-|Add item                         |Add item html form page to load                         |Passed   |
-|Edit item                        |Edit item html form page to load                        |Passed   |
-|Create profile                   |Add profile html form page to load                      |Passed   |
-|Edit profile                     |Edit profile html form page to load                     |Passed   |
-|Edit Contact details             |Edit contact html form to load                          |Passed   |
-|Mark as sold                     |Sold banner text to appear on item                      |Passed   |
-|Mark as available                |Sold banner text to be removed from item                |Passed   |
-|Seller profile                   |Profle page to load for that user                       |Passed   |
-|chevron arrows                   |Loading of next or previous page                        |Passed   |
-|pagination numbers               |Loading of selected page                                |Passed   |
-|search button                    |Search page to load with relevant search results        |Passed   |
-|Reset search                     |Main item page to load                                  |Passed   |
-|Palette icon                     |Wikepedia page to open in seperate page                 |Passed   |
+|links/button                            |Expected result                                         | Results |                                 
+|:---------------------------------------|:-------------------------------------------------------|:--------|
+|Register                                |Register modal to open                                  |Passed   |
+|Submit on Register modal(correct data)  |Flash message "You have been registered"                |Passed   |                                           
+|Submit on Register modal(incorrect data)|Flash message error mesage and modal to reopen          |Passed   |
+|Submit on Login modal(correct data)     |Flash message "You have been logged in"                 |Passed   |
+|Submit on Login modal(incorrect data)   |Flash error message and modal to reopen                 |Passed   |
+|here text on modals                     |Login/Register Modals to switch over                    |Passed   |
+|Logout                                  |Flash message "You have been logged out"                |Passed   |
+|About                                   |About Modal to open up                                  |Passed   |
+|Register on about modal                 |About modal to close and register modal to open         |Passed   |
+|Artist for life logo                    |Main index html page to load                            |Passed   |
+|Artist for life logo                    |Main index html page to load                            |Passed   |
+|Control center                          |Control center html  page to load                       |Passed   |
+|Profile                                 |Profile html page to load                               |Passed   |
+|Add item                                |Add item html form page to load                         |Passed   |
+|Edit item                               |Edit item html form page to load                        |Passed   |
+|Create profile                          |Add profile html form page to load                      |Passed   |
+|Edit profile                            |Edit profile html form page to load                     |Passed   |
+|Edit Contact details                    |Edit contact html form to load                          |Passed   |
+|Mark as sold                            |Sold banner text to appear on item                      |Passed   |
+|Mark as available                       |Sold banner text to be removed from item                |Passed   |
+|Seller profile                          |Profle page to load for that user                       |Passed   |
+|chevron arrows                          |Loading of next or previous page                        |Passed   |
+|pagination numbers                      |Loading of selected page                                |Passed   |
+|search button                           |Search page to load with relevant search results        |Passed   |
+|Reset search                            |Main item page to load                                  |Passed   |
+|Palette icon                            |Wikepedia page to open in seperate page                 |Passed   |
+|click to call                           |Phone request to be made with correct number            |Passed   |
+|click to mail                           |Email request activated with correct email              |Passed   |
 
 ### Crud operation testing
 
 The following table summarises CRUD operation testing
 
-|Button            | Location              |Expected result                                               | Results |                                 
-|:-----------------|:----------------------|:-------------------------------------------------------------|:--------|
-|Submit            | Registration modal    |user information to be added to users collections in mongodb  |Passed   |
-|Add item          | Add item form page    |Item added to items collections in mongodb                    |Passed   |
-|Add profile       | Add profile form page |Profile added to profiles collections in mongodb              |Passed   |
-|Confirm           | Edit item form page   |Item updated in items collections in mongodb                  |Passed   |
-|Confirm           | Edit profile form page|Item updated in profiles collections in mongodb               |Passed   |
-|Delete            | items main page       |Item removed from items collections in mongodb database       |Passed   |
-|Delete            | Profile main page     |Item/profile removed from items/profile collections in mongodb|Passed   |
-|confirm           | Edit contact form page|Contact details to be updated in users collections in mongodb |Passed   |
-|confirm           | Edit contact form page|Contact details to be updated in users collections in mongodb |Passed   |
-|Add category      | Control center page   |New category to be added to categories collections in mongod  |Passed   |
-|Confirm           | Edit category page    |Category to be updated to categories collections in mongod    |Passed   |
-|Mark as sold      | Profile html page     |Sold field upadted to "true"                                  |Passed   |
-|Mark as available | Profile html page     |Sold field upadted to "false"                                 |Passed   |
+|Button            | Location              |Expected result                                                     | Results |                                 
+|:-----------------|:----------------------|:-------------------------------------------------------------------|:--------|
+|Submit            | Registration modal    |user information to be added to users collection in mongodb         |Passed   |
+|Add item          | Add item form page    |Item information to be added to items collection in mongodb         |Passed   |
+|Add profile       | Add profile form page |Profile information to be added to profiles collection in mongodb   |Passed   |
+|Confirm           | Edit item form page   |Item information to be updated in items collection in mongodb       |Passed   |
+|Confirm           | Edit profile form page|Item information to be updated in profiles collection in mongodb    |Passed   |
+|Delete            | items main page       |Item information to be removed from items collectionsin mongodb     |Passed   |
+|Delete            | Profile main page     |Item/profile to be removed from items/profile collection in mongodb |Passed   |
+|confirm           | Edit contact form page|Contact details to be updated in users collection in mongodb        |Passed   |
+|confirm           | Edit contact form page|Contact details to be updated in users collection in mongodb        |Passed   |
+|Add category      | Control center page   |New category to be added to categories collection in mongodb        |Passed   |
+|Confirm           | Edit category page    |Category to be updated in categories collection in mongodb          |Passed   |
+|Mark as sold      | Profile html page     |Sold field to be updated to "true" in items collection              |Passed   |
+|Mark as available | Profile html page     |Sold field to be updated to "false" in items collection             |Passed   |
 
 During item deletion/editing it was checked to see that image data was removed/updated from fs.files and fs.chunks also.
+
+A further test was performed whereby all items and profiles were deleeted to check whether no data remained in fs.files and
+fs.chunks. This test was successful.
 
 ### Issues Encountered during development
 
 During testing phase the following issues were indentified and corrected.
 
-1. Once a specific card was exposed it could be selected again causing the card game logic to breakdown. This was 
-resolved by adding the condition ```(($(this).attr("class")).length)>=6)``` in the click function. 
+1. If a jinja template contained two similar loops from the same query then only the first would be activated. This issue
+was resolved by adding ```list``` to the mongodb query. For example ```items = list(mongo.db.items.find({"username": username}))```.
 
-2. The Star Wars character funfact at the end of the game would not show up if a status other than 200 was obtained.
-To cater for this issue a defensive design was implemented by including an else if statement in the getData function so that if a status other than 200 was obtained
-a default character fact would appear. Character chosen was Luke Skywalker. This was further tested by providing an incorrect URL to the getdata function 
-and checking the output.</br>
-For the character-info.html page 'data unavailable' would appear in the fields.</br> 
-![Image of unavailable data](assets/doc/data.png)
+2. If editing of item or profile was performed then the user would have to reselect an image since a image preselect value could 
+not be added to the edit form. The solution adopted was to remove the ```required``` attribute for the image file and then add a condition 
+in the backend to detect if the user had indeed uplaoded a new image. If it was the case then the new file would be updated in the
+collection database, if not then the old image would be kept.
 
-3. On the level select modal the play button could be pressed without a level being selected. To fix this bug
-a condition was added, ```if($("input[type=radio][name=level]:checked").length===1)```, to activate the play button only when a level was selected and the "choose your difficulty level" text 
-was made to blink so as to prompt the user.
+3. When items were deleted the image data, fs.files and fs.chunks, would still remain in the monogdb database. This was thought to 
+be ineffective since such data would take up space in the size restricted mongodb database. Such data would also never be reused.
+A solution was found to remove these files when item and profile deletion were performed by using the objectid and filename as 
+reference. The ObjectId was a common reference between the items/profiles collection and fs.files and was used to clear data from 
+fs.files collection. The filename was a common reference between fs.files and fs.chunks and was used to clear data from the fs.chunks collection.
 
-4. After completing the game and pressing the restart button, two modals would superimpose on each other. This bug was fixed
-by hiding the 'gameEnd' module if the restart button is pressed.
+4. Initially the contact info was part of the add item form page. After mid project review this was thought not to be logical
+since these fields would remain constant for the user and would have to be added each time the user uploaded an item. The solution
+adopted was to have the contact details added to the user collection as from registration which made more sense. These field could
+then be queried and used accordingly when required without user input. 
 
-5. Each star wars character had its own character class which produced alot of repetition for only a change in image URL. To avoid having
-to repeat each character class, consuming large amount of css lines, a solution was found whereby the background-image URL was added 
-with Javacsript once the card was selected. This provided a more efficient style sheet.
+5. The scrollspy function initially made use of username as reference to scroll to the item. However, since the username was not unique 
+indentify for uploaded items, this caused issue when items having same username where clicked on. The solution adopted was to use ```item._id``` 
+as reference since it was unique.
 
-6. Once the main game was completed and testing peformed it was noticed that the play again button was hidden on the game end modal.
-This was adjusted by increasing modal height from 270px to 310px.</br>
-![Image of play button](assets/doc/error.png)
+6. In the initial testing phase items having images with same filename were uploaded. When these items were deleted this caused
+errors due to the existance of duplicate filenames. Research was performed a solution found 
+[here](https://www.geeksforgeeks.org/generating-random-ids-using-uuid-python/).The solution made use of python library UUID 
+(Univrsal Unique Identifier) which would allow uploaded files to  be assigned a unique filename.
 
-7. When the game was completed and the fun facts would appear it would briefly show the previous character info. This issue
-was addressed by adding a loading bar gif when ever the fun facts function was called and no repsonse from the API had been obtained yet.
+7. When sign-in and registration were performed and incorrect username/password or existing username/password were used the modals
+would close with the corresponding flash error message with no reopenning of modals. This was thought to be poor UX and was 
+corrected with javascript which would trigger the repoenning of modals if the above conditions occurred.
 
-8. While checking for browser compatibility it was found that the footer was not fixed to the bottom on IE browser. This issues was corrected 
-by changing ```flex: 1``` to ```flex-grow: 1```.</br>
-![Image of IE](assets/doc/error1.png)
+![Code](static/doc/modal-code.png)
 
-9. Another issue noticed while performing browser compatibility test was the scroll function did not work on IE and was abrupt on safari.
-After consulting documentation from [W3schools](https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section2) it was observed that
-the scroll function was not supported on these browsers. A modification was attempted using the animate function however this also produced
-abrupt screen movement. Consequently, the Choice was made to revert back to the original code. 
-
-10. While testing for reponsiveness using chrome dev tools it was noticed that the text below logo would change lines on smaller devices.
-This issue was addressed by changing font size.</br>
-![Image of error](assets/doc/error2.png)
-
-11. After final project review it was decided to add instructions on how to play the game. This was achieved by adding a link to  the header which directs to a wikepdia [page](https://en.wikipedia.org/wiki/Matching_game) containing generic rules on how to play. 
+8. After mid project review it was observed that such a site would have large amounts of items uploaded and pagination would 
+be essential for proper UX. Research was performed and flask-paginate [module](https://pythonhosted.org/Flask-paginate/) document was 
+consulted for pagination. However, after several attempts the module did not yeild the required results. The documentation was 
+then studied and pagination was done using python programming to produce the desired results. The pagination was also extended to the 
+search page.
 
 # DEPLOYMENT
 
