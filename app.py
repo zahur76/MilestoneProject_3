@@ -26,8 +26,8 @@ mongo = PyMongo(app)
 @app.route("/<page_number>")
 #  Set default value to 0
 def all_items(page_number=0):
-    # Find all items in item database
-    complete_item_list = list(mongo.db.items.find())
+    # Find all items in item database which are not sold
+    complete_item_list = list(mongo.db.items.find({"sold": "false"}))
     # Find all users to provide contact info
     users = list(mongo.db.users.find())
     # Pagination
@@ -37,7 +37,7 @@ def all_items(page_number=0):
     # Slice items list depending on page number
     items = complete_item_list[index_1:(index_1)+items_per_page]
     # Total list count required to display paginations numbers
-    total = (mongo.db.items.find()).count()
+    total = (mongo.db.items.find({"sold": "false"})).count()
     links_number = math.ceil(total/items_per_page)
     link_list = list(range(links_number))
 
@@ -58,9 +58,9 @@ def search(page_number=0, query=""):
     else:
         # Previous request with links being used to change page
         query == query
-    # Obtain list of items matching search criteria
+    # Obtain list of items matching search criteria which is not sold
     complete_item_list = list(mongo.db.items.find(
-        {"$text": {"$search": query}}))
+        {"$text": {"$search": query}, "sold": "false"}))
     # Find all users to provide contact info
     users = list(mongo.db.users.find())
     # Pagination
