@@ -42,7 +42,7 @@
 ## INTRODUCTION 
 
 This site has was created as a product listing site with the intention of providing a service for artist to showcase 
-their art work to potential buyers and other ethusiasts in the Mauritian market. 
+their art work to potential buyers and other ethusiasts in the Mauritian market.
 
 The site would permit the registered users to upload and manage their items while also creating a profile page. Thus providing 
 the user with the power of creating, updating and modifying their items by using a database system. 
@@ -73,7 +73,7 @@ By using this site as the site owner:
 
 The following provides an overview of the site layout and logic behind design choices.
 
-A wireframe was constructed using balsamique wireframes. It can be found [here](assets/doc/wireframe.pdf).
+A wireframe was constructed using balsamique wireframes. It can be found [here](static/doc/wireframe.pdf).
 
 The site was designed to have an artistic atmosphere by by making use of hero image reflecting an artist studio with 
 suitable banner text. 
@@ -525,7 +525,7 @@ was resolved by adding ```list``` to the mongodb query. For example ```items = l
 
 2. If editing of item or profile was performed then the user would have to reselect an image since a image preselect value could 
 not be added to the edit form. The solution adopted was to remove the ```required``` attribute for the image file and then add a condition 
-in the backend to detect if the user had indeed uplaoded a new image. If it was the case then the new file would be updated in the
+in the backend to detect if the user had indeed uploaded a new image. If this was the case then the new file would be updated in the
 collection database, if not then the old image would be kept.
 
 3. When items were deleted the image data, fs.files and fs.chunks, would still remain in the monogdb database. This was thought to 
@@ -560,28 +560,50 @@ consulted for pagination. However, after several attempts the module did not yei
 then studied and pagination was done using python programming to produce the desired results. The pagination was also extended to the 
 search page.
 
+9. When the sold item feature was implemented and the user would opt for an item to be sold, the logic would dictate that the item 
+should then be removed from the items list. Initially this was done by applying conditions to the jinja template, however this 
+caused errors in pagination. The final solution adopted was to change the mongodb queries backend to exclude those items which
+had a field of ```{"sold": "true}```  by performing the following query ```complete_item_list = list(mongo.db.items.find({"sold": "false"}))```.
+This solution worked with no issues.
+
 # DEPLOYMENT
 
-Gitpod was used as an online IDE and then pushed to GITHUB for [hosting](https://zahur76.github.io/MilestoneProject_2/).
+Gitpod was used as an online IDE and then pushed to GITHUB. The Github account was then linked to 
+heroku for [hosting](http://artist-for-life.herokuapp.com/).
 
-To deploy the project on github pages the following steps were used:
-1. Login to Github and select the the MilestoneProject_2 repository.
-2. Press the setting button on the top menu bar located on the right-hand side.</br>
-![image of github menu bar](assets/doc/github.png)
+To deploy the project on from Heroku the following steps were used:
 
-3. Scroll down to the Github pages section and select Master branch from the dropdown menu and press save.</br>
-![image of github pages section](assets/doc/githubpages.png)
+1. Login to heroku and create the artist for life repository by clicking on create new app.
+![heroku deployment](static/doc/new.png)
 
-4. Once completed an active link is published for the repository. 
+2. Ensure requirements.txt file and Procfile have been created. 
+
+3. Go to settings and set all confing vars in Heroku.
+![image of config vars](static/doc/config.png)
+
+4. Go to Deploy section in Heroku from menu bar.
+![Menu](static/doc/deploy.png)
+
+5. Scroll down to deployement method and select Github.
+![image of github deployment](static/doc/deployment.png)
+
+6. Scroll to connect to github and search and select the required repository.
+![image of heroku deployment](static/doc/connect-2.png)
+![image of heroku deployment](static/doc/connect.png)
+
+7. Enable automatic deploy. 
+![image of heroku deployment](static/doc/automatic.png)
+
+8. When the command ```git push``` is applied in gitpod this will automtically deploy and update heroku.
 
 To run code locally the following steps should be performed:
 1. On GitHub, navigate to the main page of the repository.
 2. Above the list of files, click  Code and copy URL.</br>
-![image of github pages section](assets/doc/clone.png)
+![image of github pages section](static/doc/clone.png)
 3. Open Git Bash.
 4. Change the current working directory to the location where you want the cloned directory.
 5. Type git clone, and then paste the URL you copied earlier.</br>
-    $ git clone https://github.com/zahur76/MilestoneProject_2
+    $ git clone https://github.com/zahur76/MilestoneProject_3
 6. Press Enter to create your local clone.
 
 ## FUTURE IMPROVEMENTS
