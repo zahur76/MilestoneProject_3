@@ -127,7 +127,7 @@
                                     {% for user in users %}
                                         {% if user.username == item.username %}                               
                                             <p><strong><i class="fas fa-phone black-text" style="font-size: 18px;"></i>
-                                                </strong> {{ user.contact_number }}</p>
+                                                </strong><a href="tel:+01273123456">{{ user.contact_number }}</a></p>
                                             <p><strong><i class="fas fa-envelope-square black-text" style="font-size: 22px;"></i>
                                                 </strong><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
                                         {% endif %}
