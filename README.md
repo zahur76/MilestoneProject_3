@@ -24,7 +24,7 @@
 * [Data schema](#data-schema)
     * [CRUD operations](#crud-operations)
     * [Setting up mongodb database](#setting-up-mongodb-database)
-    * [CRUD authorisation](#crud-authorisation)    
+    * [CRUD authorisation and security features](#crud-authorisation-and-security-features)    
 * [Testing](#testing)
     * [UX testing](#ux-testing)
     * [validators](#validators)
@@ -348,13 +348,17 @@ The update operation for the registration feature was for the contact informatio
     ![database](static/doc/database.png)
     ![database2](static/doc/database2.png)
 
-### CRUD authorisation
+### CRUD authorisation and security features
 
 A user would have authorisation to update and delete any information uploaded by themselves except for the their username,
-and password.
+and password. 
+
+No registered user would be able to apply CRUD operations for any other user. This was done by providing jinja template logic.
 
 The admin would have authorisation to update and delete all uploaded user information present in the database.
-This was done so as the admin has control on what information was being displayed on the site.
+This was done so as the admin could maintain control on what information was being displayed on the site. 
+
+The control center was only accessible to the admin by using jinja template logic.
 
 ## TESTING 
 
