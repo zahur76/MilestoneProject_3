@@ -11,11 +11,11 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="fas fa-folder-open prefix brown-text text-lighten-2"></i>
-                                        <select id="item_category" name="item_category" class="validate " required>
+                                        <select id="item_category" name="item_category" class="validate" required>
                                         <!-- Will display value in field as option but cannot be selected-->
                                         <option value="" disabled selected>Choose option</option>
                                         {% for category in categories %}
-                                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>  
+                                            <option class="black-text" value="{{ category.category_name }}">{{ category.category_name }}</option>  
                                         {% endfor %}                  
                                         </select>
                                         <label for="item_category">Item Category</label>

@@ -114,6 +114,10 @@ img {
     object-fit: cover;         
 }
 
+.dropdown-content li>span {
+    color: black;
+}
+
 /* Images for profile page --------------------------------------------*/
 
 .profile img {
