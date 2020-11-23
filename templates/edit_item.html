@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-    {% block content %}
-        <h3 class="center-align">Edit item</h3>
+    {% block content %}        
         <section class="page-background"> 
             <div class="container">          
                 <div class="row add-item-row">
                     <div class="col s12 m10 l8 offset-m1 offset-l2">
                         <div class="row add-item-form card-panel brown lighten-5">
                             <form class="col s12" method="POST" action="{{ (url_for('edit_item', item_id=item._id))}}" enctype="multipart/form-data">            
+                                <h3 class="center-align" style="width: 100%;">Edit item</h3>
                                 <!-- Dropdown menu for category -->
                                 <div class="row">
                                     <div class="input-field col s12">
@@ -27,7 +27,7 @@
                                         <img class="prefix" src="{{ url_for('file', filename = item.item_image ) }}" 
                                             alt="{{ item.item_image }}" style="width: 30px; height: 30px;"> 
                                         <input class="tooltipped validate" data-position="top" data-tooltip="Change Image if required!" 
-                                            value="{{ item.item_image }}" id="item_image" name="item_image" type="file">
+                                            id="item_image" name="item_image" type="file">
                                         <label for="item_image"></label> 
                                         <span class="helper-text">
                                             Change Image file
@@ -56,8 +56,7 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="fas fa-dollar-sign prefix brown-text text-lighten-2"></i>
-                                        <input id="item_price" name="item_price" minlength="5" maxlength="50" 
-                                            value="{{ item.item_price }}" pattern="^[0-9]{5,50}$" type="number" class="validate" required>
+                                        <input id="item_price" name="item_price" value="{{ item.item_price }}" type="number" class="validate" required>
                                         <label for="item_price">Item Price</label>
                                     </div>
                                 </div>                                
