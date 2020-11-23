@@ -302,7 +302,7 @@ The main database contained 4 collections:
 The user collection was used for registration and login purposes. The contact number and email fields were
 added to this collection instead of the items collection since it would only have to be entered once and would remain
 constant for that user. This would also prevent the user from having to add contact info with each item upload and prevent 
-multi contact info for the same user.
+duplicate contact info for the same user.
 
 The username would be used as seller name.
 
@@ -314,7 +314,7 @@ The items collections consisted of all the required information about the item b
 Categories collections consisted of seven main painting categories and was made to be independent.
 
 The user, profile and items collections had a matching field of 'username' which was used as a common reference. This was
-done to links documents where common information about a user needed to displayed. One such page which made use of this 
+done to links documents where common information about a user needed to be displayed. One such page which made use of this 
 reference was the profile page.
 
 ![Collections](static/doc/collections.png)
@@ -336,7 +336,7 @@ The update operation for the registration feature was for the contact informatio
 
 ### Setting up Mongodb database
 
-1. On the designated cluster setup up the security database settings by  by adding a database user.
+1. On the designated cluster setup up the security database settings by adding a database user.
 ![security settings](static/doc/security.png)
 
 2. On the designated cluster click on collections.
