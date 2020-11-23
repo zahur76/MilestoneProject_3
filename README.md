@@ -622,30 +622,25 @@ To run code locally the following steps should be performed:
 
 ## FUTURE IMPROVEMENTS
 
-Add a countdown timer option to add another level of difficulty to the game. The user would be able to specify both
-a difficulty level and a time limit inorder to complete the game.
+1. Pagination would need to be added to the profile page.
+2. Include a review system wherby buyers could write about the product purchased.
 
 ## CREDITS
 
 ### Content
 
-* [wikepedia](https://en.wikipedia.org/wiki/Matching_game) was used as source for rules.
-* Star Wars character facts obtained from open source [swapi](https://swapi.dev/).
-* dev.to was consulted to assist in footer [placement](https://dev.to/amjadmh73/the-best-way-to-keep-the-footer-at-the-bottom-of-your-web-page-32ek).
+* [wikepedia](https://en.wikipedia.org/wiki/List_of_art_museums) was used as source for list of art museums.
+* [Geek for geeks](https://www.geeksforgeeks.org) for providing resource on how to create unique filenames.
+* [Pretty Printed](https://www.youtube.com/watch?v=DsgAuceHha4) for resource on how to upload and retrieve files from mongodb database.
+* [Stack Overflow](https://stackoverflow.com/questions/34248898/how-to-validate-select-option-for-a-materialize-dropdown ) on how to validate drop down menus.
+* [W3 Schools](https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section2 ) on how to make scroll behaviour smooth.
 
 ### Media
 
-* The following fonts were used from [google font](https://fonts.google.com/):
-    - Roboto
-    - Orbitron 
-    - Press Start 2P
-* Sound clips were obtained from [101 soundboard](https://www.101soundboards.com/).
-* Card images were purchased from [mintParcel](https://www.mintparcel.com).
-* Logo obtained from [flaming text](https://flamingtext.com/).
-* Icons for home, social media and galactic senate were obtained from [font awesome](https://www.fontawesome.com).
-* Loading gif was obtained from [icons8](https://icons8.com/).
+* All Icons were obtained from [font awesome](https://www.fontawesome.com).
+* All images obtained from [Unsplash](https://unsplash.com/).
 
 ### Acknowledgment
 
-* I would like to thank zara meerun, sofia meerun and behlal meerun for testing the game and also my mentor 
-Allen Thomas Varghese for his input during the mentor sessions.
+* I would like to thank Samia Mallam-Hasham for testing the site and Allen Thomas Varghese for his input during 
+the mentor sessions.
