@@ -474,36 +474,36 @@ The site was tested on Google Chrome, FireFox, Internet Explorer, Safari and Ope
 
 The following gives test results for button and link testing not related to CRUD operations.
 
-|links/button                            |Expected result                                         | Results |                                 
-|:---------------------------------------|:-------------------------------------------------------|:--------|
-|Register                                |Register modal to open                                  |Passed   |
-|Submit on Register modal(correct data)  |Flash message "You have been registered"                |Passed   |                                           
-|Submit on Register modal(incorrect data)|Flash message error mesage and modal to reopen          |Passed   |
-|Submit on Login modal(correct data)     |Flash message "You have been logged in"                 |Passed   |
-|Submit on Login modal(incorrect data)   |Flash error message and modal to reopen                 |Passed   |
-|here text on modals                     |Login/Register Modals to switch over                    |Passed   |
-|Logout                                  |Flash message "You have been logged out"                |Passed   | 
-|Home                                    |Home page to load                                       |Passed   |
-|About                                   |About Modal to open up                                  |Passed   |
-|Register on about modal                 |About modal to close and register modal to open         |Passed   |
-|Artist for life logo                    |Main index html page to load                            |Passed   |
-|Control center                          |Control center html  page to load                       |Passed   |
-|Profile                                 |Profile html page to load                               |Passed   |
-|Add item                                |Add item html form page to load                         |Passed   |
-|Edit item                               |Edit item html form page to load                        |Passed   |
-|Create profile                          |Add profile html form page to load                      |Passed   |
-|Edit profile                            |Edit profile html form page to load                     |Passed   |
-|Edit Contact details                    |Edit contact html form to load                          |Passed   |
-|Mark as sold                            |Sold banner text to appear on item                      |Passed   |
-|Mark as available                       |Sold banner text to be removed from item                |Passed   |
-|Seller profile                          |Profile page to load for that user                      |Passed   |
-|chevron arrows                          |Loading of next or previous page                        |Passed   |
-|pagination numbers                      |Loading of selected page                                |Passed   |
-|search button                           |Search page to load with relevant search results        |Passed   |
-|Reset search                            |Main item page to load                                  |Passed   |
-|Palette icon                            |Wikepedia page to open in separate page                 |Passed   |
-|click to call                           |Phone request to be made with correct number            |Passed   |
-|click to mail                           |Email request activated with correct email              |Passed   |
+|links/button                            |Expected result                                                           | Results |                                 
+|:---------------------------------------|:-------------------------------------------------------------------------|:--------|
+|Register                                |Register modal to open                                                    |Passed   |
+|Submit on Register modal(correct data)  |Flash message "You have been registered"                                  |Passed   |                                           
+|Submit on Register modal(incorrect data)|Flash message error mesage and modal to reopen                            |Passed   |
+|Submit on Login modal(correct data)     |Flash message "You have been logged in"                                   |Passed   |
+|Submit on Login modal(incorrect data)   |Flash error message and modal to reopen                                   |Passed   |
+|here text on modals                     |Login/Register Modals to switch over                                      |Passed   |
+|Logout                                  |Flash message "You have been logged out"                                  |Passed   | 
+|Home                                    |Home page to load                                                         |Passed   |
+|About                                   |About Modal to open up                                                    |Passed   |
+|Register on about modal                 |About modal to close and register modal to open                           |Passed   |
+|Artist for life logo                    |Main index html page to load                                              |Passed   |
+|Control center                          |Control center html  page to load                                         |Passed   |
+|Profile                                 |Profile html page to load                                                 |Passed   |
+|Add item                                |Add item html form page to load                                           |Passed   |
+|Edit item                               |Edit item html form page to load                                          |Passed   |
+|Create profile                          |Add profile html form page to load                                        |Passed   |
+|Edit profile                            |Edit profile html form page to load                                       |Passed   |
+|Edit Contact details                    |Edit contact html form to load                                            |Passed   |
+|Mark as sold                            |Sold banner text to appear on item and item to be removed from item list  |Passed   |
+|Mark as available                       |Sold banner text to be removed from item and item to be added to item list|Passed   |
+|Seller profile                          |Profile page to load for that user                                        |Passed   |
+|chevron arrows                          |Loading of next or previous page                                          |Passed   |
+|pagination numbers                      |Loading of selected page                                                  |Passed   |
+|search button                           |Search page to load with relevant search results                          |Passed   |
+|Reset search                            |Main item page to load                                                    |Passed   |
+|Palette icon                            |Wikepedia page to open in separate page                                   |Passed   |
+|click to call                           |Phone request to be made with correct number                              |Passed   |
+|click to mail                           |Email request activated with correct email                                |Passed   |
 
 ### Crud operation testing
 
@@ -580,6 +580,12 @@ caused errors in pagination. The final solution adopted was to filter the mongod
 had a field of ```{"sold": "true}```. This was done by performing the following query ```complete_item_list = list(mongo.db.items.find({"sold": "false"}))```.
 This solution worked with no issues.
 
+10. During the the W3C html validator check, one of the errors was 'Warning: sections lacks heading on all forms. 
+![Warning](static/doc/warning.png)
+
+The heading was originally placed outside all forms and after review it was decided to move all headings within 
+the form since it was more appropriate.
+![header](static/doc/header1.png)
 # DEPLOYMENT
 
 Gitpod was used as an online IDE and then pushed to GITHUB. The Github account was then linked to 
