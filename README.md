@@ -247,11 +247,11 @@ A basic footer was provided with a link to wikipedia containing a list of art mu
 * HTML5
 * css 
 * javacript (ES6)
-* python 
-* flask for the web framework
+* python (v3.8.6)
+* flask (v1.1.2) for the web framework
 * mongodb to store data 
 * Jquery to simplify DOM manipulation
-* pylint, flake8, PEP8 for python syntax
+* pylint, flake8 for python syntax
 * official W3C validator to check HTML syntax
 * css official validator(jigsaw) to check css syntax
 * JSHint to check javacript syntax 
@@ -295,7 +295,7 @@ The main database contained 4 collections:
 | Collections         |   Fields                                                           |
 |:--------------------|:-------------------------------------------------------------------|
 |User                 |  Username, Password, contact number, email                         |                                     |    
-|Profile              |  Username, profile image, full name, profile description            |
+|Profile              |  Username, profile image, full name, profile description           |
 |Items                |  Category, image, name, description, price, username, sold         |             
 |Categories           |  Category name                                                     |            
 
@@ -477,15 +477,15 @@ The following gives test results for button and link testing not related to CRUD
 |links/button                            |Expected result                                                           | Results |                                 
 |:---------------------------------------|:-------------------------------------------------------------------------|:--------|
 |Register                                |Register modal to open                                                    |Passed   |
-|Submit on Register modal(correct data)  |Flash message "You have been registered"                                  |Passed   |                                           
-|Submit on Register modal(incorrect data)|Flash message error mesage and modal to reopen                            |Passed   |
-|Submit on Login modal(correct data)     |Flash message "You have been logged in"                                   |Passed   |
-|Submit on Login modal(incorrect data)   |Flash error message and modal to reopen                                   |Passed   |
+|Submit (Register modal-correct data)    |Flash message "You have been registered"                                  |Passed   |                                           
+|Submit (Register modal-incorrect data)  |Flash message error mesage and modal to reopen                            |Passed   |
+|Submit (Login modal-correct data)       |Flash message "You have been logged in"                                   |Passed   |
+|Submit (Login modal-incorrect data)     |Flash error message and modal to reopen                                   |Passed   |
 |here text on modals                     |Login/Register Modals to switch over                                      |Passed   |
 |Logout                                  |Flash message "You have been logged out"                                  |Passed   | 
 |Home                                    |Home page to load                                                         |Passed   |
 |About                                   |About Modal to open up                                                    |Passed   |
-|Register on about modal                 |About modal to close and register modal to open                           |Passed   |
+|Register (about modal)                  |About modal to close and register modal to open                           |Passed   |
 |Artist for life logo                    |Main index html page to load                                              |Passed   |
 |Control center                          |Control center html  page to load                                         |Passed   |
 |Profile                                 |Profile html page to load                                                 |Passed   |
@@ -504,6 +504,7 @@ The following gives test results for button and link testing not related to CRUD
 |Palette icon                            |Wikepedia page to open in separate page                                   |Passed   |
 |click to call                           |Phone request to be made with correct number                              |Passed   |
 |click to mail                           |Email request activated with correct email                                |Passed   |
+|Provide non-existent url                |Loading of 404.html page                                                  |Passed   |
 
 ### Crud operation testing
 
@@ -586,6 +587,10 @@ This solution worked with no issues.
 The heading was originally placed outside all forms and after review it was decided to move all headings within 
 the form since it was more appropriate.
 ![header](static/doc/header1.png)
+
+11. The background image was given the property of ```background-attachment: fixed;``` which did not work on safari. This 
+bug was left as such and did not cause any performance issues.
+
 # DEPLOYMENT
 
 Gitpod was used as an online IDE and then pushed to GITHUB. The Github account was then linked to 
