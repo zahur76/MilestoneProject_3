@@ -233,8 +233,8 @@ Once the item sold feature was activated the item would be removed from items li
 
 ### Flash messages
 
-Flash messages were used whenever a CRUD operation was performed. This would provide confirmation to the user
-that the operation had been completed and the database had been updated.
+Flash messages were used whenever a create, update or delete operation was performed. This would provide confirmation 
+to the user that the operation had been completed and the database had been updated.
 
 ![flash message](static/doc/flash.png)
 
@@ -512,21 +512,21 @@ The following gives test results for button and link testing not related to CRUD
 
 The following table summarises CRUD operation testing
 
-|Button            | Location              |Expected result                                                     | Results |                                 
-|:-----------------|:----------------------|:-------------------------------------------------------------------|:--------|
-|Submit            | Registration modal    |user information to be added to users collection in mongodb         |Passed   |
-|Add item          | Add item form page    |Item information to be added to items collection in mongodb         |Passed   |
-|Add profile       | Add profile form page |Profile information to be added to profiles collection in mongodb   |Passed   |
-|Confirm           | Edit item form page   |Item information to be updated in items collection in mongodb       |Passed   |
-|Confirm           | Edit profile form page|Item information to be updated in profiles collection in mongodb    |Passed   |
-|Delete            | items main page       |Item information to be removed from items collectionsin mongodb     |Passed   |
-|Delete            | Profile main page     |Item/profile to be removed from items/profile collection in mongodb |Passed   |
-|confirm           | Edit contact form page|Contact details to be updated in users collection in mongodb        |Passed   |
-|confirm           | Edit contact form page|Contact details to be updated in users collection in mongodb        |Passed   |
-|Add category      | Control center page   |New category to be added to categories collection in mongodb        |Passed   |
-|Confirm           | Edit category page    |Category to be updated in categories collection in mongodb          |Passed   |
-|Mark as sold      | Profile html page     |Sold field to be updated to "true" in items collection              |Passed   |
-|Mark as available | Profile html page     |Sold field to be updated to "false" in items collection             |Passed   |
+|Button            | Location              |Expected result                                                     | Results | Flash Alerts |                                 
+|:-----------------|:----------------------|:-------------------------------------------------------------------|:--------|:-------------|
+|Submit            | Registration modal    |user information to be added to users collection in mongodb         |Passed   |    &#9745;   | 
+|Add item          | Add item form         |Item information to be added to items collection in mongodb         |Passed   |    &#9745;   |
+|Add profile       | Add profile form      |Profile information to be added to profiles collection in mongodb   |Passed   |    &#9745;   |
+|Confirm           | Edit item form        |Item information to be updated in items collection in mongodb       |Passed   |    &#9745;   |
+|Confirm           | Edit profile form     |Item information to be updated in profiles collection in mongodb    |Passed   |    &#9745;   |
+|Delete            | items main page       |Item information to be removed from items collectionsin mongodb     |Passed   |    &#9745;   |
+|Delete            | Profile main page     |Item/profile to be removed from items/profile collection in mongodb |Passed   |    &#9745;   |
+|confirm           | Edit contact form     |Contact details to be updated in users collection in mongodb        |Passed   |    &#9745;   |
+|delete            | Control center        |Item/profile/category deleted in users collection in mongodb        |Passed   |    &#9745;   |
+|Add category      | Control center page   |New category to be added to categories collection in mongodb        |Passed   |    &#9745;   |
+|Confirm           | Edit category form    |Category to be updated in categories collection in mongodb          |Passed   |    &#9745;   |
+|Mark as sold      | Profile html page     |Sold field to be updated to "true" in items collection              |Passed   |    &#9745;   |
+|Mark as available | Profile html page     |Sold field to be updated to "false" in items collection             |Passed   |    &#9745;   |
 
 During item deletion/editing it was checked to see that image data was removed/updated from fs.files and fs.chunks also.
 
