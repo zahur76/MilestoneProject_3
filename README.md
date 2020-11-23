@@ -340,11 +340,13 @@ The update operation for the registration feature was for the contact informatio
 ![security settings](static/doc/security.png)
 
 2. On the designated cluster click on collections.
-![collections](static/doc/collections2.png)
+
+    ![collections](static/doc/collections2.png)
 
 3. Click on create database and then add database name collections.
-![database](static/doc/database.png)
-![database2](static/doc/database2.png)
+
+    ![database](static/doc/database.png)
+    ![database2](static/doc/database2.png)
 
 ### CRUD authorisation
 
@@ -381,7 +383,7 @@ The site made use of easy to use straight forward registration and login modals 
 This was achieved by using an add item form page which contained all the necessary information required for uploading in 
 one easy to use form.
 
-![Add item](static/doc/add-item.png)
+    ![Add item](static/doc/add-item.png)
 
 4. User goal: *be provided with an option to upload my personal information so potential buyers can see who I am*</br>
 This was achieved by having using a profile page which is described [above](#profile-page).
